@@ -770,7 +770,7 @@ const techStack = [
 const SECTIONS = [
   { id: 'selected', label: '대표 작업' },
   { id: 'archive',  label: '전체 작업' },
-  { id: 'stack',    label: '사용 도구' }
+  { id: 'stack',    label: '제작 역량' }
 ];
 
 /* 구 URL 앵커 호환: 예전 섹션 id로 들어와도 새 섹션으로 보냄 */
@@ -790,7 +790,7 @@ const AWARDS = { 301: 'LG 유쓰 AI 쇼츠 페스티벌 우수상', 207: '사내
 const previewOf = p => p.videoSrc || (PREVIEW[p.id] ? `videos/preview/${PREVIEW[p.id]}.mp4` : '');
 
 /* 대표 작업(aekyung.js)에 이미 나온 작품은 전체 작업 목록에서 뺀다 */
-const ARCHIVE_EXCLUDE = [7, 309, 308, 304, 101];
+const ARCHIVE_EXCLUDE = [7, 309];
 
 const FEATURED_IDS = [301, 207, 305];
 

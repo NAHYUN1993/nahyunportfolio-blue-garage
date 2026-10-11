@@ -17,29 +17,72 @@ const works = [
     id: 'onetake',
     layout: 'lead',
     tags: ['AI 아티스트', '퍼포먼스 영상'],
-    title: '원테이크 카메라 무빙',
-    meta: 'AI 아티스트 퍼포먼스 영상 · 6초 원테이크 · 1080p · 음악 NMIXX – Heavy Serenade',
-    line: '직접 설계한 원테이크 카메라 무빙을 AI 아티스트의 댄스 영상에 그대로 입혔습니다',
+    title: '프리비즈 기반 AI 퍼포먼스',
+    meta: 'AI 아티스트 제작 연구 · 6초 시퀀스 · 1080p',
+    role: '카메라 무빙 지정 · Blender 프리비즈 · AI 제작 흐름 설계 · 편집',
+    outcome: '카메라와 안무를 통합한 레퍼런스로 6초 원테이크 영상 완성',
+    line: 'Blender 프리비즈와 뼈대·깊이 정보를 결합해 카메라와 안무를 함께 제어',
     video: 'videos/onetake.mp4',
+    comparison: 'onetake-compare',
+    processStepMedia: {
+      1: { src: 'images/process/comfyui-depthpose.jpg', cap: 'ComfyUI 작업 화면 · 안무 영상에서 DWPose(뼈대)와 Depth(깊이) 추출 · 눌러서 크게 보기 ↗' }
+    },
     poster: 'images/posters/onetake.jpg',
-    goal: 'AI 아티스트의 퍼포먼스 영상에서 카메라 무빙, 안무, 얼굴을 모두 의도대로 제어하는 것을 목표로 했습니다. 프롬프트만으로는 카메라 경로와 동작 타이밍을 정확하게 지정할 수 없어서, 원하는 무빙을 Blender 프리비즈로 먼저 만들고 이를 생성 모델의 레퍼런스로 쓰는 방식을 택했습니다.',
+    goal: 'Blender에서 카메라 무빙을 직접 지정하고, depth·pose 가이드와 멀티 레퍼런스로 캐릭터 일관성을 유지한 AI 영상입니다.',
     process: [
-      '16mm 광각 짐벌이 인물 쪽으로 파고들었다가 돌아 나오는 원테이크 무빙을 설계하고, Blender로 세트와 카메라 경로를 프리비즈로 제작',
+      'Blender에서 16mm 광각 카메라의 접근·후퇴 경로와 타이밍을 직접 지정하고, 세트와 함께 프리비즈로 제작',
       'ComfyUI로 안무 레퍼런스 영상에서 DWPose(뼈대)와 Depth(깊이)를 추출한 뒤, 프리비즈 카메라의 깊이 패스 안에 원근을 맞춰 합성 · 카메라 무빙과 안무를 하나의 레퍼런스 영상으로 제어',
-      'Nano Banana 2로 얼굴·전신 정면/측면/후면 턴어라운드 시트를 만들어 모든 프레임에서 같은 얼굴과 의상을 유지',
+      'Nano Banana 2로 얼굴·전신 턴어라운드 시트를 제작하고, 캐릭터의 얼굴과 의상을 유지하기 위한 멀티 레퍼런스로 사용',
       'Seedance 2.5 옴니 레퍼런스로 생성 · 480p 드래프트로 카메라와 동작을 먼저 검증하고 1080p로 완성',
       '원곡 음원을 안무 타이밍에 맞춰 싱크'
     ],
     results: [],
     processMedia: [
       ...[1, 2, 3].flatMap(n => [
-        { src: `${OT}/step-${n}-0.jpg`, cap: n === 1 ? '① Blender 프리비즈 카메라' : '' },
-        { src: `${OT}/step-${n}-1.jpg`, cap: n === 1 ? '② 깊이 + 뼈대 레퍼런스' : '' },
-        { src: `${OT}/step-${n}-2.jpg`, cap: n === 1 ? '③ 결과' : '' }
+        { src: `${OT}/step-${n}-0.jpg`, cap: `${n} · Blender 프리비즈 카메라` },
+        { src: `${OT}/step-${n}-1.jpg`, cap: `${n} · 깊이 + 뼈대 레퍼런스` },
+        { src: `${OT}/step-${n}-2.jpg`, cap: `${n} · 최종 결과` }
       ]),
       { src: `${OT}/turnaround.jpg`, cap: '얼굴·전신 턴어라운드 시트 (Nano Banana 2)', wide: true }
     ],
+    musicCredit: '음악: NMIXX – Heavy Serenade',
     tools: ['Blender', 'ComfyUI', 'DWPose', 'Nano Banana 2', 'Seedance 2.5', 'Premiere Pro']
+  },
+  {
+    id: 'identity-lab',
+    layout: 'wide',
+    tags: ['얼굴 일관성', '제작 연구'],
+    title: 'AI 캐릭터 얼굴 일관성 연구',
+    meta: '단일 캐릭터 자체 비교 실험 · 생성 이미지 69장 · 6개 모델',
+    line: '레퍼런스와 얼굴 스펙의 효과를 비교하고, 생성 이미지·프롬프트·측정 결과를 라이브러리로 정리',
+    thumb: 'images/identity/gptimage2-comparison.jpg',
+    role: '비교 실험 설계 · 얼굴 스펙 정리 · 생성 결과 비교 · 라이브러리 구성',
+    outcome: '69장의 생성 이미지, 모델·조건별 비교표, 재사용 가능한 프롬프트 정리',
+    goal: '각도와 표정이 바뀌어도 같은 캐릭터로 보이게 만드는 입력 조건을 찾고자, 레퍼런스 이미지와 얼굴 스펙의 조합을 비교했습니다.',
+    process: [
+      '기준 얼굴의 형태를 계측해 스펙 문장으로 정리하고, 레퍼런스만 / 레퍼런스+스펙 / 스펙만의 조건을 구분',
+      '3/4 미소, 로우앵글, 어깨 너머 돌아보기 장면에서 6개 모델의 지원 조건별로 총 69장 생성',
+      'ArcFace 코사인 유사도, 안면 계측 항목, 실제 비교 이미지를 함께 검토',
+      '모델·조건·장면별 이미지에 프롬프트와 측정값을 연결해 다시 열어볼 수 있는 라이브러리로 구성'
+    ],
+    findings: '이 실험에서 스펙만 입력한 조건의 평균 유사도는 0.10–0.34였습니다. GPT Image 2는 레퍼런스에 스펙을 더했을 때 0.72→0.78, Seedream은 0.83→0.83으로 나타났습니다. 레퍼런스와 스펙의 효과가 모델마다 달라, 입력 구성을 모델별로 검토할 근거를 정리했습니다.',
+    limitation: '단일 캐릭터에 대한 자체 실험입니다. 모델별 샘플 수와 지원 조건이 다르며, 유사도는 정확도(%)가 아닙니다. 영상 프레임의 일관성이나 제작 시간 단축을 측정한 결과는 아닙니다.',
+    results: [{ n: '69', label: '생성 이미지' }, { n: '6', label: '비교 모델' }, { n: '3', label: '장면 유형' }],
+    resultLabel: '연구 산출물',
+    gallery: [
+      { src: 'images/identity/reference-b.webp', cap: '기준 얼굴 B' },
+      { src: 'images/identity/gptimage2-ref-spec-cafe-1.webp', cap: '3/4 · 미소' },
+      { src: 'images/identity/gptimage2-ref-spec-rooftop-1.webp', cap: '로우앵글' },
+      { src: 'images/identity/gptimage2-ref-spec-shoulder-1.webp', cap: '어깨 너머 돌아보기' }
+    ],
+    galleryCaption: 'GPT Image 2 · 레퍼런스+스펙 조건의 생성 결과. 전체 조건은 아래 비교표와 라이브러리에서 확인할 수 있습니다.',
+    link: 'https://facs-expression-library.dan-asa.chatgpt.site/#anthropometry',
+    linkLabel: '얼굴 일관성 라이브러리 열기 ↗',
+    processMedia: [
+      { src: 'images/identity/gptimage2-comparison.jpg', cap: 'GPT Image 2 · 레퍼런스만 / 레퍼런스+스펙 / 스펙만 비교', wide: true },
+      { src: 'images/identity/seedream5-comparison.jpg', cap: 'Seedream 5.0 Pro · 동일 조건 비교', wide: true }
+    ],
+    tools: ['ComfyUI', 'MediaPipe', 'ArcFace']
   },
   {
     id: 'medihel',
@@ -47,11 +90,13 @@ const works = [
     tags: ['뷰티', 'AI 제작'],
     title: '메디힐 토너패드',
     meta: '가로 브랜드 필름 · 메디힐 공모전 출품작',
-    line: '입문자에게 3단계 루틴을 알려주는 토너패드 브랜드 필름',
+    role: '콘셉트 기획 · 인물·스타일 설계 · AI 영상 제작 · 제품 합성 · 편집',
+    outcome: '인물의 일관성과 제품 정보를 함께 담은 브랜드 필름 완성',
+    line: '완벽주의자 캐릭터로 밀착 USP를 표현하고, 장면 간 인물·의상·조명을 일관되게 구성',
     thumb: `${P3}/Thumbnails/공모전_메디힐.png`,
     preview: 'videos/preview/medihel.mp4?v=3',
     driveId: '1eSSpwG9XS92l4zofZlsaio4MO2V_PiHY',
-    goal: '토너패드 입문자에게 올바른 사용법을 알려주기 위해 기획한 브랜드 필름입니다. 네모난 패드가 얼굴 곡면에 빈틈없이 밀착된다는 구조적 특징을 핵심 USP로 잡고, 팩토 → 닦토 → 흡토 3단계 루틴을 한 편 안에서 자연스럽게 익힐 수 있도록 구성했습니다.',
+    goal: '패드의 밀착력을 ‘1mm의 빈틈도 허락하지 않는 완벽주의자’ 캐릭터로 표현했습니다. 팩토·닦토·흡토의 사용 루틴을 연결해 제품의 특징과 사용법을 함께 전달했습니다.',
     process: [
       'NotebookLM으로 뷰티 시장 리서치',
       '흔한 감성 뷰티 광고와 차별화하기 위해 상반된 키워드를 의도적으로 충돌시켜 \'1mm의 빈틈도 허락하지 않는 완벽주의자\' 컨셉 도출 · 패드가 얼굴에 빈틈없이 밀착된다는 USP를 인물의 성격으로 표현',
@@ -66,75 +111,30 @@ const works = [
     tools: ['NotebookLM', 'Midjourney', 'Nano Banana', 'ComfyUI', 'Kling', 'Premiere Pro']
   },
   {
-    id: 'desk-tour',
-    layout: 'tall',
-    tags: ['인스타그램 릴스', '실사 촬영'],
-    title: '왓츠 온 마이 데스크',
-    meta: '닥터조 인스타그램 · 53초 릴스',
-    line: '데스크 투어로 보여준 스틱형 영양제의 USP',
-    video: 'videos/desk-tour.mp4',
-    poster: 'images/posters/desk-tour.jpg',
-    goal: '스틱형 개별 포장의 핵심 USP인 \'식물마다 필요한 시비량에 맞춰 정량을 넣을 수 있다\'는 점을 실제 사용 장면으로 보여주기 위해 기획했습니다. 광고 모델 대신 직원이 직접 키우는 식물을 그대로 보여주며 진정성을 더했습니다.',
+    id: 'pure-solution',
+    layout: 'pano',
+    tags: ['인스타그램 캐러셀', 'AI 제작'],
+    title: '퓨어솔루션 캐러셀',
+    meta: '닥터조 인스타그램 · 4장 파노라마 캐러셀',
+    role: '캐러셀 기획 · 파노라마 구성 · 인물·오브제 배치',
+    outcome: '4장의 연결된 비주얼로 제품을 소개하고 외부링크 클릭 422건 기록',
+    line: '인물과 오브제가 다음 장으로 이어지는 4장 구성 · 외부링크 클릭 422건',
+    video: 'videos/pure-solution.mp4',
+    poster: 'images/posters/pure-solution.jpg',
+    slides: [1, 2, 3, 4].map(n => `images/pure-solution/slide-${n}.webp`),
+    goal: '식물 관리가 일상에 녹아드는 모습을 하나의 파노라마로 구성했습니다. 장면의 연결을 따라 다음 장을 넘기며 제품을 살펴보도록 기획했습니다.',
     process: [
-      '\'왓츠 인 마이 백\' 형식을 책상으로 옮긴 데스크 투어 포맷 기획',
-      '등장하는 두 사람 모두 초보 식집사의 시선으로 구성해, 식물을 막 키우기 시작한 시청자의 공감 유도',
-      '\'식물 소개 → 고민 → 제품으로 해결\' 흐름으로 구성, USP는 자막 한 줄로 압축(\'뜯어서 몇 알씩\', \'6개월 지속\')',
-      '마지막 장면을 "식물 키우세요?"라는 질문으로 끝내 댓글 참여 유도'
+      '하나의 파노라마를 4장으로 나누고, 인물과 오브제가 장의 경계를 넘나들도록 배치',
+      '화면이 다음 장에서 이어지기 때문에, 넘기는 행위 자체가 콘텐츠가 되도록 설계'
     ],
     results: [
-      { n: '9,841', label: '조회수' },
-      { n: '122', label: '좋아요' },
-      { n: '47', label: '저장' }
+      { n: '16,745', label: '조회수' },
+      { n: '422', label: '외부링크 클릭' },
+      { n: '76', label: '저장' },
+      { n: '54', label: '좋아요' }
     ],
-    link: 'https://www.instagram.com/reel/DA0OmOIqINq/',
     processMedia: [],
     tools: []
-  },
-  {
-    id: 'potting-soil',
-    layout: 'tall',
-    tags: ['숏폼 광고', 'AI 제작'],
-    title: '분갈이흙',
-    meta: '세로 숏폼 광고 · 10초',
-    line: '\'섞을 필요 없이 한 번에\'를 10초에 담은 숏폼 광고',
-    video: 'videos/potting-soil-v2.mp4',
-    poster: 'images/posters/potting-soil.jpg',
-    goal: '분갈이를 처음 하는 사람에게 가장 큰 진입 장벽은 흙 배합입니다. \'섞을 필요 없이 한 번에\'라는 올인원 USP를 10초 안에 전달하는 것을 목표로 삼았습니다.',
-    process: [
-      '\'어디에 심든 흙이 좋으면 잘 자란다\'는 카피를 과장해 보여주기 위해, 화분 대신 구두·세탁기·칵테일 잔처럼 식물과 어울리지 않는 오브제를 선택 · 낯선 조합으로 첫 장면에서 스크롤을 멈추게 하는 효과도 노림',
-      '후반부에 제품을 등장시키고, \'섞을 필요 없이\' · \'그냥 한 번에\' 자막을 짧게 끊어 USP를 한 번 더 강조'
-    ],
-    results: [
-      { n: '20,393', label: '조회수' },
-      { n: '88', label: '좋아요' },
-      { n: '103', label: '저장' }
-    ],
-    link: 'https://www.instagram.com/reel/DdiUVwgqAC7/',
-    processMedia: [],
-    tools: []
-  },
-  {
-    id: 'bug-all-kill',
-    layout: 'tall',
-    tags: ['홈케어', 'AI 제작'],
-    title: '버그올킬',
-    meta: '세로 숏폼 광고 · 살충제',
-    line: '벌레를 젤리 캐릭터로 바꿔 혐오감을 낮춘 살충제 광고',
-    video: 'videos/bug-all-kill.mp4',
-    poster: 'images/posters/bug-all-kill.jpg',
-    goal: '살충제 광고에서 시청 이탈을 부르는 가장 큰 요인은 벌레에 대한 혐오감입니다. 혐오감을 낮추면서도 제품의 강력함은 유지하는 것을 목표로 삼았습니다.',
-    process: [
-      '구매층의 여성 비율이 압도적으로 높아, 여성에게 어필할 수 있도록 벌레를 귀엽게 표현 · 핑크 세계관에 반투명 젤리 질감의 벌레 캐릭터로 설정',
-      '스프레이를 뿌리는 순간 파티클이 터지듯 퍼지는 장면으로 제품의 효과를 시각화',
-      '빠르게 지나가는 앞 장면과 달리 제품 컷은 카메라가 천천히 다가가도록 연출해 제품에 시선이 머물게 함'
-    ],
-    results: [
-      { n: '7,033', label: '조회수' },
-      { n: '59', label: '좋아요' },
-      { n: '27', label: '저장' }
-    ],
-    processMedia: [],
-    tools: ['Nano Banana', 'Kling', 'Seedance 2.0']
   }
 ];
 
@@ -148,7 +148,7 @@ function cardMedia(w) {
   if (src) {
     return `<video class="ak-card-video" src="${src}" poster="${w.poster || w.thumb}" muted loop playsinline preload="none" aria-hidden="true"></video>`;
   }
-  return `<img src="${esc(w.thumb)}" alt="" loading="lazy"><span class="ak-card-play" aria-hidden="true">▶</span>`;
+  return `<img src="${esc(w.thumb)}" alt="" loading="lazy">`;
 }
 
 function cardResults(w) {
@@ -156,7 +156,7 @@ function cardResults(w) {
   return `<p class="ak-card-results">${w.results.slice(0, 3).map(r => `<span><b>${esc(r.n)}</b> ${esc(r.label)}</span>`).join('')}</p>`;
 }
 
-/* 한 화면 그리드: 세로 4개 한 줄 + 파노라마 한 줄 */
+/* 대표 퍼포먼스 → 두 제작 사례 → 캐러셀 */
 function renderWorks() {
   const block = (w, i) => `
     <article class="ak-card ak-card--${w.layout === 'pano' || w.layout === 'lead' ? w.layout : 'cell'}">
@@ -167,6 +167,7 @@ function renderWorks() {
           <h3 class="ak-card-title">${esc(w.title)}</h3>
           <p class="ak-card-line">${esc(w.line)}</p>
           ${cardResults(w)}
+          <span class="ak-card-cta">목적 · 과정 · 결과 보기 <span aria-hidden="true">↗</span></span>
         </div>
       </button>
     </article>`;
@@ -175,7 +176,7 @@ function renderWorks() {
   const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead');
   let n = 0;
   const top = lead.map(w => block(w, n++)).join('');
-  const row = `<div class="ak-row4">${rest.map(w => block(w, n++)).join('')}</div>`;
+  const row = `<div class="ak-case-row">${rest.map(w => block(w, n++)).join('')}</div>`;
   $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
 }
 
@@ -198,26 +199,65 @@ const panel = $('#ak-sheet-panel');
 let lastFocus = null;
 
 function sheetMedia(w) {
+  if (w.gallery) {
+    return `<div class="ak-identity-gallery">${w.gallery.map(m => `<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
+  }
   if (w.driveId) {
-    return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div>`;
+    return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div><a class="ak-ext" href="https://drive.google.com/file/d/${w.driveId}/preview" target="_blank" rel="noopener">영상 새 창에서 보기 ↗</a>`;
   }
   if (w.layout === 'lead') {
-    return `<div class="ak-sm ak-sm--wide"><video src="${w.video}" poster="${w.poster}" controls autoplay loop playsinline></video></div>`;
+    return `<div class="ak-sm ak-sm--wide"><video src="${w.video}" poster="${w.poster}" controls loop playsinline></video></div>`;
   }
   if (w.layout === 'pano') {
     return `
-      <div class="ak-sm ak-sm--pano"><video src="${w.video}" poster="${w.poster}" controls muted autoplay loop playsinline></video></div>
-      <div class="ak-slides" aria-label="캐러셀 4장">${w.slides.map((s, i) => `<figure><img src="${s}" alt="캐러셀 ${i + 1}장" loading="lazy"><figcaption>${i + 1} / ${w.slides.length}</figcaption></figure>`).join('')}</div>`;
+      <div class="ak-sm ak-sm--pano"><video src="${w.video}" poster="${w.poster}" controls muted loop playsinline></video></div>
+      <div class="ak-slides" aria-label="캐러셀 4장">${w.slides.map((s, i) => `<figure><a href="${s}" target="_blank" rel="noopener" aria-label="캐러셀 ${i + 1}장 크게 보기"><img src="${s}" alt="캐러셀 ${i + 1}장" loading="lazy"></a><figcaption>${i + 1} / ${w.slides.length} · 눌러서 크게 보기 ↗</figcaption></figure>`).join('')}</div>`;
   }
-  return `<div class="ak-sm ak-sm--tall"><video src="${w.video}" poster="${w.poster}" controls autoplay playsinline></video></div>`;
+  return `<div class="ak-sm ak-sm--tall"><video src="${w.video}" poster="${w.poster}" controls playsinline></video></div>`;
 }
 
 function sheetProcessMedia(w) {
   if (!w.processMedia.length) return '';
   return `<div class="ak-pm-grid">${w.processMedia.map((m, i) => {
     const { src, cap = '', wide = false } = typeof m === 'string' ? { src: m } : m;
-    return `<figure class="ak-pm${wide ? ' ak-pm--wide' : ''}"><img src="${esc(src)}" alt="${esc(cap || `${w.title} 과정 자료 ${i + 1}`)}" loading="lazy">${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
+    return `<figure class="ak-pm${wide ? ' ak-pm--wide' : ''}"><a href="${esc(src)}" target="_blank" rel="noopener" aria-label="${esc(cap || `${w.title} 과정 자료 ${i + 1}`)} 크게 보기"><img src="${esc(src)}" alt="${esc(cap || `${w.title} 과정 자료 ${i + 1}`)}" loading="lazy"></a>${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
   }).join('')}</div>`;
+}
+
+function sheetComparison(w) {
+  if (!w.comparison) return '';
+  const layout = window.matchMedia('(max-width: 760px)').matches ? 'vertical' : 'horizontal';
+  return `<figure class="ak-comparison" data-layout="${layout}">
+    <figcaption>Depth·Pose 가이드와 완성 영상 비교</figcaption>
+    <div class="ak-comparison-player">
+      <video data-comparison="${w.comparison}" src="videos/${w.comparison}-${layout}.mp4" poster="images/posters/${w.comparison}-${layout}.jpg" controls muted playsinline preload="metadata" aria-label="Depth·Pose 가이드와 AI 완성 영상 동시 비교"></video>
+      <span class="ak-comparison-label ak-comparison-label--guide" aria-hidden="true">Depth · Pose 가이드</span>
+      <span class="ak-comparison-label ak-comparison-label--final" aria-hidden="true">AI 완성 영상</span>
+    </div>
+    <p class="ak-comparison-note">같은 시점에서 재생 · 속도 변경 없음 · 5.7초 가이드의 끝 장면을 약 0.3초 유지</p>
+  </figure>`;
+}
+
+let cleanupComparison = null;
+function setupComparison() {
+  const video = panel.querySelector('[data-comparison]');
+  if (!video) return;
+  const query = window.matchMedia('(max-width: 760px)');
+  const changeLayout = () => {
+    const time = video.currentTime;
+    const playing = !video.paused;
+    const layout = query.matches ? 'vertical' : 'horizontal';
+    video.closest('.ak-comparison').dataset.layout = layout;
+    video.poster = `images/posters/${video.dataset.comparison}-${layout}.jpg`;
+    video.src = `videos/${video.dataset.comparison}-${layout}.mp4`;
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = Math.min(time, video.duration);
+      if (playing) video.play().catch(() => {});
+    }, { once: true });
+    video.load();
+  };
+  query.addEventListener('change', changeLayout);
+  cleanupComparison = () => query.removeEventListener('change', changeLayout);
 }
 
 function openSheet(id) {
@@ -229,49 +269,52 @@ function openSheet(id) {
   panel.className = `ak-sheet-panel ak-sheet-panel--${w.layout === 'lead' ? 'wide' : w.layout}`;
   panel.innerHTML = `
     <button class="ak-sheet-close" type="button" data-ak-close aria-label="닫기">✕</button>
-    <div class="ak-sheet-media">${sheetMedia(w)}</div>
-    <div class="ak-sheet-text">
+    <header class="ak-sheet-summary">
       <p class="ak-card-tags">${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p>
       <h2 class="ak-sheet-title" id="ak-sheet-title">${esc(w.title)}</h2>
       <p class="ak-sheet-meta">${esc(w.meta)}</p>
-
-      ${w.results.length ? `
+      <p class="ak-sheet-goal">${esc(w.goal)}</p>
+      <dl class="ak-facts">
+        <div><dt>담당 역할</dt><dd>${esc(w.role)}</dd></div>
+        <div><dt>제작 결과</dt><dd>${esc(w.outcome)}</dd></div>
+      </dl>
+      ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
+      ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
+    </header>
+    <div class="ak-sheet-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div>
+    <div class="ak-sheet-text">
       <section class="ak-block">
-        <h3>결과</h3>
-        <ul class="ak-res">${w.results.map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>
-        ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">원본 게시물 보기 ↗</a>` : ''}
-      </section>` : ''}
-
-      <section class="ak-block">
-        <h3>목표</h3>
-        <p>${esc(w.goal)}</p>
-      </section>
-
-      <section class="ak-block">
-        <h3>과정</h3>
-        <ol class="ak-steps">${w.process.map(p => `<li>${esc(p)}</li>`).join('')}</ol>
+        <h3>제작 과정</h3>
+        ${sheetComparison(w)}
+        <ol class="ak-steps">${w.process.map((p, i) => {
+          const media = w.processStepMedia?.[i];
+          return `<li>${esc(p)}${media ? `<figure class="ak-pm ak-pm--wide ak-step-media"><a href="${esc(media.src)}" target="_blank" rel="noopener" aria-label="ComfyUI DWPose·Depth 작업 화면 크게 보기"><img src="${esc(media.src)}" alt="입력 안무 영상에서 Depth Anything V2와 DWPose로 깊이와 뼈대를 추출하고 합성하는 실제 ComfyUI 워크플로우" loading="lazy" width="3024" height="1744"></a><figcaption>${esc(media.cap)}</figcaption></figure>` : ''}</li>`;
+        }).join('')}</ol>
+        ${w.findings ? `<div class="ak-research-findings"><h3>실험 결과와 제작 판단</h3><p>${esc(w.findings)}</p><p class="ak-research-limit">${esc(w.limitation)}</p></div>` : ''}
         ${sheetProcessMedia(w)}
       </section>
-
-      ${w.tools.length ? `
-      <section class="ak-block">
-        <h3>사용 도구</h3>
-        <p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p>
-      </section>` : ''}
+      ${w.tools.length ? `<section class="ak-block"><h3>사용 도구</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p></section>` : ''}
     </div>`;
 
+  setupComparison();
+  panel.querySelectorAll('video').forEach(video => video.addEventListener('play', () => {
+    panel.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); });
+  }));
   sheet.classList.add('is-open');
   sheet.setAttribute('aria-hidden', 'false');
   document.body.classList.add('no-scroll');
+  document.querySelectorAll('body > header, body > nav, body > main, body > footer').forEach(el => { el.inert = true; });
   panel.scrollTop = 0;
   $('.ak-sheet-close', panel).focus();
 }
 
 function closeSheet() {
   if (!sheet.classList.contains('is-open')) return;
+  if (cleanupComparison) { cleanupComparison(); cleanupComparison = null; }
   sheet.classList.remove('is-open');
   sheet.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('no-scroll');
+  document.querySelectorAll('body > header, body > nav, body > main, body > footer').forEach(el => { el.inert = false; });
   panel.querySelectorAll('video').forEach(v => v.pause());
   panel.innerHTML = '';
   if (lastFocus) lastFocus.focus();
@@ -282,7 +325,15 @@ document.addEventListener('click', e => {
   if (card) { openSheet(card.dataset.akWork); return; }
   if (e.target.closest('[data-ak-close]')) closeSheet();
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+document.addEventListener('keydown', e => {
+  if (!sheet.classList.contains('is-open')) return;
+  if (e.key === 'Escape') { closeSheet(); return; }
+  if (e.key !== 'Tab') return;
+  const items = [...panel.querySelectorAll('button, a[href], video[controls], iframe, [tabindex="0"]')].filter(el => el.getClientRects().length);
+  const first = items[0], last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 
 /* ── 전체 작업: 접기/펼치기 + 카테고리 탭 ── */
 const archive = $('#archive');

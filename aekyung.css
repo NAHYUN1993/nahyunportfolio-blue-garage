@@ -236,3 +236,74 @@
 .cm-face { display: block; width: 100%; height: auto; margin-top: 24px; background: var(--paper-2); }
 .cm-links { display: flex; justify-content: space-between; gap: 10px; margin-top: 16px; }
 .cm-links .character-button { flex: 1; justify-content: center; }
+
+/* 지원용 편집: 대표 작업 4개, 설명을 먼저 읽는 상세 화면 */
+.ak-case-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 3vw, 40px); }
+.ak-case-row .ak-card-media { aspect-ratio: 4 / 3; background: var(--paper-2); }
+.ak-case-row .ak-card-media video { object-fit: contain; }
+.ak-card-cta { display: inline-flex; gap: 16px; margin-top: 14px; font-size: 13px; font-weight: 700; color: var(--accent); }
+.ak-card--pano .ak-card-body { display: block; }
+.ak-card--pano .ak-card-results { margin-top: 8px; }
+.ak-card-title, .ak-card--pano .ak-card-title { font-size: clamp(19px, 1.8vw, 24px); }
+.ak-card-line { margin-top: 8px; font-size: 15px; }
+.ak-card-results { font-size: 14px; margin-top: 12px; }
+.ak-sheet-summary { grid-column: 1 / -1; padding: 32px 72px 24px 36px; border-bottom: 1px solid var(--line); }
+.ak-sheet-goal { max-width: 76ch; margin: 18px 0; font-size: 16px; line-height: 1.8; }
+.ak-facts { display: grid; gap: 10px; margin-bottom: 20px; }
+.ak-facts > div { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
+.ak-facts dt { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.ak-facts dd { font-size: 14px; line-height: 1.7; }
+.ak-sheet-summary .ak-res { max-width: 620px; }
+.ak-sheet-panel--wide .ak-sheet-text, .ak-sheet-panel--pano .ak-sheet-text { max-width: none; }
+.ak-sheet-text .ak-block:first-child { margin-top: 12px; }
+.ak-sheet-panel--tall .ak-sheet-media { position: static; }
+.ak-pm-grid img { object-fit: contain; }
+.ak-pm a, .ak-slides a { display: block; }
+.ak-sheet-meta, .ak-slides figcaption, .ak-pm figcaption { color: var(--ink-2); }
+@media (max-width: 760px) {
+  #featured .featured-head { display: block; }
+  .ak-sec-sub { margin-top: 8px; }
+  .ak-case-row { grid-template-columns: 1fr; gap: 32px; }
+  .ak-case-row .ak-card-media { aspect-ratio: 16 / 10; }
+  .ak-card--cell .ak-card-line { display: block; }
+  .ak-card--cell .ak-card-tags .tag:nth-of-type(2) { display: inline-flex; }
+  .ak-card--pano .ak-card-media { aspect-ratio: 16 / 7; }
+  .ak-card--pano .ak-card-media video { object-fit: contain; }
+  .ak-sheet-summary { padding: 24px 20px; }
+  .ak-sheet-summary .ak-card-tags { padding-right: 48px; }
+  .ak-sheet-title { padding-right: 32px; font-size: 26px; }
+  .ak-sheet-goal { font-size: 15px; margin: 14px 0; }
+  .ak-facts > div { grid-template-columns: 60px minmax(0, 1fr); gap: 10px; }
+  .ak-res li { flex-basis: 80px; padding: 12px; }
+  .ak-res b { font-size: 21px; }
+  .ak-slides { grid-template-columns: 1fr; gap: 20px; }
+  .ak-pm-grid { grid-template-columns: 1fr; gap: 16px; }
+  .ak-pm--wide { grid-column: auto; }
+  .ak-sheet-text, .ak-sheet-panel--wide .ak-sheet-text, .ak-sheet-panel--pano .ak-sheet-text { padding: 8px 20px 32px; }
+  .ak-sheet-media { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ak-sheet-panel, .ak-sheet-backdrop { animation: none; }
+  .ak-card-media img, .ak-card-media video { transition: none; }
+}
+
+.ak-case-row img { object-fit: contain; }
+.ak-identity-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ak-identity-gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.ak-identity-gallery figcaption, .ak-media-caption { color: var(--ink-2); font-size: 13px; margin-top: 8px; line-height: 1.7; }
+.ak-research-findings { margin-top: 24px; padding: 20px; background: var(--paper-2); }
+.ak-research-findings p { line-height: 1.8; }
+.ak-research-limit { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
+@media (max-width: 760px) { .ak-identity-gallery { grid-template-columns: 1fr 1fr; } }
+
+/* 하나의 타임라인에 합친 가이드·완성본 비교 영상 */
+.ak-comparison { margin: 18px 0 28px; }
+.ak-comparison > figcaption { font-size: 16px; font-weight: 750; margin-bottom: 12px; }
+.ak-comparison-player { position: relative; background: #101710; }
+.ak-comparison video { display: block; width: 100%; height: auto; }
+.ak-comparison-label { position: absolute; top: 12px; left: 12px; padding: 4px 9px; background: rgba(16,23,16,.85); color: #fff; font-size: 12px; font-weight: 650; pointer-events: none; }
+.ak-comparison-label--final { left: calc(50% + 12px); }
+.ak-comparison[data-layout="vertical"] .ak-comparison-label--final { top: calc(50% + 12px); left: 12px; }
+.ak-comparison-note { margin-top: 10px; color: var(--ink-2); font-size: 12px; line-height: 1.7; }
+
+.ak-step-media img { width: 100%; height: auto; border-radius: 8px; }

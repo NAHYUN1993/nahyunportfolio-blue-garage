@@ -277,7 +277,7 @@
       root.classList.add('character-mobile');
       root.innerHTML = `
         <div class="cm-copy">
-          <p class="cm-role">AI Creator &amp; Visual Director</p>
+          <p class="cm-role">AI Content Creator</p>
           <h1>LEE NAHYUN</h1>
           <p>현실을 담고, 상상을 만듭니다.</p>
         </div>
@@ -310,7 +310,7 @@
           <h1><span>LEE</span><span>NAHYUN</span></h1>
           <p>현실을 담고,<br> 상상을 만듭니다.</p>
         </div>
-        <div class="character-role">AI Creator &amp;<br> Visual Director<small>AI 영상 · 실사 촬영<br>이미지 · 자막디자인 · 웹앱</small></div>
+        <div class="character-role">AI Content<br>Creator<small>영상디자인 실무 약 9년<br>AI 아티스트 · 비주얼 연출 · 후반 작업</small></div>
         <p class="character-cue">아래로 스크롤해<br> 작업을 만나보세요.<span aria-hidden="true">↓</span></p>
         <div class="character-project" aria-hidden="true" inert>
           <div><p>${isShowreel ? "Showreel" : "Selected work"}</p><h2>${esc(title)}</h2></div>
