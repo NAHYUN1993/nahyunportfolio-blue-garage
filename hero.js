@@ -49,7 +49,7 @@
           container.dataset.pose = 'center';
         }
       });
-      video.src = `assets/character/gaze-clean/${name}.mp4`;
+      video.src = `assets/character/gaze-sharp/${name}.mp4`;
       container.append(video);
     });
     function tick(now) {
@@ -298,7 +298,7 @@
     root.innerHTML = `
       <div class="character-stage">
         <div class="character-scene">
-          <img class="character-poster" src="assets/character/gaze-neutral.jpg" width="1920" height="1080" alt="실버 헤드셋을 쓰고 맥북 앞에 앉은 이나현의 캐릭터" fetchpriority="high">
+          <img class="character-poster" src="assets/character/gaze-neutral-sharp.png" width="1920" height="1080" alt="실버 헤드셋을 쓰고 맥북 앞에 앉은 이나현의 캐릭터" fetchpriority="high">
           <video id="hero-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
           <img class="character-final" src="assets/character/final-5s.jpg" width="1920" height="1080" alt="" aria-hidden="true" style="opacity:0">
           <div class="character-gaze" aria-hidden="true" data-pose="center"></div>
@@ -443,7 +443,7 @@
           video.load();
         }
         if (finePointer && !gaze) {
-          gaze = makeLoopGaze(gazeContainer, stage);
+          gaze = makeGaze(gazeContainer, stage);
         }
       }
       measure();

@@ -13,6 +13,59 @@ const P3 = 'https://nahyun1993.github.io/portfolio3/images';
    processMedia: 이미지 경로 문자열, 또는 { src, cap, wide } (cap = 캡션, wide = 한 줄 전체) */
 const OT = 'images/onetake';
 const works = [
+{
+  "id": "out-of-frame",
+  "layout": "wide",
+  "tags": [
+    "AI 아이돌",
+    "콘셉트 트레일러"
+  ],
+  "title": "OUT OF FRAME — 아이돌 콘셉트 트레일러",
+  "meta": "개인 프로젝트 · 21.5초 · 1920×1080 · 24fps",
+  "line": "하나의 캐릭터와 세 공간을 연결하며, 정해진 틀을 벗어나려는 태도를 짧은 행동과 시선으로 표현",
+  "role": "콘셉트 기획 · 공간·소품 아트 디렉션 · 레퍼런스 설계 · 생성 결과 선별 · 컷 편집",
+  "outcome": "수영장·붉은 코트·작업실을 잇는 21.5초 콘셉트 트레일러 완성",
+  "video": "videos/out-of-frame.mp4",
+  "poster": "images/out-of-frame/poster.jpg",
+  "goal": "정해진 틀 밖에서 자신의 다음 장면을 선택하는 솔로 아이돌을 소개합니다. 앨범 공개 전의 콘셉트 트레일러를 상정해, 설명적인 서사보다 낯선 상황을 대하는 태도와 시선으로 캐릭터를 드러내고자 했습니다.",
+  "conceptBeats": ["수영장 — 정장 차림의 인물이 분홍색 회전식 전화기를 너무 당연하게 다룹니다. 장소·복장·행동의 불일치로 낯선 일상과 캐릭터의 태연함을 보여줍니다.", "붉은 코트 — 이미 선이 그어진 공간에 직접 원을 그립니다. 바깥의 규칙뿐 아니라 자신이 만드는 경계도 있다는 양면성을 담고, 손을 털며 다음 장면으로 넘어갑니다.", "작업실 — 겹친 반투명 천 사이에서 얼굴과 시선이 드러납니다. 마지막 “그다음은?”은 이후를 스스로 선택하려는 태도이자, 앞으로 공개될 아티스트의 이야기를 기다리게 하는 질문입니다."],
+  "process": [
+    "공간 기획 · Midjourney에서 blue anime, ghost, wes anderson, moodboard #34 등의 무드보드를 단독·조합으로 탐색하고 수영장·붉은 코트·반투명 천이 있는 작업실을 선정했습니다. 수영장에는 색감을 맞춘 분홍색 회전식 전화기를 배치했습니다.",
+    "캐릭터 레퍼런스 · 안면 계측 연구에 사용한 캐릭터 B를 출발점으로 얼굴·헤어·의상을 정리한 캐릭터 시트를 적용했습니다. 인물 시트와 공간 이미지를 별도 레퍼런스로 제공해 같은 인물이 서로 다른 장소에 등장하도록 설계했습니다.",
+    "R2V 연출 설계 · 인물·공간 정의, 유지할 특징, 샷별 시간, 행동, 구도, 카메라 움직임과 사운드를 나눠 프롬프트를 작성했습니다. 10초 단위로 생성하고, 수중 시점·코트 부감·천 사이의 시선 등 공간별로 다른 구도를 배치했습니다.",
+    "드래프트 검토 · Seedance 2.5 Draft 결과에서 얼굴과 의상, 공간의 거리감, 행동의 의미와 전환을 검토했습니다. 작업실 수정안은 원본과 비교한 뒤 원본을 선택했고, 채택한 드래프트 ID로 1080p 파이널을 출력했습니다. 수영장은 Higgsfield, 코트·작업실은 Comfy Cloud에서 제작했습니다.",
+    "최종 편집 · 수영장의 소매 정리와 분필 줍는 장면을 삭제해 수중 샷에서 선 긋기로 바로 연결했습니다. 코트는 손을 털고 뻗기 직전에 잘라 작업실로 전환했습니다. 원본 대사·현장음을 살리고 엔딩 타이틀을 제거해 21.5초로 압축했습니다."
+  ],
+  "results": [],
+  "findings": "생성 결과를 그대로 잇기보다 행동의 시작과 끝을 다시 선택하는 편집이 중요했습니다. 불필요한 제스처와 공간 전환을 덜어내고, 마지막 시선과 짧은 대사가 남도록 구성했습니다.",
+  "limitation": "얼굴 연구의 기준 캐릭터와 레퍼런스 구성 경험을 활용했습니다. 이 최종 영상 전체에 대한 프레임별 안면 계측이나 정량적 일관성 검증은 수행하지 않았습니다.",
+  "processMedia": [
+    {
+      "src": "images/out-of-frame/character-sheet.png",
+      "cap": "동일 인물의 얼굴·헤어·의상 기준을 정리한 캐릭터 시트",
+      "wide": true
+    },
+    {
+      "src": "images/out-of-frame/pool.webp",
+      "cap": "공간 레퍼런스 01 · 수영장"
+    },
+    {
+      "src": "images/out-of-frame/court.webp",
+      "cap": "공간 레퍼런스 02 · 붉은 코트"
+    },
+    {
+      "src": "images/out-of-frame/workshop.webp",
+      "cap": "공간 레퍼런스 03 · 작업실"
+    }
+  ],
+  "tools": [
+    "Midjourney",
+    "Seedance 2.5",
+    "Higgsfield",
+    "Comfy Cloud",
+    "FFmpeg"
+  ]
+},
   {
     id: 'onetake',
     layout: 'lead',
@@ -241,7 +294,7 @@ function sheetMedia(w) {
   if (w.driveId) {
     return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div><a class="ak-ext" href="https://drive.google.com/file/d/${w.driveId}/preview" target="_blank" rel="noopener">영상 새 창에서 보기 ↗</a>`;
   }
-  if (w.layout === 'lead') {
+  if (w.layout === 'lead' || w.layout === 'wide') {
     return `<div class="ak-sm ak-sm--wide"><video src="${w.video}" poster="${w.poster}" controls loop playsinline></video></div>`;
   }
   if (w.layout === 'pano') {
@@ -310,6 +363,7 @@ function openSheet(id) {
       <h2 class="ak-sheet-title" id="ak-sheet-title">${esc(w.title)}</h2>
       <p class="ak-sheet-meta">${esc(w.meta)}</p>
       <p class="ak-sheet-goal">${esc(w.goal)}</p>
+      ${w.conceptBeats ? `<section class="ak-concept"><h3>기획 의도 · 세 공간의 흐름</h3><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></section>` : ''}
       <dl class="ak-facts">
         <div><dt>담당 역할</dt><dd>${esc(w.role)}</dd></div>
         <div><dt>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</dt><dd>${esc(w.outcome)}</dd></div>
