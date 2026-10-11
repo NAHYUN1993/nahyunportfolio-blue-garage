@@ -1,5 +1,5 @@
 /* ============================================================
-   애경산업 지원용 섹션 — aekyung.css
+   JYP 블루개러지 지원용 섹션 — aekyung.css (애경 버전에서 복사)
    원래 테마(애플그린 배경 · 딥그린 글씨 · 각진 미디어)를 그대로 따른다.
    토큰은 styles.css의 :root 값을 쓴다.
    ============================================================ */
@@ -19,6 +19,13 @@
 .ak-card-hit:hover .ak-card-media video { transform: scale(1.025); }
 .ak-card--pano .ak-card-media { aspect-ratio: 2304 / 720; }
 .ak-card--cell .ak-card-media { aspect-ratio: 9 / 16; }
+
+/* 맨 위 대표 카드: 큰 16:9 영상 + 오른쪽 설명 */
+.ak-card--lead .ak-card-hit { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(20px, 2.6vw, 36px); align-items: end; }
+.ak-card--lead .ak-card-media { aspect-ratio: 16 / 9; }
+.ak-card--lead .ak-card-body { padding-top: 0; }
+.ak-card--lead .ak-card-title { font-size: clamp(22px, 2.4vw, 32px); }
+.ak-card--lead .ak-card-line { font-size: 15px; margin-top: 8px; }
 
 .ak-card-play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -42,6 +49,7 @@
 .ak-card-hit:hover .ak-card-title { text-decoration: underline; text-underline-offset: 4px; }
 
 @media (max-width: 860px) {
+  .ak-card--lead .ak-card-hit { grid-template-columns: 1fr; gap: 14px; }
   .ak-card--pano .ak-card-body { display: block; }
   .ak-card--pano .ak-card-results { margin-top: 8px; }
 }
@@ -161,6 +169,10 @@
 
 .ak-pm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
 .ak-pm-grid img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.ak-pm { margin: 0; }
+.ak-pm figcaption { font-size: 12px; color: var(--ak-ink-3); margin-top: 4px; }
+.ak-pm--wide { grid-column: 1 / -1; margin-top: 12px; }
+.ak-pm--wide img { aspect-ratio: auto; object-fit: contain; background: #fff; }
 .ak-pm-empty { margin-top: 16px; padding: 28px 16px; text-align: center; border: 1.5px dashed var(--line); font-size: 13px; color: var(--ak-ink-3); }
 
 .ak-chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -180,7 +192,7 @@
   .ak-sm--tall { max-height: 70dvh; }
   .ak-sheet-text, .ak-sheet-panel--wide .ak-sheet-text, .ak-sheet-panel--pano .ak-sheet-text { padding: 0 16px 40px; }
   .ak-slides { grid-template-columns: repeat(2, 1fr); }
-  .ak-pm-grid { grid-template-columns: repeat(2, 1fr); }
+  .ak-pm-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
 }
 .ak-dot { color: var(--accent); }
 

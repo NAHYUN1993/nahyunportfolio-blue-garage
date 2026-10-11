@@ -1,6 +1,6 @@
 /* ============================================================
-   애경산업 영상제작자 지원용 섹션 — aekyung.js
-   대표 작업 5편 · 전체 작업 탭을 그린다. 히어로·쇼릴은 script.js/hero.js 그대로.
+   JYP 블루개러지 지원용 섹션 — aekyung.js (애경 버전에서 복사)
+   대표 작업 · 전체 작업 탭을 그린다. 히어로·쇼릴은 script.js/hero.js 그대로.
    이전 전체 버전: git 태그 ver2, 폴더 ../nahyunportfolio_ver2
    ============================================================ */
 (() => {
@@ -9,9 +9,38 @@
 const P3 = 'https://nahyun1993.github.io/portfolio3/images';
 
 /* ── 대표 작업 ──
-   layout: 'wide'(가로 16:9) · 'pano'(파노라마) · 'tall'(세로 9:16)
-   processMedia에 이미지 경로를 넣으면 상세의 과정 아래에 표시된다. */
+   layout: 'lead'(맨 위 큰 가로 카드) · 'wide'(가로 16:9) · 'pano'(파노라마) · 'tall'(세로 9:16)
+   processMedia: 이미지 경로 문자열, 또는 { src, cap, wide } (cap = 캡션, wide = 한 줄 전체) */
+const OT = 'images/onetake';
 const works = [
+  {
+    id: 'onetake',
+    layout: 'lead',
+    tags: ['AI 아티스트', '퍼포먼스 영상'],
+    title: '원테이크 카메라 무빙',
+    meta: 'AI 아티스트 퍼포먼스 영상 · 6초 원테이크 · 1080p · 음악 NMIXX – Heavy Serenade',
+    line: '직접 설계한 원테이크 카메라 무빙을 AI 아티스트의 댄스 영상에 그대로 입혔습니다',
+    video: 'videos/onetake.mp4',
+    poster: 'images/posters/onetake.jpg',
+    goal: 'AI 아티스트의 퍼포먼스 영상에서 카메라 무빙, 안무, 얼굴을 모두 의도대로 제어하는 것을 목표로 했습니다. 프롬프트만으로는 카메라 경로와 동작 타이밍을 정확하게 지정할 수 없어서, 원하는 무빙을 Blender 프리비즈로 먼저 만들고 이를 생성 모델의 레퍼런스로 쓰는 방식을 택했습니다.',
+    process: [
+      '16mm 광각 짐벌이 인물 쪽으로 파고들었다가 돌아 나오는 원테이크 무빙을 설계하고, Blender로 세트와 카메라 경로를 프리비즈로 제작',
+      'ComfyUI로 안무 레퍼런스 영상에서 DWPose(뼈대)와 Depth(깊이)를 추출한 뒤, 프리비즈 카메라의 깊이 패스 안에 원근을 맞춰 합성 · 카메라 무빙과 안무를 하나의 레퍼런스 영상으로 제어',
+      'Nano Banana 2로 얼굴·전신 정면/측면/후면 턴어라운드 시트를 만들어 모든 프레임에서 같은 얼굴과 의상을 유지',
+      'Seedance 2.5 옴니 레퍼런스로 생성 · 480p 드래프트로 카메라와 동작을 먼저 검증하고 1080p로 완성',
+      '원곡 음원을 안무 타이밍에 맞춰 싱크'
+    ],
+    results: [],
+    processMedia: [
+      ...[1, 2, 3].flatMap(n => [
+        { src: `${OT}/step-${n}-0.jpg`, cap: n === 1 ? '① Blender 프리비즈 카메라' : '' },
+        { src: `${OT}/step-${n}-1.jpg`, cap: n === 1 ? '② 깊이 + 뼈대 레퍼런스' : '' },
+        { src: `${OT}/step-${n}-2.jpg`, cap: n === 1 ? '③ 결과' : '' }
+      ]),
+      { src: `${OT}/turnaround.jpg`, cap: '얼굴·전신 턴어라운드 시트 (Nano Banana 2)', wide: true }
+    ],
+    tools: ['Blender', 'ComfyUI', 'DWPose', 'Nano Banana 2', 'Seedance 2.5', 'Premiere Pro']
+  },
   {
     id: 'medihel',
     layout: 'wide',
@@ -106,31 +135,6 @@ const works = [
     ],
     processMedia: [],
     tools: ['Nano Banana', 'Kling', 'Seedance 2.0']
-  },
-  {
-    id: 'pure-solution',
-    layout: 'pano',
-    tags: ['인스타그램 캐러셀', 'AI 제작'],
-    title: '퓨어솔루션 캐러셀',
-    meta: '닥터조 인스타그램 · 4장 파노라마 캐러셀',
-    line: '넘길 때마다 장면이 이어지는 파노라마 캐러셀',
-    video: 'videos/pure-solution.mp4',
-    poster: 'images/posters/pure-solution.jpg',
-    slides: [1, 2, 3, 4].map(n => `images/pure-solution/slide-${n}.webp`),
-    goal: '최근 인스타그램에서 캐러셀 형식이 주목받는 이유에 집중했습니다. 캐러셀은 한 게시물 안에 여러 장면을 담아 이야기를 이어갈 수 있고, 사용자가 넘길수록 체류 시간도 늘어납니다. 퓨어솔루션이 일상 속 식물 관리에 녹아드는 흐름은 한 장의 이미지보다 이어지는 장면으로 보여줄 때 더 잘 전달된다고 판단해, \'다음 장이 궁금해서 넘기게 되는 캐러셀\'을 목표로 삼았습니다.',
-    process: [
-      '하나의 파노라마를 4장으로 나누고, 인물과 오브제가 장의 경계를 넘나들도록 배치',
-      '화면이 다음 장에서 이어지기 때문에, 넘기는 행위 자체가 콘텐츠가 되도록 설계'
-    ],
-    results: [
-      { n: '16,745', label: '조회수' },
-      { n: '422', label: '외부링크 클릭' },
-      { n: '2.5%', label: '클릭률' },
-      { n: '76', label: '저장' },
-      { n: '54', label: '좋아요' }
-    ],
-    processMedia: [],
-    tools: []
   }
 ];
 
@@ -155,7 +159,7 @@ function cardResults(w) {
 /* 한 화면 그리드: 세로 4개 한 줄 + 파노라마 한 줄 */
 function renderWorks() {
   const block = (w, i) => `
-    <article class="ak-card ak-card--${w.layout === 'pano' ? 'pano' : 'cell'}">
+    <article class="ak-card ak-card--${w.layout === 'pano' || w.layout === 'lead' ? w.layout : 'cell'}">
       <button class="ak-card-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
         <div class="ak-card-media${w.id === 'medihel' ? ' is-medihel' : ''}">${cardMedia(w)}</div>
         <div class="ak-card-body">
@@ -166,11 +170,13 @@ function renderWorks() {
         </div>
       </button>
     </article>`;
+  const lead = works.filter(w => w.layout === 'lead');
   const pano = works.filter(w => w.layout === 'pano');
-  const rest = works.filter(w => w.layout !== 'pano');
+  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead');
   let n = 0;
+  const top = lead.map(w => block(w, n++)).join('');
   const row = `<div class="ak-row4">${rest.map(w => block(w, n++)).join('')}</div>`;
-  $('#ak-grid').innerHTML = row + pano.map(w => block(w, n++)).join('');
+  $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
 }
 
 /* 화면에 보이는 카드 영상만 재생한다 */
@@ -195,6 +201,9 @@ function sheetMedia(w) {
   if (w.driveId) {
     return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div>`;
   }
+  if (w.layout === 'lead') {
+    return `<div class="ak-sm ak-sm--wide"><video src="${w.video}" poster="${w.poster}" controls autoplay loop playsinline></video></div>`;
+  }
   if (w.layout === 'pano') {
     return `
       <div class="ak-sm ak-sm--pano"><video src="${w.video}" poster="${w.poster}" controls muted autoplay loop playsinline></video></div>
@@ -205,7 +214,10 @@ function sheetMedia(w) {
 
 function sheetProcessMedia(w) {
   if (!w.processMedia.length) return '';
-  return `<div class="ak-pm-grid">${w.processMedia.map((src, i) => `<img src="${esc(src)}" alt="${esc(w.title)} 과정 자료 ${i + 1}" loading="lazy">`).join('')}</div>`;
+  return `<div class="ak-pm-grid">${w.processMedia.map((m, i) => {
+    const { src, cap = '', wide = false } = typeof m === 'string' ? { src: m } : m;
+    return `<figure class="ak-pm${wide ? ' ak-pm--wide' : ''}"><img src="${esc(src)}" alt="${esc(cap || `${w.title} 과정 자료 ${i + 1}`)}" loading="lazy">${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
+  }).join('')}</div>`;
 }
 
 function openSheet(id) {
@@ -214,7 +226,7 @@ function openSheet(id) {
   lastFocus = document.activeElement;
   document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
 
-  panel.className = `ak-sheet-panel ak-sheet-panel--${w.layout}`;
+  panel.className = `ak-sheet-panel ak-sheet-panel--${w.layout === 'lead' ? 'wide' : w.layout}`;
   panel.innerHTML = `
     <button class="ak-sheet-close" type="button" data-ak-close aria-label="닫기">✕</button>
     <div class="ak-sheet-media">${sheetMedia(w)}</div>
