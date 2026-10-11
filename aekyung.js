@@ -141,7 +141,6 @@ const works = [
   {
     id: 'pure-solution',
     layout: 'pano',
-    archiveOnly: true,
     tags: ['인스타그램 캐러셀', 'AI 제작'],
     title: '퓨어솔루션 캐러셀',
     meta: '닥터조 인스타그램 · 4장 파노라마 캐러셀',
