@@ -50,39 +50,67 @@ const works = [
   },
   {
     id: 'identity-lab',
-    layout: 'wide',
-    tags: ['얼굴 일관성', '제작 연구'],
-    title: 'AI 캐릭터 얼굴 일관성 연구',
-    meta: '단일 캐릭터 자체 비교 실험 · 생성 이미지 69장 · 6개 모델',
-    line: '레퍼런스와 얼굴 스펙의 효과를 비교하고, 생성 이미지·프롬프트·측정 결과를 라이브러리로 정리',
-    thumb: 'images/identity/gptimage2-comparison.jpg',
-    role: '비교 실험 설계 · 얼굴 스펙 정리 · 생성 결과 비교 · 라이브러리 구성',
-    outcome: '69장의 생성 이미지, 모델·조건별 비교표, 재사용 가능한 프롬프트 정리',
-    goal: '각도와 표정이 바뀌어도 같은 캐릭터로 보이게 만드는 입력 조건을 찾고자, 레퍼런스 이미지와 얼굴 스펙의 조합을 비교했습니다.',
+    layout: 'research',
+    tags: ['FACS 표정', '얼굴 일관성', 'R&D'],
+    title: 'AI 캐릭터 표정·얼굴 일관성 연구',
+    meta: '개인 R&D · FACS 표정 테스트 + 안면 계측 · 웹 라이브러리',
+    line: '감정의 미세한 차이와 같은 얼굴을 유지하는 조건을 실험하고, 비교 이미지와 프롬프트를 웹 라이브러리로 정리',
+    thumb: 'images/identity/b-smile-facs.png',
+    role: '표정 비교 실험 · AU·강도 프롬프트 설계 · 안면 계측 · 결과 선별 · 라이브러리 구성',
+    outcome: '표정 라이브러리 82장과 얼굴 일관성 비교 이미지 69장, 프롬프트·측정값·선별 기록 정리',
+    goal: '같은 캐릭터가 장면마다 다른 감정을 표현하면서도 같은 얼굴로 보이도록, 표정 제어와 얼굴 일관성을 각각 실험했습니다. 생성 이미지와 비교 기록을 정리한 연구이며, 완성 영상에 적용한 사례와는 구분합니다.',
     process: [
-      '기준 얼굴의 형태를 계측해 스펙 문장으로 정리하고, 레퍼런스만 / 레퍼런스+스펙 / 스펙만의 조건을 구분',
-      '3/4 미소, 로우앵글, 어깨 너머 돌아보기 장면에서 6개 모델의 지원 조건별로 총 69장 생성',
-      'ArcFace 코사인 유사도, 안면 계측 항목, 실제 비교 이미지를 함께 검토',
-      '모델·조건·장면별 이미지에 프롬프트와 측정값을 연결해 다시 열어볼 수 있는 라이브러리로 구성'
+      'FACS 표정 테스트 · 감정명만 지시한 결과와 얼굴 움직임 단위(AU)를 함께 지시한 결과를 비교. 진심 어린 미소와 억지웃음, 분노를 억누름과 울음을 참음 등 장면에 필요한 표현을 검토',
+      '강도·복합 감정 실험 · A–E 강도 변화, 두 감정의 조합, 감정이 다른 감정으로 넘어가는 경계 표현을 비교하고 연기 의도와 선별 이유를 기록',
+      '표정 라이브러리 · 82장을 자체 검토 기준으로 제작 승인 55장, 조건부 11장, R&D 참고 16장으로 구분. 감정·연기 비트·AU·생성 방식으로 검색할 수 있게 구성',
+      '얼굴 일관성 실험 · 기준 얼굴을 계측해 스펙 문장으로 만들고 레퍼런스만 / 레퍼런스+스펙 / 스펙만 조건을 비교. 6개 모델의 지원 조건에 따라 3개 장면에서 69장 생성',
+      '얼굴 비교 · ArcFace 코사인 유사도와 안면 계측, 비교 이미지를 함께 검토하고 모델별 결과와 프롬프트를 연결'
     ],
-    findings: '이 실험에서 스펙만 입력한 조건의 평균 유사도는 0.10–0.34였습니다. GPT Image 2는 레퍼런스에 스펙을 더했을 때 0.72→0.78, Seedream은 0.83→0.83으로 나타났습니다. 레퍼런스와 스펙의 효과가 모델마다 달라, 입력 구성을 모델별로 검토할 근거를 정리했습니다.',
-    limitation: '단일 캐릭터에 대한 자체 실험입니다. 모델별 샘플 수와 지원 조건이 다르며, 유사도는 정확도(%)가 아닙니다. 영상 프레임의 일관성이나 제작 시간 단축을 측정한 결과는 아닙니다.',
-    results: [{ n: '69', label: '생성 이미지' }, { n: '6', label: '비교 모델' }, { n: '3', label: '장면 유형' }],
+    findings: '표정 실험에서는 FACS 지시가 모든 감정에 더 좋지는 않았습니다. 테스트 2의 진심 어린 미소는 FACS, 억지웃음은 감정명 지시 결과를 선택했습니다. 얼굴 실험에서도 스펙 추가 효과는 모델별로 달랐습니다. GPT Image 2의 평균 유사도는 0.72→0.78, Seedream은 0.83→0.83으로 나타났습니다.',
+    limitation: '제작 승인·조건부는 개인 연구의 선별 기준입니다. 얼굴 비교는 단일 캐릭터에 대한 실험이며 모델별 샘플 수와 지원 조건이 다릅니다. 유사도는 정확도(%)가 아니며, 영상 품질이나 제작 효율 향상을 측정한 결과는 아닙니다.',
+    results: [{ n: '82', label: '표정 라이브러리 이미지' }, { n: '69', label: '얼굴 비교 이미지' }, { n: '6', label: '얼굴 비교 모델' }],
     resultLabel: '연구 산출물',
     gallery: [
-      { src: 'images/identity/reference-b.webp', cap: '기준 얼굴 B' },
-      { src: 'images/identity/gptimage2-ref-spec-cafe-1.webp', cap: '3/4 · 미소' },
-      { src: 'images/identity/gptimage2-ref-spec-rooftop-1.webp', cap: '로우앵글' },
-      { src: 'images/identity/gptimage2-ref-spec-shoulder-1.webp', cap: '어깨 너머 돌아보기' }
+      { src: 'images/identity/b-smile-emotion.png', cap: '진심 어린 미소 · 감정명' },
+      { src: 'images/identity/b-smile-facs.png', cap: '진심 어린 미소 · 감정명 + FACS (선택)' },
+      { src: 'images/identity/b-forced-smile-emotion.png', cap: '억지웃음 · 감정명 (선택)' },
+      { src: 'images/identity/b-forced-smile-facs.png', cap: '억지웃음 · 감정명 + FACS' }
     ],
-    galleryCaption: 'GPT Image 2 · 레퍼런스+스펙 조건의 생성 결과. 전체 조건은 아래 비교표와 라이브러리에서 확인할 수 있습니다.',
-    link: 'https://facs-expression-library.dan-asa.chatgpt.site/#anthropometry',
-    linkLabel: '얼굴 일관성 라이브러리 열기 ↗',
+    galleryCaption: '표정 테스트 2 · 같은 감정의 두 입력 방식을 비교했습니다. 선택 여부와 판단 이유는 라이브러리에 기록했습니다.',
+    link: 'https://facs-expression-library.dan-asa.chatgpt.site/#index',
+    linkLabel: '얼굴 연구 사이트 전체 보기 ↗',
+    researchLinks: [
+      { href: 'https://facs-expression-library.dan-asa.chatgpt.site/#facs', label: 'FACS 표정 테스트 ↗' },
+      { href: 'https://facs-expression-library.dan-asa.chatgpt.site/#anthropometry', label: '안면 계측·얼굴 일관성 ↗' }
+    ],
     processMedia: [
-      { src: 'images/identity/gptimage2-comparison.jpg', cap: 'GPT Image 2 · 레퍼런스만 / 레퍼런스+스펙 / 스펙만 비교', wide: true },
-      { src: 'images/identity/seedream5-comparison.jpg', cap: 'Seedream 5.0 Pro · 동일 조건 비교', wide: true }
+      { src: 'images/identity/gptimage2-comparison.jpg', cap: '얼굴 일관성 · GPT Image 2 · 레퍼런스만 / 레퍼런스+스펙 / 스펙만', wide: true },
+      { src: 'images/identity/seedream5-comparison.jpg', cap: '얼굴 일관성 · Seedream 5.0 Pro · 동일 조건 비교', wide: true }
     ],
-    tools: ['ComfyUI', 'MediaPipe', 'ArcFace']
+    tools: ['GPT Image 2', 'ComfyUI', 'MediaPipe', 'ArcFace']
+  },
+  {
+    id: 'lg-youth',
+    layout: 'tall',
+    tags: ['인물 중심 숏폼', '우수상'],
+    title: '가장 나다운 순간',
+    meta: 'LG 유쓰 AI 쇼츠 페스티벌 우수상 · 세로 숏폼',
+    line: '상반된 취향을 가진 인물의 성격을 셀피 시점과 짧은 반전으로 표현',
+    role: '콘셉트 기획 · 인물 이미지 생성 · 셀피 시점 연출 · AI 영상 제작',
+    outcome: 'LG 유쓰 AI 쇼츠 페스티벌 우수상 수상',
+    video: 'videos/lg-youth-festival.mp4',
+    poster: 'images/posters/lg-youth-festival.jpg',
+    goal: '커피 향은 좋아하지만 커피는 못 마시고, 책은 사지만 읽지는 않는 모순적인 취향에서 이야기를 시작했습니다. 셀피처럼 가까운 시점으로 인물의 성격을 보여주고, “무너지면 주워 먹는 사람”이라는 반전으로 마무리했습니다.',
+    process: [
+      '공모전 주제인 가장 나다운 순간을 상반된 취향과 행동으로 풀고, 마지막에 인물을 대하는 태도가 드러나도록 구성',
+      'ChatGPT로 이미지 프롬프트를 정리하고 Higgsfield Soul로 인물 이미지 생성',
+      '화면 밖 팔의 방향과 시선으로 셀피 시점을 구성하고, 인물의 외형과 스타일을 장면의 공통 기준으로 사용',
+      'Kling과 Seedance 2.0으로 영상화하고 컷 전환과 카메라 무빙에 변화를 주어 짧은 이야기로 완성'
+    ],
+    results: [{ n: '우수상', label: 'LG 유쓰 AI 쇼츠 페스티벌' }],
+    resultLabel: '수상 결과',
+    processMedia: [],
+    tools: ['ChatGPT', 'Higgsfield Soul', 'Kling', 'Seedance 2.0']
   },
   {
     id: 'medihel',
@@ -113,6 +141,7 @@ const works = [
   {
     id: 'pure-solution',
     layout: 'pano',
+    archiveOnly: true,
     tags: ['인스타그램 캐러셀', 'AI 제작'],
     title: '퓨어솔루션 캐러셀',
     meta: '닥터조 인스타그램 · 4장 파노라마 캐러셀',
@@ -172,12 +201,20 @@ function renderWorks() {
       </button>
     </article>`;
   const lead = works.filter(w => w.layout === 'lead');
-  const pano = works.filter(w => w.layout === 'pano');
-  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead');
+  const pano = works.filter(w => w.layout === 'pano' && !w.archiveOnly);
+  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead' && w.layout !== 'research');
   let n = 0;
   const top = lead.map(w => block(w, n++)).join('');
-  const row = `<div class="ak-case-row">${rest.map(w => block(w, n++)).join('')}</div>`;
+  const row = `<div class="ak-case-row${rest.length === 1 ? ' ak-case-row--single' : ''}">${rest.map(w => block(w, n++)).join('')}</div>`;
   $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
+  const research = works.find(w => w.layout === 'research');
+  $('#ak-research').innerHTML = `<article class="ak-research-card">
+    <button class="ak-research-open" type="button" data-ak-work="${research.id}" aria-label="${esc(research.title)} 자세히 보기">
+      <div class="ak-research-faces">${research.gallery.map(m => `<img src="${m.src}" alt="${esc(m.cap)}" loading="lazy">`).join('')}</div>
+      <div><p class="ak-card-tags"><span class="tag">개인 R&D</span><span class="tag">FACS · 안면 계측</span></p><h3 class="ak-card-title">${esc(research.title)}</h3><p class="ak-card-line">${esc(research.line)}</p>${cardResults(research)}<span class="ak-card-cta">실험 과정 · 비교 결과 보기 ↗</span></div>
+    </button>
+    <div class="ak-research-links">${research.researchLinks.map(l => `<a class="ak-ext" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('')}</div>
+  </article>`;
 }
 
 /* 화면에 보이는 카드 영상만 재생한다 */
@@ -266,7 +303,7 @@ function openSheet(id) {
   lastFocus = document.activeElement;
   document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
 
-  panel.className = `ak-sheet-panel ak-sheet-panel--${w.layout === 'lead' ? 'wide' : w.layout}`;
+  panel.className = `ak-sheet-panel ak-sheet-panel--${w.layout === 'lead' || w.layout === 'research' ? 'wide' : w.layout}`;
   panel.innerHTML = `
     <button class="ak-sheet-close" type="button" data-ak-close aria-label="닫기">✕</button>
     <header class="ak-sheet-summary">
@@ -276,15 +313,16 @@ function openSheet(id) {
       <p class="ak-sheet-goal">${esc(w.goal)}</p>
       <dl class="ak-facts">
         <div><dt>담당 역할</dt><dd>${esc(w.role)}</dd></div>
-        <div><dt>제작 결과</dt><dd>${esc(w.outcome)}</dd></div>
+        <div><dt>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</dt><dd>${esc(w.outcome)}</dd></div>
       </dl>
       ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
       ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
+      ${w.researchLinks ? `<div class="ak-research-links">${w.researchLinks.map(l => `<a class="ak-ext" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('')}</div>` : ''}
     </header>
     <div class="ak-sheet-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div>
     <div class="ak-sheet-text">
       <section class="ak-block">
-        <h3>제작 과정</h3>
+        <h3>${w.layout === 'research' ? '연구 과정' : '제작 과정'}</h3>
         ${sheetComparison(w)}
         <ol class="ak-steps">${w.process.map((p, i) => {
           const media = w.processStepMedia?.[i];

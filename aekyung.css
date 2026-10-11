@@ -307,3 +307,17 @@
 .ak-comparison-note { margin-top: 10px; color: var(--ink-2); font-size: 12px; line-height: 1.7; }
 
 .ak-step-media img { width: 100%; height: auto; border-radius: 8px; }
+
+.ak-case-row--single { grid-template-columns: 1fr; }
+.ak-research { scroll-margin-top: calc(var(--bar) + 24px); }
+.ak-research-card { border-top: 1px solid var(--line); padding-top: 24px; }
+.ak-research-open { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; width: 100%; text-align: left; cursor: pointer; }
+.ak-research-faces { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.ak-research-faces img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
+.ak-research-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; }
+.ak-research-links .ak-ext { margin-top: 0; }
+.ak-research-open:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 760px) {
+  .ak-research-open { grid-template-columns: 1fr; gap: 18px; }
+  .ak-research .sec-head { display: block; }
+}
