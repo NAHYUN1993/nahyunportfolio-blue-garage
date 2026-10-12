@@ -770,6 +770,7 @@ const techStack = [
 const SECTIONS = [
   { id: 'selected', label: '대표 작업' },
   { id: 'research', label: '표정·얼굴 연구' },
+  { id: 'workflows', label: '제작 자동화' },
   { id: 'archive',  label: '전체 작업' },
   { id: 'stack',    label: '제작 역량' }
 ];

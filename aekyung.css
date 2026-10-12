@@ -310,14 +310,24 @@
 
 .ak-case-row--single { grid-template-columns: 1fr; }
 .ak-research { scroll-margin-top: calc(var(--bar) + 24px); }
-.ak-research-card { border-top: 1px solid var(--line); padding-top: 24px; }
-.ak-research-open { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; width: 100%; text-align: left; cursor: pointer; }
-.ak-research-faces { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-.ak-research-faces img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
+/* 연구와 자동화: 동일한 크기의 두 사례를 나란히 비교 */
+.ak-support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); }
+.ak-support-card { min-width: 0; border-top: 1px solid var(--line); padding-top: 24px; }
+.ak-support-open { display: block; width: 100%; text-align: left; cursor: pointer; }
+.ak-support-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; aspect-ratio: 16 / 10; overflow: hidden; background: var(--paper-2); }
+.ak-support-preview img { display: block; width: 100%; height: 100%; min-height: 0; object-fit: cover; object-position: center 35%; }
+.ak-support-preview--screen { grid-template-columns: 1fr; background: #151923; }
+.ak-support-preview--screen img { object-fit: contain; }
+.ak-support-copy { padding-top: 18px; }
+.ak-support-open:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.ak-support-open:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+.ak-support-card > .ak-ext { margin-top: 16px; }
 .ak-research-links { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; }
 .ak-research-links .ak-ext { margin-top: 0; }
-.ak-research-open:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.ak-identity-gallery--documents { grid-template-columns: 1fr; gap: 28px; }
+.ak-identity-gallery--documents img { aspect-ratio: auto; height: auto; object-fit: contain; }
+.ak-workflows { scroll-margin-top: calc(var(--bar) + 24px); }
 @media (max-width: 760px) {
-  .ak-research-open { grid-template-columns: 1fr; gap: 18px; }
-  .ak-research .sec-head { display: block; }
+  .ak-support-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ak-research .sec-head, .ak-workflows .sec-head { display: block; }
 }

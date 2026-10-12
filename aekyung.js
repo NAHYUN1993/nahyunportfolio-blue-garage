@@ -101,47 +101,235 @@ const works = [
     musicCredit: '음악: NMIXX – Heavy Serenade',
     tools: ['Blender', 'ComfyUI', 'DWPose', 'Nano Banana 2', 'Seedance 2.5', 'Premiere Pro']
   },
-  {
-    id: 'identity-lab',
-    layout: 'research',
-    tags: ['FACS 표정', '얼굴 일관성', 'R&D'],
-    title: 'AI 캐릭터 표정·얼굴 일관성 연구',
-    meta: '개인 R&D · FACS 표정 테스트 + 안면 계측 · 웹 라이브러리',
-    line: '감정의 미세한 차이와 같은 얼굴을 유지하는 조건을 실험하고, 비교 이미지와 프롬프트를 웹 라이브러리로 정리',
-    thumb: 'images/identity/b-smile-facs.png',
-    role: '표정 비교 실험 · AU·강도 프롬프트 설계 · 안면 계측 · 결과 선별 · 라이브러리 구성',
-    outcome: '표정 라이브러리 82장과 얼굴 일관성 비교 이미지 69장, 프롬프트·측정값·선별 기록 정리',
-    goal: '같은 캐릭터가 장면마다 다른 감정을 표현하면서도 같은 얼굴로 보이도록, 표정 제어와 얼굴 일관성을 각각 실험했습니다. 생성 이미지와 비교 기록을 정리한 연구이며, 완성 영상에 적용한 사례와는 구분합니다.',
-    process: [
-      'FACS 표정 테스트 · 감정명만 지시한 결과와 얼굴 움직임 단위(AU)를 함께 지시한 결과를 비교. 진심 어린 미소와 억지웃음, 분노를 억누름과 울음을 참음 등 장면에 필요한 표현을 검토',
-      '강도·복합 감정 실험 · A–E 강도 변화, 두 감정의 조합, 감정이 다른 감정으로 넘어가는 경계 표현을 비교하고 연기 의도와 선별 이유를 기록',
-      '표정 라이브러리 · 82장을 자체 검토 기준으로 제작 승인 55장, 조건부 11장, R&D 참고 16장으로 구분. 감정·연기 비트·AU·생성 방식으로 검색할 수 있게 구성',
-      '얼굴 일관성 실험 · 기준 얼굴을 계측해 스펙 문장으로 만들고 레퍼런스만 / 레퍼런스+스펙 / 스펙만 조건을 비교. 6개 모델의 지원 조건에 따라 3개 장면에서 69장 생성',
-      '얼굴 비교 · ArcFace 코사인 유사도와 안면 계측, 비교 이미지를 함께 검토하고 모델별 결과와 프롬프트를 연결'
-    ],
-    findings: '표정 실험에서는 FACS 지시가 모든 감정에 더 좋지는 않았습니다. 테스트 2의 진심 어린 미소는 FACS, 억지웃음은 감정명 지시 결과를 선택했습니다. 얼굴 실험에서도 스펙 추가 효과는 모델별로 달랐습니다. GPT Image 2의 평균 유사도는 0.72→0.78, Seedream은 0.83→0.83으로 나타났습니다.',
-    limitation: '제작 승인·조건부는 개인 연구의 선별 기준입니다. 얼굴 비교는 단일 캐릭터에 대한 실험이며 모델별 샘플 수와 지원 조건이 다릅니다. 유사도는 정확도(%)가 아니며, 영상 품질이나 제작 효율 향상을 측정한 결과는 아닙니다.',
-    results: [{ n: '82', label: '표정 라이브러리 이미지' }, { n: '69', label: '얼굴 비교 이미지' }, { n: '6', label: '얼굴 비교 모델' }],
-    resultLabel: '연구 산출물',
-    gallery: [
-      { src: 'images/identity/b-smile-emotion.png', cap: '진심 어린 미소 · 감정명' },
-      { src: 'images/identity/b-smile-facs.png', cap: '진심 어린 미소 · 감정명 + FACS (선택)' },
-      { src: 'images/identity/b-forced-smile-emotion.png', cap: '억지웃음 · 감정명 (선택)' },
-      { src: 'images/identity/b-forced-smile-facs.png', cap: '억지웃음 · 감정명 + FACS' }
-    ],
-    galleryCaption: '표정 테스트 2 · 같은 감정의 두 입력 방식을 비교했습니다. 선택 여부와 판단 이유는 라이브러리에 기록했습니다.',
-    link: 'https://facs-expression-library.dan-asa.chatgpt.site/#index',
-    linkLabel: '얼굴 연구 사이트 전체 보기 ↗',
-    researchLinks: [
-      { href: 'https://facs-expression-library.dan-asa.chatgpt.site/#facs', label: 'FACS 표정 테스트 ↗' },
-      { href: 'https://facs-expression-library.dan-asa.chatgpt.site/#anthropometry', label: '안면 계측·얼굴 일관성 ↗' }
-    ],
-    processMedia: [
-      { src: 'images/identity/gptimage2-comparison.jpg', cap: '얼굴 일관성 · GPT Image 2 · 레퍼런스만 / 레퍼런스+스펙 / 스펙만', wide: true },
-      { src: 'images/identity/seedream5-comparison.jpg', cap: '얼굴 일관성 · Seedream 5.0 Pro · 동일 조건 비교', wide: true }
-    ],
-    tools: ['GPT Image 2', 'ComfyUI', 'MediaPipe', 'ArcFace']
-  },
+{
+  "layout": "research",
+  "resultLabel": "연구 산출물",
+  "processMedia": [],
+  "id": "expression-lab",
+  "title": "표정 연구",
+  "tags": [
+    "개인 R&D",
+    "FACS · 감정 표현"
+  ],
+  "meta": "감정명과 FACS 지시 비교 · 표정 라이브러리",
+  "line": "진심 어린 미소와 억지웃음처럼 가까운 감정의 차이를 비교하고, 표정의 강도와 복합 감정을 실험",
+  "role": "표정 비교 실험 · AU·강도 프롬프트 설계 · 결과 선별 · 라이브러리 구성",
+  "goal": "같은 캐릭터가 서로 다른 감정을 어떻게 표현하는지 실험했습니다. 감정명만 지시한 결과와 얼굴 움직임 단위(AU)를 함께 지시한 결과를 비교하고, 장면의 연기 의도에 맞는 표정을 선별했습니다.",
+  "outcome": "표정 이미지 82장과 프롬프트·연기 의도·선별 이유를 웹 라이브러리로 정리",
+  "process": [
+    "감정명만 입력한 이미지와 FACS의 얼굴 움직임 단위(AU)를 함께 입력한 이미지를 비교했습니다.",
+    "A–E 강도 변화와 두 감정의 조합, 감정이 다른 감정으로 넘어가는 경계 표현을 실험했습니다.",
+    "82장을 자체 기준으로 제작 승인 55장, 조건부 11장, R&D 참고 16장으로 분류하고 선택 이유를 기록했습니다."
+  ],
+  "findings": "FACS 지시가 모든 감정에서 더 좋은 결과를 만들지는 않았습니다. 테스트 2의 진심 어린 미소는 FACS 지시, 억지웃음은 감정명 지시 결과를 선택했습니다.",
+  "limitation": "승인·조건부는 개인 연구의 선별 기준입니다. 표정 비교 이미지와 기록을 정리한 연구이며, 최종 영상의 연기 품질을 측정한 결과는 아닙니다.",
+  "results": [
+    {
+      "n": "82",
+      "label": "표정 라이브러리 이미지"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "images/identity/b-smile-emotion.png",
+      "cap": "진심 어린 미소 · 감정명"
+    },
+    {
+      "src": "images/identity/b-smile-facs.png",
+      "cap": "진심 어린 미소 · 감정명 + FACS (선택)"
+    },
+    {
+      "src": "images/identity/b-forced-smile-emotion.png",
+      "cap": "억지웃음 · 감정명 (선택)"
+    },
+    {
+      "src": "images/identity/b-forced-smile-facs.png",
+      "cap": "억지웃음 · 감정명 + FACS"
+    }
+  ],
+  "galleryCaption": "같은 감정을 두 가지 입력 방식으로 생성한 비교. 선택 이유는 라이브러리에 기록했습니다.",
+  "previewImages": [
+    {
+      "src": "images/identity/b-smile-emotion.png",
+      "cap": "감정명으로 생성한 미소"
+    },
+    {
+      "src": "images/identity/b-smile-facs.png",
+      "cap": "FACS를 함께 지시한 미소"
+    }
+  ],
+  "link": "https://facs-expression-library.dan-asa.chatgpt.site/#facs",
+  "linkLabel": "표정 연구 사이트 보기 ↗",
+  "tools": [
+    "FACS",
+    "GPT Image 2"
+  ]
+},
+{
+  "layout": "research",
+  "resultLabel": "연구 산출물",
+  "processMedia": [],
+  "id": "identity-lab",
+  "title": "얼굴 계측 연구",
+  "tags": [
+    "개인 R&D",
+    "안면 계측 · 얼굴 일관성"
+  ],
+  "meta": "기준 얼굴 계측 · 6개 모델 · 3개 장면 비교",
+  "line": "기준 얼굴의 비율을 스펙으로 정리하고, 레퍼런스와 함께 입력했을 때 얼굴 일관성이 어떻게 달라지는지 비교",
+  "role": "안면 계측 · 조건별 생성 실험 · 유사도 비교 · 프롬프트·측정값 정리",
+  "goal": "같은 얼굴을 다른 장소와 구도에서도 유지할 수 있는지 확인하기 위해 기준 얼굴을 계측했습니다. 얼굴 비율을 설명한 스펙과 이미지 레퍼런스의 조합을 바꾸며 모델별 결과를 비교했습니다.",
+  "outcome": "6개 모델의 얼굴 비교 이미지 69장, 모델별 프롬프트와 계측·유사도 기록 정리",
+  "process": [
+    "기준 얼굴의 특징과 비율을 계측하고 생성 지시로 사용할 스펙 문장을 작성했습니다.",
+    "레퍼런스만 / 레퍼런스+스펙 / 스펙만 조건으로 비교했습니다. 6개 모델의 지원 조건에 따라 3개 장면에서 69장을 생성했습니다.",
+    "ArcFace 코사인 유사도와 안면 계측, 비교 이미지를 함께 검토하고 모델별 결과와 프롬프트를 연결했습니다."
+  ],
+  "findings": "스펙 추가 효과는 모델별로 달랐습니다. GPT Image 2의 평균 유사도는 0.72→0.78, Seedream은 0.83→0.83으로 나타났습니다.",
+  "limitation": "단일 캐릭터에 대한 실험이며 모델별 샘플 수와 지원 조건이 다릅니다. 유사도는 정확도(%)가 아니며, 최종 영상 전체에 대한 일관성 측정 결과는 아닙니다.",
+  "results": [
+    {
+      "n": "69",
+      "label": "얼굴 비교 이미지"
+    },
+    {
+      "n": "6",
+      "label": "비교 모델"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "images/identity/gptimage2-comparison.jpg",
+      "cap": "GPT Image 2 · 레퍼런스 / 레퍼런스+스펙 / 스펙"
+    },
+    {
+      "src": "images/identity/seedream5-comparison.jpg",
+      "cap": "Seedream 5.0 Pro · 조건별 얼굴 비교"
+    }
+  ],
+  "galleryLayout": "documents",
+  "galleryCaption": "모델별 비교 이미지 · 눌러서 원본 크기로 보기",
+  "previewImages": [
+    {
+      "src": "images/identity/reference-b.webp",
+      "cap": "계측 기준 얼굴"
+    },
+    {
+      "src": "images/identity/gptimage2-ref-spec-cafe-1.webp",
+      "cap": "레퍼런스와 얼굴 스펙을 적용한 카페 장면"
+    }
+  ],
+  "link": "https://facs-expression-library.dan-asa.chatgpt.site/#anthropometry",
+  "linkLabel": "얼굴 계측 연구 사이트 보기 ↗",
+  "tools": [
+    "ComfyUI",
+    "MediaPipe",
+    "ArcFace"
+  ]
+},
+{
+  "layout": "workflow",
+  "results": [],
+  "processMedia": [],
+  "galleryLayout": "documents",
+  "id": "interview-workflow",
+  "title": "인터뷰 편집 자동화",
+  "tags": [
+    "편집 워크플로우",
+    "Premiere Pro"
+  ],
+  "meta": "인터뷰 전사 → 편집 구성 → 타임라인·자막·오디오",
+  "line": "인터뷰 발화를 분석해 편집 순서를 구성하고, Premiere에서 수정 가능한 타임라인과 자막으로 연결",
+  "role": "편집 구조·자동화 흐름 설계 · AI 도구를 활용한 구현 · Premiere 결과 검토",
+  "goal": "긴 인터뷰에서 필요한 발화를 찾고 편집 순서와 자막을 옮기는 반복 작업을 연결했습니다. 원본 구간과 편집 의도를 함께 기록해 초안을 검토하고 수정할 수 있도록 구성했습니다.",
+  "outcome": "18분 20초 인터뷰를 14개 구간으로 구성한 약 8분 편집 초안과 Premiere 타임라인·자막·오디오",
+  "process": [
+    "인터뷰 음성을 전사하고 발화별 시간과 내용을 정리했습니다.",
+    "발화 내용을 바탕으로 도입·문제·경험·비교의 흐름을 구성하고, 선택 구간과 편집 의도를 원본 타임코드에 연결했습니다.",
+    "편집 구성을 타임라인 파일과 자막·오디오로 출력하고 Premiere에서 확인했습니다.",
+    "타임라인과 원본-편집본 대응표를 함께 보며 컷 순서와 구간을 검토할 수 있도록 정리했습니다."
+  ],
+  "gallery": [
+    {
+      "src": "images/workflows/edit-timeline.webp",
+      "cap": "Premiere에서 확인한 편집 타임라인 · 영상·자막·오디오 트랙"
+    },
+    {
+      "src": "images/workflows/edit-mapping.webp",
+      "cap": "원본 타임코드 → 편집 구간 → 선택 이유 대응표"
+    }
+  ],
+  "galleryCaption": "실제 작업 화면 · 눌러서 원본 크기로 보기",
+  "previewImages": [
+    {
+      "src": "images/workflows/edit-timeline.webp",
+      "cap": "인터뷰 편집 자동화의 Premiere 타임라인"
+    }
+  ],
+  "previewType": "screen",
+  "tools": [
+    "Whisper",
+    "LLM",
+    "FCPXML",
+    "FFmpeg",
+    "Premiere Pro"
+  ]
+},
+{
+  "layout": "workflow",
+  "results": [],
+  "processMedia": [
+    {
+      "src": "images/workflows/board-storyboard.webp",
+      "cap": "스토리보드 · 컷별 연출·내레이션·사운드·프롬프트",
+      "wide": true
+    },
+    {
+      "src": "images/workflows/board-review.webp",
+      "cap": "이미지 시안 비교 · 승인·모델 선택·재생성",
+      "wide": true
+    }
+  ],
+  "galleryLayout": "documents",
+  "id": "production-board",
+  "title": "AI 영상 제작판",
+  "tags": [
+    "제작 워크플로우",
+    "컷별 검토·재생성"
+  ],
+  "meta": "스토리보드 → 이미지 선택 → 영상 생성 · 첫 프로젝트 적용 중",
+  "line": "컷별 연출과 생성 결과를 한 화면에서 검토하고, 모델 선택·프롬프트 수정·재생성을 연결한 제작 도구",
+  "role": "제작 절차·검토 단계 설계 · AI 도구를 활용한 웹앱 구현 · 컷별 결과 선별",
+  "goal": "기획부터 이미지 선택과 영상 생성까지 흩어진 작업을 컷 단위로 관리하기 위해 제작판을 만들었습니다. 단계별로 사람이 결과를 검토하고 다음 생성을 결정할 수 있도록 구성했습니다.",
+  "outcome": "스토리보드·이미지 비교·승인·재생성 화면 구축, 첫 프로젝트 7개 컷 영상 출력",
+  "process": [
+    "브랜드 숏폼의 제작 절차와 캐릭터 규칙을 정리하고, 컷별 연출·내레이션·사운드·프롬프트를 스토리보드로 구성했습니다.",
+    "이미지 시안을 비교해 선택하고, 필요한 컷은 프롬프트나 모델을 바꿔 재생성하도록 검토 화면을 만들었습니다.",
+    "선택한 이미지에서 영상 생성으로 이어지도록 구성하고 컷별 출력 결과와 진행 상태를 확인했습니다.",
+    "첫 프로젝트에서 7개 컷의 영상 출력을 확인하며 제작 절차와 검토 기준을 다듬고 있습니다."
+  ],
+  "gallery": [
+    {
+      "src": "images/workflows/board-output.webp",
+      "cap": "7개 컷 영상 출력과 컷별 재생·검토 화면"
+    }
+  ],
+  "galleryCaption": "첫 프로젝트 적용 화면 · 완성본 게시 전, 컷별 영상 출력 단계",
+  "previewImages": [
+    {
+      "src": "images/workflows/board-review.webp",
+      "cap": "AI 제작판의 이미지 비교 및 승인 화면"
+    }
+  ],
+  "previewType": "screen",
+  "tools": [
+    "Antigravity",
+    "Flask",
+    "MCP",
+    "Python",
+    "FFmpeg"
+  ]
+},
   {
     id: 'lg-youth',
     layout: 'tall',
@@ -228,19 +416,20 @@ function renderWorks() {
     </article>`;
   const lead = works.filter(w => w.layout === 'lead');
   const pano = works.filter(w => w.layout === 'pano' && !w.archiveOnly);
-  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead' && w.layout !== 'research');
+  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead' && w.layout !== 'research' && w.layout !== 'workflow');
   let n = 0;
   const top = lead.map(w => block(w, n++)).join('');
   const row = `<div class="ak-case-row${rest.length === 1 ? ' ak-case-row--single' : ''}">${rest.map(w => block(w, n++)).join('')}</div>`;
   $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
-  const research = works.find(w => w.layout === 'research');
-  $('#ak-research').innerHTML = `<article class="ak-research-card">
-    <button class="ak-research-open" type="button" data-ak-work="${research.id}" aria-label="${esc(research.title)} 자세히 보기">
-      <div class="ak-research-faces">${research.gallery.map(m => `<img src="${m.src}" alt="${esc(m.cap)}" loading="lazy">`).join('')}</div>
-      <div><p class="ak-card-tags"><span class="tag">개인 R&D</span><span class="tag">FACS · 안면 계측</span></p><h3 class="ak-card-title">${esc(research.title)}</h3><p class="ak-card-line">${esc(research.line)}</p>${cardResults(research)}<span class="ak-card-cta">실험 과정 · 비교 결과 보기 ↗</span></div>
+  const supportingCard = w => `<article class="ak-support-card">
+    <button class="ak-support-open" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
+      <div class="ak-support-preview${w.previewType === 'screen' ? ' ak-support-preview--screen' : ''}">${w.previewImages.map(m => `<img src="${m.src}" alt="${esc(m.cap)}" loading="lazy">`).join('')}</div>
+      <div class="ak-support-copy"><p class="ak-card-tags">${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p><h3 class="ak-card-title">${esc(w.title)}</h3><p class="ak-card-line">${esc(w.line)}</p>${cardResults(w)}<span class="ak-card-cta">${w.layout === 'research' ? '실험 과정 · 비교 결과 보기' : '작업 과정 · 결과 화면 보기'} ↗</span></div>
     </button>
-    <div class="ak-research-links">${research.researchLinks.map(l => `<a class="ak-ext" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('')}</div>
+    ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel)}</a>` : ''}
   </article>`;
+  $('#ak-research').innerHTML = works.filter(w => w.layout === 'research').map(supportingCard).join('');
+  $('#ak-workflows').innerHTML = works.filter(w => w.layout === 'workflow').map(supportingCard).join('');
 }
 
 /* 화면에 보이는 카드 영상만 재생한다 */
@@ -263,7 +452,7 @@ let lastFocus = null;
 
 function sheetMedia(w) {
   if (w.gallery) {
-    return `<div class="ak-identity-gallery">${w.gallery.map(m => `<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
+    return `<div class="ak-identity-gallery${w.galleryLayout === 'documents' ? ' ak-identity-gallery--documents' : ''}">${w.gallery.map(m => `<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
   }
   if (w.driveId) {
     return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div><a class="ak-ext" href="https://drive.google.com/file/d/${w.driveId}/preview" target="_blank" rel="noopener">영상 새 창에서 보기 ↗</a>`;
@@ -329,7 +518,7 @@ function openSheet(id) {
   lastFocus = document.activeElement;
   document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
 
-  panel.className = `ak-sheet-panel ak-sheet-panel--${w.layout === 'lead' || w.layout === 'research' ? 'wide' : w.layout}`;
+  panel.className = `ak-sheet-panel ak-sheet-panel--${['lead', 'research', 'workflow'].includes(w.layout) ? 'wide' : w.layout}`;
   panel.innerHTML = `
     <button class="ak-sheet-close" type="button" data-ak-close aria-label="닫기">✕</button>
     <header class="ak-sheet-summary">
