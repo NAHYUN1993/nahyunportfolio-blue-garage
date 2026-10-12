@@ -772,7 +772,8 @@ const SECTIONS = [
   { id: 'research', label: '표정·얼굴 연구' },
   { id: 'workflows', label: '제작 자동화' },
   { id: 'archive',  label: '전체 작업' },
-  { id: 'stack',    label: '제작 역량' }
+  { id: 'stack',    label: '제작 역량' },
+  { id: 'hero', label: '소개·쇼릴' }
 ];
 
 /* 구 URL 앵커 호환: 예전 섹션 id로 들어와도 새 섹션으로 보냄 */
@@ -877,8 +878,7 @@ function renderNav() {
   document.querySelector('.brand').addEventListener('click', (e) => {
     e.preventDefault();
     closeMenu();
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    history.replaceState(null, '', '#top');
+    goTo('selected');
   });
   const links = SECTIONS.map(s => `<a href="#${s.id}" data-nav="${s.id}">${s.label}</a>`).join('');
   byId('nav-links').innerHTML = links;
@@ -907,6 +907,7 @@ function closeMenu() {
 }
 
 function goTo(id) {
+  if (window.akNavigate) { window.akNavigate(id); return; }
   const target = byId(ANCHOR_ALIAS[id] || id);
   if (!target) return;
   target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
@@ -914,6 +915,7 @@ function goTo(id) {
 }
 
 function watchActiveSection() {
+  if (window.akNavigate) return;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
@@ -1429,7 +1431,7 @@ function init() {
 
   /* 앵커로 들어온 경우 첫 페인트 전에 위치를 잡아 상단이 번쩍이지 않게 한다 */
   const hash = location.hash.replace('#', '');
-  if (hash) goTo(hash);
+  goTo(hash || 'selected');
 }
 
 document.addEventListener('DOMContentLoaded', init);

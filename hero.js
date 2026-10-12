@@ -284,7 +284,7 @@
         <img class="cm-face" src="assets/character/face-mobile.jpg?v=2" width="760" height="624" alt="실버 헤드셋을 쓴 이나현의 캐릭터" fetchpriority="high">
         <div class="cm-links">
           <button class="character-button" id="showreel-open" type="button" aria-haspopup="dialog"><span aria-hidden="true">▶</span> 쇼릴 전체 보기</button>
-          <a class="character-button" href="#selected">작품 바로 보기 <span aria-hidden="true">↓</span></a>
+          <a class="character-button" href="#selected">작품 바로 보기 <span aria-hidden="true">→</span></a>
         </div>`;
       document.getElementById('topbar')?.classList.add('is-scrolled');
       root.querySelector('#showreel-open').addEventListener('click', openShowreel);
@@ -311,7 +311,7 @@
           <p>현실을 담고,<br> 상상을 만듭니다.</p>
         </div>
         <div class="character-role">AI Content<br>Creator<small>영상디자인 실무 약 9년<br>AI 아티스트 · 비주얼 연출 · 후반 작업</small></div>
-        <p class="character-cue">아래로 스크롤해<br> 작업을 만나보세요.<span aria-hidden="true">↓</span></p>
+        <p class="character-cue">쇼릴을 재생하거나<br> 작품을 골라보세요.<span aria-hidden="true">↗</span></p>
         <div class="character-project" aria-hidden="true" inert>
           <div><p>${isShowreel ? "Showreel" : "Selected work"}</p><h2>${esc(title)}</h2></div>
           <button class="character-button" type="button">${isShowreel ? "쇼릴 전체 보기" : "작품 자세히 보기"} <span aria-hidden="true">↗</span></button>
@@ -321,7 +321,7 @@
             <button class="character-button" id="showreel-open" type="button" aria-haspopup="dialog"><span aria-hidden="true">▶</span> 쇼릴 전체 보기</button>
             <button class="character-motion" type="button">움직임 끄기</button>
           </div>
-          <a class="character-button character-skip" href="#featured">작품 바로 보기 <span aria-hidden="true">↓</span></a>
+          <a class="character-button character-skip" href="#featured">작품 바로 보기 <span aria-hidden="true">→</span></a>
         </div>
       </div>`;
     const stage = root.querySelector('.character-stage');
@@ -462,8 +462,8 @@
     summary.querySelector('button').addEventListener('click', () => show(() => openProject(project.id)));
     root.querySelector('.character-skip').addEventListener('click', e => {
       e.preventDefault();
-      document.getElementById('featured').scrollIntoView({ behavior: 'instant', block: 'start' });
-      history.replaceState(null, '', '#featured');
+      if (window.akNavigate) window.akNavigate('selected');
+      else document.getElementById('featured').scrollIntoView({ behavior: 'instant', block: 'start' });
     });
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', measure, { passive: true });

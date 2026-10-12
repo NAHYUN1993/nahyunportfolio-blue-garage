@@ -81,7 +81,7 @@ const works = [
       1: { src: 'images/process/comfyui-depthpose.jpg', cap: 'ComfyUI 작업 화면 · 안무 영상에서 DWPose(뼈대)와 Depth(깊이) 추출 · 눌러서 크게 보기 ↗' }
     },
     poster: 'images/posters/onetake.jpg',
-    goal: 'Blender에서 카메라 무빙을 직접 지정하고, depth·pose 가이드와 멀티 레퍼런스로 캐릭터 일관성을 유지한 AI 영상입니다.',
+    goal: '원하는 카메라 경로와 안무가 함께 반영되는 AI 퍼포먼스 영상을 만들고자 했습니다. Blender에서 카메라 무빙을 직접 지정하고, depth·pose 가이드와 멀티 레퍼런스로 움직임과 캐릭터 일관성을 제어했습니다.',
     process: [
       'Blender에서 16mm 광각 카메라의 접근·후퇴 경로와 타이밍을 직접 지정하고, 세트와 함께 프리비즈로 제작',
       'ComfyUI로 안무 레퍼런스 영상에서 DWPose(뼈대)와 Depth(깊이)를 추출한 뒤, 프리비즈 카메라의 깊이 패스 안에 원근을 맞춰 합성 · 카메라 무빙과 안무를 하나의 레퍼런스 영상으로 제어',
@@ -381,6 +381,27 @@ const works = [
   }
 ];
 
+const briefs = {
+  'onetake': { purpose: '원하는 카메라 무빙과 안무를 함께 제어', process: '카메라 무빙 직접 지정 → Depth·Pose → AI 생성', result: '6초 원테이크 · 1080p 완성' },
+  'out-of-frame': { purpose: '태도와 시선으로 솔로 아이돌의 콘셉트 소개', process: '인물·공간 레퍼런스 설계 → 생성·선별 → 편집', result: '세 공간을 연결한 21.5초 트레일러' },
+  'lg-youth': { purpose: '상반된 취향과 반전으로 인물의 개성 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'LG 유쓰 AI 쇼츠 페스티벌 우수상' },
+  'pure-solution': { purpose: '다음 장을 넘기며 제품을 살펴보도록 기획', process: '인물·오브제가 이어지는 4장 파노라마 구성', result: '조회수 16,745 · 외부링크 클릭 422건' },
+  'expression-lab': { purpose: '비슷한 감정의 차이와 표정 강도 제어', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
+  'identity-lab': { purpose: '다른 장면에서도 같은 얼굴을 유지하는 조건 확인', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
+  'interview-workflow': { purpose: '발화 선택부터 편집 초안까지 반복 작업 연결', process: '전사·구성 → 타임라인·자막 → Premiere 검토', result: '14개 구간으로 구성한 약 8분 편집 초안' },
+  'production-board': { purpose: '컷별 생성과 사람이 검토하는 과정을 한곳에서 관리', process: '스토리보드 → 이미지 선택·재생성 → 영상 출력', result: '검토용 웹앱 · 첫 프로젝트 7개 컷 출력' }
+};
+const stepTitles = {
+  'onetake': ['카메라 무빙 직접 지정', 'ComfyUI에서 뼈대·깊이 추출과 합성', '캐릭터 멀티 레퍼런스', '드래프트 검토와 최종 생성', '음원과 안무 싱크'],
+  'out-of-frame': ['공간과 소품 기획', '캐릭터 레퍼런스', '장면별 행동·카메라 연출', '드래프트 검토와 최종 출력', '행동의 시작과 끝을 고르는 편집'],
+  'lg-youth': ['인물과 반전 기획', '인물 이미지 생성', '셀피 시점 연출', '영상 생성과 컷 구성'],
+  'pure-solution': ['4장 파노라마 구성', '장을 넘기는 흐름 설계'],
+  'expression-lab': ['감정명과 FACS 비교', '강도·복합 감정 실험', '표정 선별과 라이브러리 정리'],
+  'identity-lab': ['기준 얼굴 계측', '조건별·모델별 이미지 생성', '계측·유사도·이미지 비교'],
+  'interview-workflow': ['음성 전사', '발화 선택과 편집 구성', '타임라인·자막·오디오 출력', 'Premiere에서 초안 검토'],
+  'production-board': ['제작 규칙과 스토리보드', '이미지 비교·선택·재생성', '영상 생성과 진행 상태', '7개 컷 출력과 기준 보완']
+};
+
 /* ── RENDER ── */
 const $ = (sel, root = document) => root.querySelector(sel);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -399,50 +420,34 @@ function cardResults(w) {
   return `<p class="ak-card-results">${w.results.slice(0, 3).map(r => `<span><b>${esc(r.n)}</b> ${esc(r.label)}</span>`).join('')}</p>`;
 }
 
-/* 대표 퍼포먼스 → 두 제작 사례 → 캐러셀 */
+function briefMarkup(w) {
+  const b = briefs[w.id];
+  return `<dl class="work-brief"><div><dt>목적</dt><dd>${esc(b.purpose)}</dd></div><div><dt>과정</dt><dd>${esc(b.process)}</dd></div><div><dt>결과</dt><dd>${esc(b.result)}</dd></div></dl>`;
+}
 function renderWorks() {
-  const block = (w, i) => `
-    <article class="ak-card ak-card--${w.layout === 'pano' || w.layout === 'lead' ? w.layout : 'cell'}">
-      <button class="ak-card-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
-        <div class="ak-card-media${w.id === 'medihel' ? ' is-medihel' : ''}">${cardMedia(w)}</div>
-        <div class="ak-card-body">
-          <p class="ak-card-tags"><span class="ak-card-num">${String(i + 1).padStart(2, '0')}</span>${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p>
-          <h3 class="ak-card-title">${esc(w.title)}</h3>
-          <p class="ak-card-line">${esc(w.line)}</p>
-          ${cardResults(w)}
-          <span class="ak-card-cta">목적 · 과정 · 결과 보기 <span aria-hidden="true">↗</span></span>
-        </div>
-      </button>
-    </article>`;
-  const lead = works.filter(w => w.layout === 'lead');
-  const pano = works.filter(w => w.layout === 'pano' && !w.archiveOnly);
-  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead' && w.layout !== 'research' && w.layout !== 'workflow');
-  let n = 0;
-  const top = lead.map(w => block(w, n++)).join('');
-  const row = `<div class="ak-case-row${rest.length === 1 ? ' ak-case-row--single' : ''}">${rest.map(w => block(w, n++)).join('')}</div>`;
-  $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
-  const supportingCard = w => `<article class="ak-support-card">
+  const ordered = ['onetake', 'out-of-frame', 'lg-youth', 'pure-solution'].map(id => works.find(w => w.id === id));
+  $('#ak-grid').innerHTML = ordered.map((w, i) => `<article class="work-choice">
+    <button type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
+      <div class="work-choice-media">${cardMedia(w)}<span aria-hidden="true">${String(i + 1).padStart(2, '0')} ↗</span></div>
+      <div class="work-choice-copy"><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h3>${esc(w.title)}</h3>${briefMarkup(w)}</div>
+    </button></article>`).join('');
+  const support = w => `<article class="ak-support-card">
     <button class="ak-support-open" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
       <div class="ak-support-preview${w.previewType === 'screen' ? ' ak-support-preview--screen' : ''}">${w.previewImages.map(m => `<img src="${m.src}" alt="${esc(m.cap)}" loading="lazy">`).join('')}</div>
-      <div class="ak-support-copy"><p class="ak-card-tags">${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p><h3 class="ak-card-title">${esc(w.title)}</h3><p class="ak-card-line">${esc(w.line)}</p>${cardResults(w)}<span class="ak-card-cta">${w.layout === 'research' ? '실험 과정 · 비교 결과 보기' : '작업 과정 · 결과 화면 보기'} ↗</span></div>
-    </button>
-    ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel)}</a>` : ''}
-  </article>`;
-  $('#ak-research').innerHTML = works.filter(w => w.layout === 'research').map(supportingCard).join('');
-  $('#ak-workflows').innerHTML = works.filter(w => w.layout === 'workflow').map(supportingCard).join('');
+      <div class="ak-support-copy"><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h3 class="ak-card-title">${esc(w.title)}</h3>${briefMarkup(w)}<span class="ak-card-cta">상세 보기 ↗</span></div>
+    </button>${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel)}</a>` : ''}</article>`;
+  $('#ak-research').innerHTML = works.filter(w => w.layout === 'research').map(support).join('');
+  $('#ak-workflows').innerHTML = works.filter(w => w.layout === 'workflow').map(support).join('');
 }
-
-/* 화면에 보이는 카드 영상만 재생한다 */
 function watchCardVideos() {
   if (reduceMotion) return;
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      const v = e.target;
-      if (e.isIntersecting && !sheet.classList.contains('is-open')) { v.preload = 'auto'; v.play().catch(() => {}); }
-      else v.pause();
-    });
-  }, { threshold: 0.35 });
-  document.querySelectorAll('.ak-card-video').forEach(v => io.observe(v));
+  document.querySelectorAll('.work-choice button').forEach(button => {
+    const v = button.querySelector('video');
+    if (!v) return;
+    button.addEventListener('pointerenter', () => { if (matchMedia('(hover: hover)').matches) v.play().catch(() => {}); });
+    button.addEventListener('pointerleave', () => v.pause());
+    button.addEventListener('blur', () => v.pause());
+  });
 }
 
 /* ── DETAIL SHEET ── */
@@ -452,7 +457,9 @@ let lastFocus = null;
 
 function sheetMedia(w) {
   if (w.gallery) {
-    return `<div class="ak-identity-gallery${w.galleryLayout === 'documents' ? ' ak-identity-gallery--documents' : ''}">${w.gallery.map(m => `<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
+    const documents = w.galleryLayout === 'documents';
+    const labels = w.id === 'identity-lab' ? ['GPT Image 2', 'Seedream'] : ['타임라인', '구간·의도 대응표'];
+    return `${documents && w.gallery.length > 1 ? `<div class="document-selector" role="group" aria-label="비교 자료 선택">${w.gallery.map((m,i) => `<button type="button" data-document="${i}" aria-pressed="${i===0}">${labels[i] || `자료 ${i+1}`}</button>`).join('')}</div>` : ''}<div class="ak-identity-gallery${documents ? ' ak-identity-gallery--documents' : ''}">${w.gallery.map((m,i) => `<figure ${documents ? `data-document-page="${i}" ${i ? 'hidden' : ''}` : ''}><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
   }
   if (w.driveId) {
     return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div><a class="ak-ext" href="https://drive.google.com/file/d/${w.driveId}/preview" target="_blank" rel="noopener">영상 새 창에서 보기 ↗</a>`;
@@ -518,38 +525,34 @@ function openSheet(id) {
   lastFocus = document.activeElement;
   document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
 
-  panel.className = `ak-sheet-panel ak-sheet-panel--${['lead', 'research', 'workflow'].includes(w.layout) ? 'wide' : w.layout}`;
+  panel.className = 'ak-sheet-panel case-reader';
   panel.innerHTML = `
-    <button class="ak-sheet-close" type="button" data-ak-close aria-label="닫기">✕</button>
-    <header class="ak-sheet-summary">
-      <p class="ak-card-tags">${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p>
-      <h2 class="ak-sheet-title" id="ak-sheet-title">${esc(w.title)}</h2>
-      <p class="ak-sheet-meta">${esc(w.meta)}</p>
-      <p class="ak-sheet-goal">${esc(w.goal)}</p>
-      ${w.conceptBeats ? `<section class="ak-concept"><h3>기획 의도 · 세 공간의 흐름</h3><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></section>` : ''}
-      <dl class="ak-facts">
-        <div><dt>담당 역할</dt><dd>${esc(w.role)}</dd></div>
-        <div><dt>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</dt><dd>${esc(w.outcome)}</dd></div>
-      </dl>
-      ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
-      ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
-      ${w.researchLinks ? `<div class="ak-research-links">${w.researchLinks.map(l => `<a class="ak-ext" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('')}</div>` : ''}
-    </header>
-    <div class="ak-sheet-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div>
-    <div class="ak-sheet-text">
-      <section class="ak-block">
-        <h3>${w.layout === 'research' ? '연구 과정' : '제작 과정'}</h3>
-        ${sheetComparison(w)}
-        <ol class="ak-steps">${w.process.map((p, i) => {
-          const media = w.processStepMedia?.[i];
-          return `<li>${esc(p)}${media ? `<figure class="ak-pm ak-pm--wide ak-step-media"><a href="${esc(media.src)}" target="_blank" rel="noopener" aria-label="ComfyUI DWPose·Depth 작업 화면 크게 보기"><img src="${esc(media.src)}" alt="입력 안무 영상에서 Depth Anything V2와 DWPose로 깊이와 뼈대를 추출하고 합성하는 실제 ComfyUI 워크플로우" loading="lazy" width="3024" height="1744"></a><figcaption>${esc(media.cap)}</figcaption></figure>` : ''}</li>`;
-        }).join('')}</ol>
-        ${w.findings ? `<div class="ak-research-findings"><h3>실험 결과와 제작 판단</h3><p>${esc(w.findings)}</p><p class="ak-research-limit">${esc(w.limitation)}</p></div>` : ''}
-        ${sheetProcessMedia(w)}
+    <header class="case-heading"><div><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h2 id="ak-sheet-title">${esc(w.title)}</h2><p>${esc(w.meta)}</p></div><button class="case-close" type="button" data-ak-close aria-label="닫고 목록으로 돌아가기">✕ <span>목록으로</span></button></header>
+    <div class="case-tabs" role="tablist" aria-label="작품 상세 내용">
+      <button type="button" role="tab" id="case-result-tab" aria-controls="case-result" aria-selected="true" data-case-tab="result">작품·결과</button>
+      <button type="button" role="tab" id="case-purpose-tab" aria-controls="case-purpose" aria-selected="false" tabindex="-1" data-case-tab="purpose">목적·역할</button>
+      <button type="button" role="tab" id="case-process-tab" aria-controls="case-process" aria-selected="false" tabindex="-1" data-case-tab="process">${w.layout === 'research' ? '연구 과정' : '제작 과정'}</button>
+    </div>
+    <div class="case-content">
+      <section id="case-result" role="tabpanel" aria-labelledby="case-result-tab" tabindex="0">
+        <div class="case-result-layout"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div><div class="case-result-copy"><h3>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</h3><p>${esc(w.outcome)}</p>
+        ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
+        ${w.findings ? `<h3>확인한 점</h3><p>${esc(w.findings)}</p><p class="case-note">${esc(w.limitation)}</p>` : ''}
+        ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
+        <button type="button" class="case-next" data-case-goto="purpose">만든 목적과 역할 보기 →</button></div></div>
       </section>
-      ${w.tools.length ? `<section class="ak-block"><h3>사용 도구</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p></section>` : ''}
+      <section id="case-purpose" role="tabpanel" aria-labelledby="case-purpose-tab" tabindex="0" hidden>
+        <div class="case-purpose-grid"><div><h3>만든 목적</h3><p class="case-purpose-text">${esc(w.goal)}</p>${w.conceptBeats ? `<details class="case-step"><summary>기획 의도 · 세 공간의 흐름</summary><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></details>` : ''}</div><div><h3>담당 역할</h3><p>${esc(w.role)}</p>${w.tools.length ? `<h3>사용 도구</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p>` : ''}</div></div>
+        <button type="button" class="case-next" data-case-goto="process">${w.layout === 'research' ? '연구' : '제작'} 과정 보기 →</button>
+      </section>
+      <section id="case-process" role="tabpanel" aria-labelledby="case-process-tab" tabindex="0" hidden>
+        <p class="case-process-intro">${esc(briefs[w.id].process)}<br><span>각 단계를 눌러 설명과 작업 자료를 확인하세요.</span></p>
+        ${w.comparison ? `<details class="case-step" name="case-evidence"><summary>가이드와 완성 영상 동시 비교</summary>${sheetComparison(w)}</details>` : ''}
+        ${w.process.map((p,i) => { const media=w.processStepMedia?.[i]; return `<details class="case-step" name="case-evidence"><summary><span>${String(i+1).padStart(2,'0')}</span>${esc(stepTitles[w.id]?.[i] || `단계 ${i+1}`)}</summary><div class="case-step-body"><p>${esc(p)}</p>${media ? `<figure><a href="${esc(media.src)}" target="_blank" rel="noopener"><img src="${esc(media.src)}" alt="${esc(media.cap)}" loading="lazy"></a><figcaption>${esc(media.cap)}</figcaption></figure>` : ''}</div></details>`; }).join('')}
+        ${w.processMedia.length ? `<details class="case-step" name="case-evidence"><summary>작업 화면 · 레퍼런스 ${w.processMedia.length}장</summary>${sheetProcessMedia(w)}</details>` : ''}
+        <button type="button" class="case-next" data-case-goto="result">작품과 결과 다시 보기 →</button>
+      </section>
     </div>`;
-
   setupComparison();
   panel.querySelectorAll('video').forEach(video => video.addEventListener('play', () => {
     panel.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); });
@@ -559,7 +562,7 @@ function openSheet(id) {
   document.body.classList.add('no-scroll');
   document.querySelectorAll('body > header, body > nav, body > main, body > footer').forEach(el => { el.inert = true; });
   panel.scrollTop = 0;
-  $('.ak-sheet-close', panel).focus();
+  $('.case-close', panel).focus();
 }
 
 function closeSheet() {
@@ -573,6 +576,38 @@ function closeSheet() {
   panel.innerHTML = '';
   if (lastFocus) lastFocus.focus();
 }
+
+function selectCaseTab(key, focus = false) {
+  panel.querySelectorAll('[data-case-tab]').forEach(tab => {
+    const active = tab.dataset.caseTab === key;
+    tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1;
+    if (active && focus) tab.focus();
+  });
+  panel.querySelectorAll('[role="tabpanel"]').forEach(p => p.hidden = p.id !== `case-${key}`);
+  panel.querySelectorAll('video').forEach(v => v.pause());
+  panel.querySelector('.case-content').scrollTop = 0;
+}
+panel.addEventListener('click', e => {
+  const tab = e.target.closest('[data-case-tab], [data-case-goto]');
+  if (tab) selectCaseTab(tab.dataset.caseTab || tab.dataset.caseGoto, true);
+  const doc = e.target.closest('[data-document]');
+  if (doc) {
+    panel.querySelectorAll('[data-document]').forEach(b => b.setAttribute('aria-pressed', String(b === doc)));
+    panel.querySelectorAll('[data-document-page]').forEach(p => p.hidden = p.dataset.documentPage !== doc.dataset.document);
+  }
+});
+panel.addEventListener('keydown', e => {
+  const tab = e.target.closest('[data-case-tab]');
+  if (!tab || !['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return;
+  e.preventDefault();
+  const tabs = [...panel.querySelectorAll('[data-case-tab]')];
+  const index = tabs.indexOf(tab);
+  const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length-1 : (index + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+  selectCaseTab(tabs[next].dataset.caseTab, true);
+});
+panel.addEventListener('toggle', e => {
+  if (e.target.matches('.case-step') && !e.target.open) e.target.querySelectorAll('video').forEach(v => v.pause());
+}, true);
 
 document.addEventListener('click', e => {
   const card = e.target.closest('[data-ak-work]');
@@ -626,6 +661,33 @@ if (hashTab) {
   setArchive(true);
   archive.querySelector(`[data-ak-tab="${hashTab}"]`).click();
 }
+
+const routeAliases = { featured: 'selected', top: 'hero', work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'stack', cinematic: 'archive', artfilm: 'archive', commercial: 'archive', liveaction: 'archive', subtitle: 'archive', 'ai-image': 'archive', photography: 'archive', dashboard: 'archive' };
+window.akNavigate = (id, writeHistory = true) => {
+  const route = routeAliases[id] || id || 'selected';
+  const active = ['selected','research','workflows','archive','stack','hero'].includes(route) ? route : 'selected';
+  closeSheet();
+  for (const [key, element] of Object.entries({ selected: 'featured', research: 'research', workflows: 'workflows', archive: 'archive', stack: 'stack', hero: 'hero' })) document.getElementById(element).hidden = key !== active;
+  $('#portfolio-intro').hidden = active !== 'selected';
+  document.querySelectorAll('[data-nav]').forEach(a => { a.classList.toggle('is-active', a.dataset.nav === active); if (a.dataset.nav === active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  document.querySelectorAll('main video').forEach(v => v.pause());
+  if (active === 'archive') { setArchive(true); relayout(); }
+  document.body.dataset.portfolioView = active;
+  document.body.classList.remove('menu-open');
+  $('#menu-toggle').setAttribute('aria-expanded','false');
+  if (writeHistory && location.hash !== `#${active}`) history.pushState(null, '', `#${active}`);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  window.dispatchEvent(new Event('resize'));
+};
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[data-portfolio-route], a.skip-link, #hero a[href="#selected"]');
+  if (!a) return;
+  e.preventDefault(); window.akNavigate(a.dataset.portfolioRoute || 'selected');
+});
+history.scrollRestoration = 'manual';
+window.addEventListener('load', () => requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' })));
+window.addEventListener('popstate', () => window.akNavigate(location.hash.slice(1), false));
+window.addEventListener('hashchange', () => window.akNavigate(location.hash.slice(1), false));
 
 renderWorks();
 watchCardVideos();
