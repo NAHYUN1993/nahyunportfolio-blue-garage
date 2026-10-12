@@ -140,3 +140,26 @@
 @media (max-width: 760px) {
   .browse-mode .ak-tabs { top: calc(var(--bar) + 44px); }
 }
+/* Persistent frame: introduction → category navigation/content → capabilities. */
+.browse-mode main { padding-top: 0; }
+.browse-mode #hero.character-hero { height: 100svh; min-height: 540px; margin-bottom: 0; }
+.browse-mode #hero .character-stage { position: relative; height: 100%; }
+.browse-mode #topbar .nav-mail { display: block; margin-left: auto; }
+.browse-mode #menu-toggle, .browse-mode #menu-links { display: none; }
+.browse-mode #portfolio-nav { position: sticky; top: var(--bar); z-index: 90; background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 0 var(--pad); }
+.browse-mode #portfolio-nav #nav-links { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0; margin: 0; }
+.browse-mode #portfolio-nav a { display: flex; align-items: center; justify-content: center; min-height: 60px; padding: 12px 8px; border-bottom: 3px solid transparent; font-size: 15px; }
+.browse-mode #portfolio-nav a.is-active { border-color: var(--ink); font-weight: 750; }
+.browse-mode #portfolio-content { padding-top: 28px; }
+.browse-mode #portfolio-content > section { margin-bottom: 0; }
+.browse-mode #stack { margin-top: 48px; margin-bottom: 40px; padding-top: 28px; border-top: 1px solid var(--line); scroll-margin-top: calc(var(--bar) + 60px); }
+.browse-mode .ak-archive-body { padding-bottom: 16px; }
+@media (max-width: 760px) {
+  .browse-mode main { padding-top: 0; }
+  .browse-mode #hero.character-mobile { margin-bottom: 24px; }
+  .browse-mode #portfolio-nav { padding: 0 10px; }
+  .browse-mode #portfolio-nav a { min-height: 50px; padding: 10px 2px; font-size: 12px; letter-spacing: -.04em; }
+  .browse-mode #portfolio-content { padding-top: 22px; }
+  .browse-mode #stack { margin-top: 36px; padding-top: 24px; }
+  .browse-mode .ak-tabs { top: calc(var(--bar) + 50px); }
+}

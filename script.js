@@ -769,11 +769,9 @@ const techStack = [
 /* ── Config ── */
 const SECTIONS = [
   { id: 'selected', label: '대표 작업' },
-  { id: 'research', label: '표정·얼굴 연구' },
   { id: 'workflows', label: '제작 자동화' },
-  { id: 'archive',  label: '전체 작업' },
-  { id: 'stack',    label: '제작 역량' },
-  { id: 'hero', label: '소개·쇼릴' }
+  { id: 'research', label: '표정·얼굴 연구' },
+  { id: 'archive', label: '전체 작업' }
 ];
 
 /* 구 URL 앵커 호환: 예전 섹션 id로 들어와도 새 섹션으로 보냄 */
@@ -878,7 +876,7 @@ function renderNav() {
   document.querySelector('.brand').addEventListener('click', (e) => {
     e.preventDefault();
     closeMenu();
-    goTo('selected');
+    goTo('hero');
   });
   const links = SECTIONS.map(s => `<a href="#${s.id}" data-nav="${s.id}">${s.label}</a>`).join('');
   byId('nav-links').innerHTML = links;
@@ -1431,7 +1429,8 @@ function init() {
 
   /* 앵커로 들어온 경우 첫 페인트 전에 위치를 잡아 상단이 번쩍이지 않게 한다 */
   const hash = location.hash.replace('#', '');
-  goTo(hash || 'selected');
+  if (window.akNavigate) window.akNavigate(hash || 'selected', false, false);
+  else if (hash) goTo(hash);
 }
 
 document.addEventListener('DOMContentLoaded', init);

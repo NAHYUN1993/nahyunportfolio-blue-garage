@@ -355,7 +355,7 @@
       frame = 0;
       const rect = root.getBoundingClientRect();
       const range = Math.max(1, root.offsetHeight - stage.offsetHeight);
-      const p = disabled ? 0 : clamp(-rect.top / range);
+      const p = disabled || document.body.classList.contains('browse-mode') ? 0 : clamp(-rect.top / range);
       const visible = rect.bottom > 0 && rect.top < innerHeight;
       const modalOpen = document.body.classList.contains('no-scroll');
       const inactive = !visible || document.hidden || modalOpen;

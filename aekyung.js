@@ -663,21 +663,26 @@ if (hashTab) {
 }
 
 const routeAliases = { featured: 'selected', top: 'hero', work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'stack', cinematic: 'archive', artfilm: 'archive', commercial: 'archive', liveaction: 'archive', subtitle: 'archive', 'ai-image': 'archive', photography: 'archive', dashboard: 'archive' };
-window.akNavigate = (id, writeHistory = true) => {
+function scrollToPortfolioRoute(route) {
+  const target = route === 'hero' ? $('#hero') : route === 'stack' ? $('#stack') : $('#portfolio-nav');
+  const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar')) || 64;
+  window.scrollTo({ top: route === 'hero' ? 0 : Math.max(0, (route === 'stack' ? target.getBoundingClientRect().top : $('#hero').getBoundingClientRect().bottom + (parseFloat(getComputedStyle($('#hero')).marginBottom) || 0)) + window.scrollY - offset), behavior: 'instant' });
+}
+window.akNavigate = (id, writeHistory = true, scroll = true) => {
   const route = routeAliases[id] || id || 'selected';
-  const active = ['selected','research','workflows','archive','stack','hero'].includes(route) ? route : 'selected';
+  const active = ['selected','research','workflows','archive'].includes(route) ? route : (document.body.dataset.portfolioView || 'selected');
   closeSheet();
-  for (const [key, element] of Object.entries({ selected: 'featured', research: 'research', workflows: 'workflows', archive: 'archive', stack: 'stack', hero: 'hero' })) document.getElementById(element).hidden = key !== active;
-  $('#portfolio-intro').hidden = active !== 'selected';
+  for (const [key, element] of Object.entries({ selected: 'featured', research: 'research', workflows: 'workflows', archive: 'archive' })) document.getElementById(element).hidden = key !== active;
   document.querySelectorAll('[data-nav]').forEach(a => { a.classList.toggle('is-active', a.dataset.nav === active); if (a.dataset.nav === active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
-  document.querySelectorAll('main video').forEach(v => v.pause());
+  document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
   if (active === 'archive') { setArchive(true); relayout(); }
   document.body.dataset.portfolioView = active;
   document.body.classList.remove('menu-open');
   $('#menu-toggle').setAttribute('aria-expanded','false');
-  if (writeHistory && location.hash !== `#${active}`) history.pushState(null, '', `#${active}`);
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  const hash = ['hero','stack'].includes(route) ? route : active;
+  if (writeHistory && location.hash !== `#${hash}`) history.pushState(null, '', `#${hash}`);
   window.dispatchEvent(new Event('resize'));
+  if (scroll) scrollToPortfolioRoute(route);
 };
 document.addEventListener('click', e => {
   const a = e.target.closest('a[data-portfolio-route], a.skip-link, #hero a[href="#selected"]');
@@ -685,7 +690,7 @@ document.addEventListener('click', e => {
   e.preventDefault(); window.akNavigate(a.dataset.portfolioRoute || 'selected');
 });
 history.scrollRestoration = 'manual';
-window.addEventListener('load', () => requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' })));
+window.addEventListener('load', () => requestAnimationFrame(() => scrollToPortfolioRoute(routeAliases[location.hash.slice(1)] || location.hash.slice(1) || 'hero')));
 window.addEventListener('popstate', () => window.akNavigate(location.hash.slice(1), false));
 window.addEventListener('hashchange', () => window.akNavigate(location.hash.slice(1), false));
 
