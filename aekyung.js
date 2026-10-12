@@ -166,32 +166,6 @@ const works = [
     tools: ['ChatGPT', 'Higgsfield Soul', 'Kling', 'Seedance 2.0']
   },
   {
-    id: 'medihel',
-    layout: 'wide',
-    tags: ['뷰티', 'AI 제작'],
-    title: '메디힐 토너패드',
-    meta: '가로 브랜드 필름 · 메디힐 공모전 출품작',
-    role: '콘셉트 기획 · 인물·스타일 설계 · AI 영상 제작 · 제품 합성 · 편집',
-    outcome: '인물의 일관성과 제품 정보를 함께 담은 브랜드 필름 완성',
-    line: '완벽주의자 캐릭터로 밀착 USP를 표현하고, 장면 간 인물·의상·조명을 일관되게 구성',
-    thumb: `${P3}/Thumbnails/공모전_메디힐.png`,
-    preview: 'videos/preview/medihel.mp4?v=3',
-    driveId: '1eSSpwG9XS92l4zofZlsaio4MO2V_PiHY',
-    goal: '패드의 밀착력을 ‘1mm의 빈틈도 허락하지 않는 완벽주의자’ 캐릭터로 표현했습니다. 팩토·닦토·흡토의 사용 루틴을 연결해 제품의 특징과 사용법을 함께 전달했습니다.',
-    process: [
-      'NotebookLM으로 뷰티 시장 리서치',
-      '흔한 감성 뷰티 광고와 차별화하기 위해 상반된 키워드를 의도적으로 충돌시켜 \'1mm의 빈틈도 허락하지 않는 완벽주의자\' 컨셉 도출 · 패드가 얼굴에 빈틈없이 밀착된다는 USP를 인물의 성격으로 표현',
-      'Midjourney로 톤앤무드와 인물 페르소나 설정',
-      'Nano Banana로 장면 간 인물·의상·조명 일관성 유지',
-      'ComfyUI 워크플로우로 다양한 카메라 앵글 일괄 생성',
-      'AI가 왜곡한 로고·텍스트 영역에 실제 제품 에셋 합성',
-      'Kling으로 영상화, Premiere Pro로 최종 편집'
-    ],
-    results: [],
-    processMedia: [1, 2, 3, 4, 5, 6].map(n => `${P3}/주요장면/메디힐/메디힐 주요장면_0${n}.png`),
-    tools: ['NotebookLM', 'Midjourney', 'Nano Banana', 'ComfyUI', 'Kling', 'Premiere Pro']
-  },
-  {
     id: 'pure-solution',
     layout: 'pano',
     tags: ['인스타그램 캐러셀', 'AI 제작'],
