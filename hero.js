@@ -173,9 +173,10 @@
     };
   }
 
-  // Preserve the original continuous take for directional tracking.
-  // The take has no right → front segment: neutral returns show the matching
-  // original poster immediately instead of travelling around the ring to left.
+  // One generated take: front → left → up → right → down → left → front.
+  // Only that video is shown, always fully opaque. The cursor angle scrubs its
+  // ring part; leaving and returning to the front use the take's own
+  // front ↔ left frames, so every change is real footage.
   function makeLoopGaze(container, stage) {
     // [degrees from screen-left through up, video seconds]; measured by eye.
     // 1.79s and 7.71s are the closest frames of the two left holds, so going
@@ -210,17 +211,6 @@
     function tick(now) {
       raf = 0;
       if (!active || document.hidden || !ready) return;
-      if (goal === null) {
-        phase = 'front'; t = 0; phi = 0; lastTime = 0;
-        // Hide the directional frame immediately, including during a pending seek.
-        // loadeddata/seeked retries the rewind while the neutral poster is visible.
-        video.style.opacity = '0';
-        if (!video.seeking && video.currentTime > .02) video.currentTime = 0;
-        container.dataset.pose = 'front';
-        container.dataset.angle = '0.0';
-        container.dataset.videoTime = '0.000';
-        return;
-      }
       const dt = lastTime ? Math.min(40, now - lastTime) : 16;
       lastTime = now;
       const play = dt / 1000 * SPEED;
