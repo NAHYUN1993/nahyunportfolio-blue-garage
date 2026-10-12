@@ -873,14 +873,8 @@ function findProject(id) {
    NAV
 ═══════════════════════════════════════════════ */
 function renderNav() {
-  document.querySelector('.brand').addEventListener('click', (e) => {
-    e.preventDefault();
-    closeMenu();
-    goTo('hero');
-  });
   const links = SECTIONS.map(s => `<a href="#${s.id}" data-nav="${s.id}">${s.label}</a>`).join('');
   byId('nav-links').innerHTML = links;
-  byId('menu-links').innerHTML = links;
 
   document.querySelectorAll('[data-nav]').forEach(a => {
     a.addEventListener('click', (e) => {
@@ -890,18 +884,15 @@ function renderNav() {
     });
   });
 
-  byId('menu-toggle').addEventListener('click', () => {
-    document.body.classList.contains('menu-open') ? closeMenu() : openMenu();
-  });
 }
 
 function openMenu() {
   document.body.classList.add('menu-open');
-  byId('menu-toggle').setAttribute('aria-expanded', 'true');
+  byId('menu-toggle')?.setAttribute('aria-expanded', 'true');
 }
 function closeMenu() {
   document.body.classList.remove('menu-open');
-  byId('menu-toggle').setAttribute('aria-expanded', 'false');
+  byId('menu-toggle')?.setAttribute('aria-expanded', 'false');
 }
 
 function goTo(id) {

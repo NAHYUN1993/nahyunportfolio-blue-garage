@@ -14,25 +14,16 @@
 
   <link rel="preload" href="./fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./fonts/pretendard/pretendard.css">
-  <link rel="stylesheet" href="./styles.css?v=20261012-jyp14">
-  <link rel="stylesheet" href="./hero.css?v=20261012-jyp14">
-  <link rel="stylesheet" href="./aekyung.css?v=20261012-jyp14">
-  <link rel="stylesheet" href="./browse.css?v=20261012-jyp14">
+  <link rel="stylesheet" href="./styles.css?v=20261012-jyp15">
+  <link rel="stylesheet" href="./hero.css?v=20261012-jyp15">
+  <link rel="stylesheet" href="./aekyung.css?v=20261012-jyp15">
+  <link rel="stylesheet" href="./browse.css?v=20261012-jyp15">
   <link rel="preload" as="image" href="./assets/character/gaze-neutral.jpg" fetchpriority="high">
 </head>
 <body class="browse-mode">
 
   <a class="skip-link" href="#selected">본문으로 건너뛰기</a>
 
-  <header id="topbar">
-    <a class="brand" href="#top">LEE NAHYUN</a>
-    <a class="nav-mail" href="mailto:yk6838@gmail.com">yk6838@gmail.com</a>
-    <button id="menu-toggle" aria-expanded="false" aria-controls="menu-links" aria-label="메뉴 열기">
-      <span></span><span></span>
-    </button>
-  </header>
-
-  <nav id="menu-links" aria-label="모바일 섹션"></nav>
 
   <main id="top">
     <section id="hero" aria-label="이나현의 인터랙티브 포트폴리오"></section>
@@ -41,7 +32,7 @@
     <!-- 메뉴로 한 영역씩 탐색하고, 작품 상세에서 목적·과정·결과를 선택한다. -->
     <section id="featured">
       <div id="selected" class="ak-work">
-      <header class="featured-head"><h2>대표 작업<span>.</span></h2><p class="ak-sec-sub">작품을 선택하면 완성본과 목적·과정·결과를 볼 수 있습니다.</p></header>
+      <header class="featured-head"><h2>대표 작업<span>.</span></h2><p class="ak-sec-sub">작품을 선택하면 작품의 기획 의도와 제작 과정을 볼 수 있습니다.</p></header>
       <div class="ak-grid" id="ak-grid"></div>
       </div>
     </section>
@@ -82,12 +73,8 @@
     </div>
 
     <section id="stack" class="sec">
-      <header class="sec-head"><h2>제작 역량<span class="ak-dot">.</span></h2></header>
-      <div class="ak-tools">
-        <div><h3>카메라·동작 설계</h3><p>Blender 프리비즈와 ComfyUI의 DWPose·Depth를 결합해 카메라와 안무를 시각화합니다.</p></div>
-        <div><h3>인물·스타일 일관성</h3><p>Nano Banana와 Midjourney로 인물 시트와 톤앤무드를 정리하고 장면의 기준을 잡습니다.</p></div>
-        <div><h3>영상 생성·후반 작업</h3><p>Seedance·Kling으로 영상화하고 Premiere Pro로 편집합니다. After Effects·Photoshop을 영상디자인 작업에 활용합니다.</p></div>
-      </div>
+      <header class="sec-head"><h2>사용 툴</h2></header>
+      <div class="ak-tools"><div><h3>편집·디자인</h3><ul class="tool-list"><li>Premiere Pro</li><li>After Effects</li><li>Photoshop</li><li>Lightroom</li></ul></div><div><h3>AI 이미지·영상</h3><ul class="tool-list"><li>Nano Banana</li><li>Midjourney</li><li>Higgsfield</li><li>Seedance</li><li>Kling</li><li>Veo</li></ul></div><div><h3>3D·워크플로우</h3><ul class="tool-list"><li>Blender</li><li>ComfyUI</li><li>Antigravity</li></ul></div><div><h3>음성·음악</h3><ul class="tool-list"><li>Whisper</li><li>ElevenLabs</li><li>Suno</li></ul></div><div><h3>AI 어시스턴트</h3><ul class="tool-list"><li>ChatGPT</li><li>Claude</li><li>Codex</li></ul></div></div>
     </section>
   </main>
 
@@ -109,9 +96,9 @@
     <div class="ak-sheet-panel" id="ak-sheet-panel"></div>
   </div>
 
-  <script src="./hero-config.js?v=20261012-jyp14"></script>
-  <script src="./hero.js?v=20261012-jyp14"></script>
-  <script src="./script.js?v=20261012-jyp14"></script>
-  <script src="./aekyung.js?v=20261012-jyp14"></script>
+  <script src="./hero-config.js?v=20261012-jyp15"></script>
+  <script src="./hero.js?v=20261012-jyp15"></script>
+  <script src="./script.js?v=20261012-jyp15"></script>
+  <script src="./aekyung.js?v=20261012-jyp15"></script>
 </body>
 </html>

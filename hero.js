@@ -345,7 +345,7 @@
     const endTime = 4.9;
     // Measured display interior in the final frame of the new 5-second take.
     const screen = { x: 620 / 1920, y: 572 / 1080, w: 610 / 1920, h: 350 / 1080 };
-    header.classList.add('on-character');
+    header?.classList.add('on-character');
     function seek() {
       if (!videoReady || video.seeking || disabled) return;
       const t = Math.min(desiredTime, Math.max(0, video.duration - .05));
@@ -416,7 +416,7 @@
       controls.style.opacity = 1 - smooth(.78, .90, p);
       controls.style.visibility = p > .90 ? 'hidden' : 'visible';
       controls.inert = p > .90;
-      header.classList.toggle('is-scrolled', p > .86 || rect.bottom < g.height * .5);
+      header?.classList.toggle('is-scrolled', p > .86 || rect.bottom < g.height * .5);
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(paint); };
     function measure() {

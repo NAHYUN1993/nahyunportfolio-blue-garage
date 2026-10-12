@@ -28,7 +28,11 @@ const works = [
   "video": "videos/out-of-frame.mp4",
   "poster": "images/out-of-frame/poster.jpg",
   "goal": "정해진 틀 밖에서 자신의 다음 장면을 선택하는 솔로 아이돌을 소개합니다. 앨범 공개 전의 콘셉트 트레일러를 상정해, 설명적인 서사보다 낯선 상황을 대하는 태도와 시선으로 캐릭터를 드러내고자 했습니다.",
-  "conceptBeats": ["수영장 — 정장 차림의 인물이 분홍색 회전식 전화기를 너무 당연하게 다룹니다. 장소·복장·행동의 불일치로 낯선 일상과 캐릭터의 태연함을 보여줍니다.", "붉은 코트 — 이미 선이 그어진 공간에 직접 원을 그립니다. 바깥의 규칙뿐 아니라 자신이 만드는 경계도 있다는 양면성을 담고, 손을 털며 다음 장면으로 넘어갑니다.", "작업실 — 겹친 반투명 천 사이에서 얼굴과 시선이 드러납니다. 마지막 “그다음은?”은 이후를 스스로 선택하려는 태도이자, 앞으로 공개될 아티스트의 이야기를 기다리게 하는 질문입니다."],
+  "conceptBeats": [
+    "수영장 — 정장 차림의 인물이 분홍색 회전식 전화기를 너무 당연하게 다룹니다. 장소·복장·행동의 불일치로 낯선 일상과 캐릭터의 태연함을 보여줍니다.",
+    "붉은 코트 — 이미 선이 그어진 공간에 직접 원을 그립니다. 바깥의 규칙뿐 아니라 자신이 만드는 경계도 있다는 양면성을 담고, 손을 털며 다음 장면으로 넘어갑니다.",
+    "작업실 — 겹친 반투명 천 사이에서 얼굴과 시선이 드러납니다. 마지막 “그다음은?”은 이후를 스스로 선택하려는 태도이자, 앞으로 공개될 아티스트의 이야기를 기다리게 하는 질문입니다."
+  ],
   "process": [
     "공간 기획 · Midjourney에서 blue anime, ghost, wes anderson, moodboard #34 등의 무드보드를 단독·조합으로 탐색하고 수영장·붉은 코트·반투명 천이 있는 작업실을 선정했습니다. 수영장에는 색감을 맞춘 분홍색 회전식 전화기를 배치했습니다.",
     "캐릭터 레퍼런스 · 안면 계측 연구에 사용한 캐릭터 B를 출발점으로 얼굴·헤어·의상을 정리한 캐릭터 시트를 적용했습니다. 인물 시트와 공간 이미지를 별도 레퍼런스로 제공해 같은 인물이 서로 다른 장소에 등장하도록 설계했습니다.",
@@ -37,8 +41,6 @@ const works = [
     "최종 편집 · 수영장의 소매 정리와 분필 줍는 장면을 삭제해 수중 샷에서 선 긋기로 바로 연결했습니다. 코트는 손을 털고 뻗기 직전에 잘라 작업실로 전환했습니다. 원본 대사·현장음을 살리고 엔딩 타이틀을 제거해 21.5초로 압축했습니다."
   ],
   "results": [],
-  "findings": "생성 결과를 그대로 잇기보다 행동의 시작과 끝을 다시 선택하는 편집이 중요했습니다. 불필요한 제스처와 공간 전환을 덜어내고, 마지막 시선과 짧은 대사가 남도록 구성했습니다.",
-  "limitation": "얼굴 연구의 기준 캐릭터와 레퍼런스 구성 경험을 활용했습니다. 이 최종 영상 전체에 대한 프레임별 안면 계측이나 정량적 일관성 검증은 수행하지 않았습니다.",
   "processMedia": [
     {
       "src": "images/out-of-frame/character-sheet.png",
@@ -120,7 +122,6 @@ const works = [
     "82장을 자체 기준으로 제작 승인 55장, 조건부 11장, R&D 참고 16장으로 분류하고 선택 이유를 기록했습니다. 이후 제작에서 같은 감정과 강도를 다시 지시할 수 있도록 프롬프트와 선별 기준을 함께 남겼습니다."
   ],
   "findings": "FACS 지시가 모든 감정에서 더 좋은 결과를 만들지는 않았습니다. 테스트 2의 진심 어린 미소는 FACS 지시, 억지웃음은 감정명 지시 결과를 선택했습니다.",
-  "limitation": "승인·조건부는 개인 연구의 선별 기준입니다. 표정 비교 이미지와 기록을 정리한 연구이며, 최종 영상의 연기 품질을 측정한 결과는 아닙니다.",
   "results": [
     {
       "n": "82",
@@ -183,8 +184,6 @@ const works = [
     "레퍼런스만 / 레퍼런스+스펙 / 스펙만 조건으로 비교했습니다. 6개 모델의 지원 조건에 따라 3개 장면에서 69장을 생성했습니다.",
     "ArcFace 코사인 유사도와 안면 계측, 비교 이미지를 함께 검토하고 모델별 결과와 프롬프트를 연결했습니다."
   ],
-  "findings": "스펙 추가 효과는 모델별로 달랐습니다. GPT Image 2의 평균 유사도는 0.72→0.78, Seedream은 0.83→0.83으로 나타났습니다.",
-  "limitation": "단일 캐릭터에 대한 실험이며 모델별 샘플 수와 지원 조건이 다릅니다. 유사도는 정확도(%)가 아니며, 최종 영상 전체에 대한 일관성 측정 결과는 아닙니다.",
   "results": [
     {
       "n": "69",
@@ -391,17 +390,18 @@ const works = [
   {
     id: 'lg-youth',
     layout: 'tall',
-    tags: ['인물 중심 숏폼', '우수상'],
+    tags: ['공모전', 'AI 숏폼'],
     title: '가장 나다운 순간',
-    meta: 'LG 유쓰 AI 쇼츠 페스티벌 우수상 · 세로 숏폼',
+    meta: 'LG 유쓰 AI 쇼츠 페스티벌 출품작 · 세로 숏폼',
     line: '상반된 취향을 가진 인물의 성격을 셀피 시점과 짧은 반전으로 표현',
     role: '콘셉트 기획 · 인물 이미지 생성 · 셀피 시점 연출 · AI 영상 제작',
     outcome: 'LG 유쓰 AI 쇼츠 페스티벌 우수상 수상',
     video: 'videos/lg-youth-festival.mp4',
     poster: 'images/posters/lg-youth-festival.jpg',
-    goal: '커피 향은 좋아하지만 커피는 못 마시고, 책은 사지만 읽지는 않는 모순적인 취향에서 이야기를 시작했습니다. 셀피처럼 가까운 시점으로 인물의 성격을 보여주고, “무너지면 주워 먹는 사람”이라는 반전으로 마무리했습니다.',
+    goal: 'LG 유쓰 AI 쇼츠 페스티벌의 ‘나다움’ 주제에 맞춰 제출한 작품입니다. 상반된 취향과 서툰 순간들을 일상적인 셀피 시점으로 담고, ‘무너지면 주워 먹는 사람’이라는 태도로 나다움을 표현했습니다.',
     process: [
-      '공모전 주제인 가장 나다운 순간을 상반된 취향과 행동으로 풀고, 마지막에 인물을 대하는 태도가 드러나도록 구성',
+      '‘나다움’에는 정해진 답이 없어 제작보다 기획에 더 많은 시간을 썼습니다. 좋아하는 것과 실제 행동이 어긋나는 순간들을 돌아보고, 그 모순과 서툶을 대하는 태도를 이야기의 중심으로 잡았습니다.',
+      '주최 브랜드인 LG유플러스 유쓰와 ‘심플리 유플러스’ 슬로건, 취향과 일상을 담으라는 부문 설명을 함께 살폈습니다. 기술을 과시하는 화려한 연출을 덜어내고, 일상적이고 정서적인 톤을 선택했습니다.',
       'ChatGPT로 이미지 프롬프트를 정리하고 Higgsfield Soul로 인물 이미지 생성',
       '화면 밖 팔의 방향과 시선으로 셀피 시점을 구성하고, 인물의 외형과 스타일을 장면의 공통 기준으로 사용',
       'Kling과 Seedance 2.0으로 영상화하고 컷 전환과 카메라 무빙에 변화를 주어 짧은 이야기로 완성'
@@ -419,14 +419,15 @@ const works = [
     meta: '닥터조 인스타그램 · 4장 파노라마 캐러셀',
     role: '캐러셀 기획 · 파노라마 구성 · 인물·오브제 배치',
     outcome: '4장의 연결된 비주얼로 제품을 소개하고 외부링크 클릭 422건 기록',
-    line: '인물과 오브제가 다음 장으로 이어지는 4장 구성 · 외부링크 클릭 422건',
+    line: '식집사의 하루를 따라 넘기며 제품 사용 장면을 만나는 파노라마 캐러셀',
     video: 'videos/pure-solution.mp4',
     poster: 'images/posters/pure-solution.jpg',
     slides: [1, 2, 3, 4].map(n => `images/pure-solution/slide-${n}.webp`),
-    goal: '식물 관리가 일상에 녹아드는 모습을 하나의 파노라마로 구성했습니다. 장면의 연결을 따라 다음 장을 넘기며 제품을 살펴보도록 기획했습니다.',
+    goal: '퓨어솔루션을 식집사의 일상 속 관리 루틴으로 소개하고자 했습니다. 한 장의 제품 광고보다 식물과 보내는 하루를 순서대로 보여주기 위해 캐러셀을 선택했습니다. 식물을 바라보고 돌보는 장면에서 제품을 사용하는 장면으로 이어지게 해, 생활 속에서 제품의 쓰임을 자연스럽게 발견하도록 구성했습니다.',
     process: [
-      '하나의 파노라마를 4장으로 나누고, 인물과 오브제가 장의 경계를 넘나들도록 배치',
-      '화면이 다음 장에서 이어지기 때문에, 넘기는 행위 자체가 콘텐츠가 되도록 설계'
+      '첫 장은 식물과 함께하는 공간과 인물로 식집사의 일상을 소개하고, 다음 장에서는 물주기와 식물을 돌보는 행동으로 이어지도록 구성했습니다.',
+      '돌보는 장면에 제품을 넣고 희석하는 사용 모습을 배치했습니다. 제품 설명만 따로 떼어내지 않고, 앞에서 보여준 식물 관리 행동의 다음 순서로 연결했습니다. 마지막에는 패키지와 브랜드를 보여주며 제품을 기억하도록 마무리했습니다.',
+      '초록 배경과 인물·식물·오브제를 하나의 파노라마로 연결한 뒤 4장으로 나눴습니다. 장의 경계를 넘어 이어지는 요소가 다음 화면을 궁금하게 만들고, 넘기는 순서가 식집사의 하루와 제품 사용의 흐름이 되도록 배치했습니다.'
     ],
     results: [
       { n: '16,745', label: '조회수' },
@@ -442,8 +443,8 @@ const works = [
 const briefs = {
   'onetake': { purpose: '원하는 카메라 무빙과 안무를 함께 제어', process: '카메라 무빙 직접 지정 → Depth·Pose → AI 생성', result: '6초 원테이크 · 1080p 완성' },
   'out-of-frame': { purpose: '태도와 시선으로 솔로 아이돌의 콘셉트 소개', process: '인물·공간 레퍼런스 설계 → 생성·선별 → 편집', result: '세 공간을 연결한 21.5초 트레일러' },
-  'lg-youth': { purpose: '상반된 취향과 반전으로 인물의 개성 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'LG 유쓰 AI 쇼츠 페스티벌 우수상' },
-  'pure-solution': { purpose: '다음 장을 넘기며 제품을 살펴보도록 기획', process: '인물·오브제가 이어지는 4장 파노라마 구성', result: '조회수 16,745 · 외부링크 클릭 422건' },
+  'lg-youth': { purpose: 'LG 유쓰 공모전의 나다움 주제 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'LG 유쓰 AI 쇼츠 페스티벌 우수상' },
+  'pure-solution': { purpose: '식집사의 일상에서 제품의 쓰임을 자연스럽게 소개', process: '인물·오브제가 이어지는 4장 파노라마 구성', result: '조회수 16,745 · 외부링크 클릭 422건' },
   'expression-lab': { purpose: '이후 제작에서 표정 일관성을 유지할 기준 마련', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
   'identity-lab': { purpose: '여러 장면에서 같은 얼굴을 유지할 기준 마련', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
   'interview-workflow': { purpose: '이야기 흐름을 빠르게 구성하고 편집 공수 절감', process: 'Whisper 전사 → 서사 구성 → Premiere MCP', result: '14개 구간으로 구성한 약 8분 편집 초안' },
@@ -452,8 +453,8 @@ const briefs = {
 const stepTitles = {
   'onetake': ['카메라 무빙 직접 지정', 'ComfyUI에서 뼈대·깊이 추출과 합성', '캐릭터 멀티 레퍼런스', '드래프트 검토와 최종 생성', '음원과 안무 싱크'],
   'out-of-frame': ['공간과 소품 기획', '캐릭터 레퍼런스', '장면별 행동·카메라 연출', '드래프트 검토와 최종 출력', '행동의 시작과 끝을 고르는 편집'],
-  'lg-youth': ['인물과 반전 기획', '인물 이미지 생성', '셀피 시점 연출', '영상 생성과 컷 구성'],
-  'pure-solution': ['4장 파노라마 구성', '장을 넘기는 흐름 설계'],
+  'lg-youth': ['나다움의 해석', '주제·브랜드에 맞춘 톤 결정', '인물 이미지 생성', '셀피 시점 연출', '영상 생성과 컷 구성'],
+  'pure-solution': ['식집사의 하루로 시작', '관리 루틴 안에서 제품 노출', '캐러셀을 선택한 이유와 연결 방식'],
   'expression-lab': ['감정명과 FACS 비교', '강도·복합 감정 실험', '표정 선별과 라이브러리 정리'],
   'identity-lab': ['기준 얼굴 계측', '조건별·모델별 이미지 생성', '계측·유사도·이미지 비교'],
   'interview-workflow': ['음성 전사', '발화 선택과 편집 구성', '타임라인·자막·오디오 출력', 'Premiere Pro MCP 연동과 검토'],
@@ -492,7 +493,7 @@ function renderWorks() {
           <h3 class="ak-card-title">${esc(w.title)}</h3>
           <p class="ak-card-line">${esc(w.line)}</p>
           ${cardResults(w)}
-          <span class="ak-card-cta">목적 · 과정 · 결과 보기 <span aria-hidden="true">↗</span></span>
+          <span class="ak-card-cta">작품 소개 보기 <span aria-hidden="true">↗</span></span>
         </div>
       </button>
     </article>`;
@@ -599,28 +600,24 @@ function openSheet(id) {
   panel.innerHTML = `
     <header class="case-heading"><div><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h2 id="ak-sheet-title">${esc(w.title)}</h2><p>${esc(w.meta)}</p></div><button class="case-close" type="button" data-ak-close aria-label="닫고 목록으로 돌아가기">✕ <span>목록으로</span></button></header>
     <div class="case-tabs" role="tablist" aria-label="작품 상세 내용">
-      <button type="button" role="tab" id="case-result-tab" aria-controls="case-result" aria-selected="true" data-case-tab="result">작품·결과</button>
-      <button type="button" role="tab" id="case-purpose-tab" aria-controls="case-purpose" aria-selected="false" tabindex="-1" data-case-tab="purpose">목적·역할</button>
+      <button type="button" role="tab" id="case-result-tab" aria-controls="case-result" aria-selected="true" data-case-tab="result">작품 소개</button>
       <button type="button" role="tab" id="case-process-tab" aria-controls="case-process" aria-selected="false" tabindex="-1" data-case-tab="process">${w.layout === 'research' ? '연구 과정' : '제작 과정'}</button>
     </div>
     <div class="case-content">
       <section id="case-result" role="tabpanel" aria-labelledby="case-result-tab" tabindex="0">
-        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div><div class="case-result-copy"><h3>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</h3><p>${esc(w.outcome)}</p>
+        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div><div class="case-result-copy"><h3>제작 목적</h3><p>${esc(w.goal)}</p><h3>담당 역할</h3><p>${esc(w.role)}</p>
         ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
-        ${w.findings ? `<h3>확인한 점</h3><p>${esc(w.findings)}</p><p class="case-note">${esc(w.limitation)}</p>` : ''}
         ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
         </div></div>
-      </section>
-      <section id="case-purpose" role="tabpanel" aria-labelledby="case-purpose-tab" tabindex="0" hidden>
-        <div class="case-purpose-grid"><div><h3>만든 목적</h3><p class="case-purpose-text">${esc(w.goal)}</p>${w.conceptBeats ? `<section class="case-concept"><h3>기획 의도 · 세 공간의 흐름</h3><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></section>` : ''}</div><div><h3>담당 역할</h3><p>${esc(w.role)}</p>${w.toolRoles ? `<h3>도구별 역할</h3><dl class="case-tools">${w.toolRoles.map(t => `<div><dt>${esc(t.tool)}</dt><dd>${esc(t.use)}</dd></div>`).join('')}</dl>` : w.tools.length ? `<h3>사용 도구</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p>` : ''}</div></div>
-
       </section>
       <section id="case-process" role="tabpanel" aria-labelledby="case-process-tab" tabindex="0" hidden>
         ${(w.processScreens || []).map(m => `<figure class="case-work-screen"><a href="${esc(m.src)}" target="_blank" rel="noopener"><img src="${esc(m.src)}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}
         ${sheetProcessMedia(w)}
         ${sheetComparison(w)}
         <p class="case-process-intro">${esc(briefs[w.id].process)}</p>
+        ${w.conceptBeats ? `<section class="case-concept"><h3>기획 의도 · 세 공간의 흐름</h3><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></section>` : ''}
         <div class="case-process-steps">${w.process.map((p,i) => `<section class="case-process-step"><h3><span>${String(i+1).padStart(2,'0')}</span>${esc(stepTitles[w.id]?.[i] || `단계 ${i+1}`)}</h3><p>${esc(p)}</p></section>`).join('')}</div>
+        ${w.toolRoles ? `<section class="case-tool-section"><h3>도구별 역할</h3><dl class="case-tools">${w.toolRoles.map(t => `<div><dt>${esc(t.tool)}</dt><dd>${esc(t.use)}</dd></div>`).join('')}</dl></section>` : w.tools.length ? `<section class="case-tool-section"><h3>사용 툴</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p></section>` : ''}
       </section>
     </div>`;
   setupComparison();
@@ -727,7 +724,7 @@ if (hashTab) {
 const routeAliases = { featured: 'selected', top: 'hero', work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'stack', cinematic: 'archive', artfilm: 'archive', commercial: 'archive', liveaction: 'archive', subtitle: 'archive', 'ai-image': 'archive', photography: 'archive', dashboard: 'archive' };
 function scrollToPortfolioRoute(route) {
   const target = route === 'hero' ? $('#hero') : route === 'stack' ? $('#stack') : $('#portfolio-nav');
-  const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar')) || 64;
+  const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar')) || 0;
   window.scrollTo({ top: route === 'hero' ? 0 : Math.max(0, (route === 'stack' ? target.getBoundingClientRect().top : $('#hero').getBoundingClientRect().bottom + (parseFloat(getComputedStyle($('#hero')).marginBottom) || 0)) + window.scrollY - offset), behavior: 'instant' });
 }
 window.akNavigate = (id, writeHistory = true, scroll = true) => {
@@ -740,7 +737,7 @@ window.akNavigate = (id, writeHistory = true, scroll = true) => {
   if (active === 'archive') { setArchive(true); relayout(); }
   document.body.dataset.portfolioView = active;
   document.body.classList.remove('menu-open');
-  $('#menu-toggle').setAttribute('aria-expanded','false');
+  $('#menu-toggle')?.setAttribute('aria-expanded','false');
   const hash = ['hero','stack'].includes(route) ? route : active;
   if (writeHistory && location.hash !== `#${hash}`) history.pushState(null, '', `#${hash}`);
   window.dispatchEvent(new Event('resize'));

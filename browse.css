@@ -165,3 +165,11 @@
   .browse-mode #stack { margin-top: 36px; padding-top: 24px; }
   .browse-mode .ak-tabs { top: calc(var(--bar) + 50px); }
 }
+
+/* The introduction is unobstructed; category navigation sticks to the top. */
+:root { --bar: 0px; }
+.browse-mode #portfolio-nav { top: 0; }
+.tool-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 12px 0 0; }
+.tool-list li { padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; font-size: 14px; }
+.case-tool-section { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.case-concept { margin-bottom: 28px; }
