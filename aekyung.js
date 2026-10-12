@@ -77,14 +77,12 @@ const works = [
     line: 'Blender 프리비즈와 뼈대·깊이 정보를 결합해 카메라와 안무를 함께 제어',
     video: 'videos/onetake.mp4',
     comparison: 'onetake-compare',
-    processStepMedia: {
-      1: { src: 'images/process/comfyui-depthpose.jpg', cap: 'ComfyUI 작업 화면 · 안무 영상에서 DWPose(뼈대)와 Depth(깊이) 추출 · 눌러서 크게 보기 ↗' }
-    },
+    processScreens: [{ src: 'images/process/comfyui-depthpose-workflow.webp', cap: 'ComfyUI 작업 화면 · 안무 영상에서 Depth Anything V2와 DWPose로 깊이·뼈대를 추출하고 합성' }],
     poster: 'images/posters/onetake.jpg',
     goal: '원하는 카메라 경로와 안무가 함께 반영되는 AI 퍼포먼스 영상을 만들고자 했습니다. Blender에서 카메라 무빙을 직접 지정하고, depth·pose 가이드와 멀티 레퍼런스로 움직임과 캐릭터 일관성을 제어했습니다.',
     process: [
       'Blender에서 16mm 광각 카메라의 접근·후퇴 경로와 타이밍을 직접 지정하고, 세트와 함께 프리비즈로 제작',
-      'ComfyUI로 안무 레퍼런스 영상에서 DWPose(뼈대)와 Depth(깊이)를 추출한 뒤, 프리비즈 카메라의 깊이 패스 안에 원근을 맞춰 합성 · 카메라 무빙과 안무를 하나의 레퍼런스 영상으로 제어',
+      'ComfyUI에서 DWPose로 뼈대, Depth Anything V2로 깊이를 추출한 뒤, 프리비즈 카메라의 깊이 패스 안에 원근을 맞춰 합성 · 카메라 무빙과 안무를 하나의 레퍼런스 영상으로 제어',
       'Nano Banana 2로 얼굴·전신 턴어라운드 시트를 제작하고, 캐릭터의 얼굴과 의상을 유지하기 위한 멀티 레퍼런스로 사용',
       'Seedance 2.5 옴니 레퍼런스로 생성 · 480p 드래프트로 카메라와 동작을 먼저 검증하고 1080p로 완성',
       '원곡 음원을 안무 타이밍에 맞춰 싱크'
@@ -99,7 +97,7 @@ const works = [
       { src: `${OT}/turnaround.jpg`, cap: '얼굴·전신 턴어라운드 시트 (Nano Banana 2)', wide: true }
     ],
     musicCredit: '음악: NMIXX – Heavy Serenade',
-    tools: ['Blender', 'ComfyUI', 'DWPose', 'Nano Banana 2', 'Seedance 2.5', 'Premiere Pro']
+    tools: ['Blender', 'ComfyUI', 'Depth Anything V2', 'DWPose', 'Nano Banana 2', 'Seedance 2.5', 'Premiere Pro']
   },
 {
   "layout": "research",
@@ -112,14 +110,14 @@ const works = [
     "FACS · 감정 표현"
   ],
   "meta": "감정명과 FACS 지시 비교 · 표정 라이브러리",
-  "line": "진심 어린 미소와 억지웃음처럼 가까운 감정의 차이를 비교하고, 표정의 강도와 복합 감정을 실험",
+  "line": "장면마다 감정이 달라져도 같은 캐릭터의 표정으로 이어지도록, 감정·강도별 지시와 선택 기준을 정리",
   "role": "표정 비교 실험 · AU·강도 프롬프트 설계 · 결과 선별 · 라이브러리 구성",
-  "goal": "같은 캐릭터가 서로 다른 감정을 어떻게 표현하는지 실험했습니다. 감정명만 지시한 결과와 얼굴 움직임 단위(AU)를 함께 지시한 결과를 비교하고, 장면의 연기 의도에 맞는 표정을 선별했습니다.",
+  "goal": "앞으로 AI 캐릭터 영상에서 감정과 강도가 달라져도 같은 인물의 표정으로 이어지도록, 표정을 지시하고 선별할 기준을 마련하는 연구입니다. 감정명과 얼굴 움직임 단위(AU)를 비교하고, 연기 의도에 맞는 표현과 선택 이유를 쌓아 다음 제작에 활용하고자 합니다.",
   "outcome": "표정 이미지 82장과 프롬프트·연기 의도·선별 이유를 웹 라이브러리로 정리",
   "process": [
     "감정명만 입력한 이미지와 FACS의 얼굴 움직임 단위(AU)를 함께 입력한 이미지를 비교했습니다.",
     "A–E 강도 변화와 두 감정의 조합, 감정이 다른 감정으로 넘어가는 경계 표현을 실험했습니다.",
-    "82장을 자체 기준으로 제작 승인 55장, 조건부 11장, R&D 참고 16장으로 분류하고 선택 이유를 기록했습니다."
+    "82장을 자체 기준으로 제작 승인 55장, 조건부 11장, R&D 참고 16장으로 분류하고 선택 이유를 기록했습니다. 이후 제작에서 같은 감정과 강도를 다시 지시할 수 있도록 프롬프트와 선별 기준을 함께 남겼습니다."
   ],
   "findings": "FACS 지시가 모든 감정에서 더 좋은 결과를 만들지는 않았습니다. 테스트 2의 진심 어린 미소는 FACS 지시, 억지웃음은 감정명 지시 결과를 선택했습니다.",
   "limitation": "승인·조건부는 개인 연구의 선별 기준입니다. 표정 비교 이미지와 기록을 정리한 연구이며, 최종 영상의 연기 품질을 측정한 결과는 아닙니다.",
@@ -176,9 +174,9 @@ const works = [
     "안면 계측 · 얼굴 일관성"
   ],
   "meta": "기준 얼굴 계측 · 6개 모델 · 3개 장면 비교",
-  "line": "기준 얼굴의 비율을 스펙으로 정리하고, 레퍼런스와 함께 입력했을 때 얼굴 일관성이 어떻게 달라지는지 비교",
+  "line": "여러 장면에서 같은 얼굴을 유지하기 위해, 기준 얼굴의 비율과 레퍼런스 적용 조건을 비교·정리",
   "role": "안면 계측 · 조건별 생성 실험 · 유사도 비교 · 프롬프트·측정값 정리",
-  "goal": "같은 얼굴을 다른 장소와 구도에서도 유지할 수 있는지 확인하기 위해 기준 얼굴을 계측했습니다. 얼굴 비율을 설명한 스펙과 이미지 레퍼런스의 조합을 바꾸며 모델별 결과를 비교했습니다.",
+  "goal": "앞으로 같은 AI 캐릭터를 여러 장소·구도·장면에서 제작할 때 얼굴 일관성을 유지할 기준을 마련하는 연구입니다. 기준 얼굴의 특징과 비율을 스펙으로 정리하고, 이미지 레퍼런스와 함께 적용했을 때 어떤 조건이 인물 유지에 도움이 되는지 비교했습니다.",
   "outcome": "6개 모델의 얼굴 비교 이미지 69장, 모델별 프롬프트와 계측·유사도 기록 정리",
   "process": [
     "기준 얼굴의 특징과 비율을 계측하고 생성 지시로 사용할 스펙 문장을 작성했습니다.",
@@ -230,7 +228,18 @@ const works = [
 {
   "layout": "workflow",
   "results": [],
-  "processMedia": [],
+  "processMedia": [
+    {
+      "src": "images/workflows/edit-structure.webp",
+      "cap": "Whisper Large 전사 → LLM 서사 구성 → EDL·FCPXML·자막·오디오 출력 구조",
+      "wide": true
+    },
+    {
+      "src": "images/workflows/edit-mapping.webp",
+      "cap": "원본 발화와 편집 구간·선택 의도를 연결한 대응표",
+      "wide": true
+    }
+  ],
   "galleryLayout": "documents",
   "id": "interview-workflow",
   "title": "인터뷰 편집 자동화",
@@ -238,25 +247,25 @@ const works = [
     "편집 워크플로우",
     "Premiere Pro"
   ],
-  "meta": "인터뷰 전사 → 편집 구성 → 타임라인·자막·오디오",
-  "line": "인터뷰 발화를 분석해 편집 순서를 구성하고, Premiere에서 수정 가능한 타임라인과 자막으로 연결",
-  "role": "편집 구조·자동화 흐름 설계 · AI 도구를 활용한 구현 · Premiere 결과 검토",
-  "goal": "긴 인터뷰에서 필요한 발화를 찾고 편집 순서와 자막을 옮기는 반복 작업을 연결했습니다. 원본 구간과 편집 의도를 함께 기록해 초안을 검토하고 수정할 수 있도록 구성했습니다.",
+  "meta": "Whisper Large 전사 → 서사 구성 → Premiere Pro MCP 연동",
+  "line": "인터뷰의 핵심 발화로 이야기 흐름을 빠르게 구성하고, Premiere에서 수정 가능한 편집 초안까지 연결",
+  "role": "영상의 서사 흐름·발화 선택 기준 설계 · AI 도구를 활용한 구현 · Premiere MCP 연동 · 편집 초안 검토",
+  "goal": "긴 인터뷰에서 핵심 발화를 골라 영상의 도입·전개·마무리를 빠르게 구성하고, 편집 초안을 만드는 데 드는 공수와 시간을 줄이고자 했습니다. 발화의 의미와 원본 타임코드를 연결해 이야기 흐름을 먼저 잡고, Premiere에서 바로 검토·수정할 수 있는 타임라인으로 옮겼습니다.",
   "outcome": "18분 20초 인터뷰를 14개 구간으로 구성한 약 8분 편집 초안과 Premiere 타임라인·자막·오디오",
   "process": [
-    "인터뷰 음성을 전사하고 발화별 시간과 내용을 정리했습니다.",
-    "발화 내용을 바탕으로 도입·문제·경험·비교의 흐름을 구성하고, 선택 구간과 편집 의도를 원본 타임코드에 연결했습니다.",
-    "편집 구성을 타임라인 파일과 자막·오디오로 출력하고 Premiere에서 확인했습니다.",
-    "타임라인과 원본-편집본 대응표를 함께 보며 컷 순서와 구간을 검토할 수 있도록 정리했습니다."
+    "Whisper Large로 18분 20초 인터뷰를 전사하고, 282개 발화 구간의 텍스트와 타임코드를 추출했습니다. 필요한 내용을 찾을 수 있도록 원본 위치를 함께 보존했습니다.",
+    "LLM Editorial Agent로 발화의 의미를 분석해 도입·문제·경험·비교·마무리의 흐름을 구성했습니다. 오프닝 발화와 문장의 끝맺음을 검토하고, 14개 구간을 재배열한 EDL 편집 초안으로 정리했습니다.",
+    "FCPXML v4로 영상·오디오 트랙을 타임라인에 옮기고, 문장 단위 자막을 연결했습니다. FFmpeg로 오디오 레벨을 정리해 Premiere에서 수정할 수 있는 편집 초안을 구성했습니다.",
+    "Premiere Pro MCP를 연결해 편집 명령을 실행하고, 타임라인·자막·오디오를 확인했습니다. 원본-편집본 대응표와 함께 컷의 순서와 길이를 검토했습니다."
   ],
   "gallery": [
     {
-      "src": "images/workflows/edit-timeline.webp",
-      "cap": "Premiere에서 확인한 편집 타임라인 · 영상·자막·오디오 트랙"
+      "src": "images/workflows/edit-premiere-mcp.webp",
+      "cap": "Premiere Pro 작업 화면 · MCP 패널과 편집 명령 실행 로그"
     },
     {
-      "src": "images/workflows/edit-mapping.webp",
-      "cap": "원본 타임코드 → 편집 구간 → 선택 이유 대응표"
+      "src": "images/workflows/edit-timeline.webp",
+      "cap": "Premiere에서 확인한 편집 타임라인 · 영상·자막·오디오 트랙"
     }
   ],
   "galleryCaption": "실제 작업 화면 · 눌러서 원본 크기로 보기",
@@ -268,11 +277,33 @@ const works = [
   ],
   "previewType": "screen",
   "tools": [
-    "Whisper",
-    "LLM",
-    "FCPXML",
-    "FFmpeg",
-    "Premiere Pro"
+    "Whisper Large",
+    "LLM Editorial Agent",
+    "Premiere Pro MCP",
+    "FCPXML v4",
+    "FFmpeg"
+  ],
+  "toolRoles": [
+    {
+      "tool": "Whisper Large",
+      "use": "음성 전사 · 발화별 텍스트와 타임코드 추출"
+    },
+    {
+      "tool": "LLM Editorial Agent",
+      "use": "발화 의미 분석 · 이야기 흐름 구성 · 편집 구간 선택"
+    },
+    {
+      "tool": "FCPXML v4",
+      "use": "영상·오디오 편집 구성을 Premiere 타임라인으로 전달"
+    },
+    {
+      "tool": "Premiere Pro + MCP",
+      "use": "편집 명령 실행 · 타임라인·자막 검토와 수정"
+    },
+    {
+      "tool": "FFmpeg",
+      "use": "오디오 처리 · 레벨 정리"
+    }
   ]
 },
 {
@@ -300,13 +331,13 @@ const works = [
   "meta": "스토리보드 → 이미지 선택 → 영상 생성 · 첫 프로젝트 적용 중",
   "line": "컷별 연출과 생성 결과를 한 화면에서 검토하고, 모델 선택·프롬프트 수정·재생성을 연결한 제작 도구",
   "role": "제작 절차·검토 단계 설계 · AI 도구를 활용한 웹앱 구현 · 컷별 결과 선별",
-  "goal": "기획부터 이미지 선택과 영상 생성까지 흩어진 작업을 컷 단위로 관리하기 위해 제작판을 만들었습니다. 단계별로 사람이 결과를 검토하고 다음 생성을 결정할 수 있도록 구성했습니다.",
+  "goal": "브랜드 숏폼의 기획을 컷별 이미지와 영상으로 옮기는 데 드는 공수를 줄이고, 연출과 결과 판단에 집중하기 위해 제작판을 만들었습니다. 생성 도구를 오가며 결과를 관리하는 대신, 한 화면에서 시안을 비교하고 승인·수정·재생성을 결정하도록 구성했습니다.",
   "outcome": "스토리보드·이미지 비교·승인·재생성 화면 구축, 첫 프로젝트 7개 컷 영상 출력",
   "process": [
-    "브랜드 숏폼의 제작 절차와 캐릭터 규칙을 정리하고, 컷별 연출·내레이션·사운드·프롬프트를 스토리보드로 구성했습니다.",
-    "이미지 시안을 비교해 선택하고, 필요한 컷은 프롬프트나 모델을 바꿔 재생성하도록 검토 화면을 만들었습니다.",
-    "선택한 이미지에서 영상 생성으로 이어지도록 구성하고 컷별 출력 결과와 진행 상태를 확인했습니다.",
-    "첫 프로젝트에서 7개 컷의 영상 출력을 확인하며 제작 절차와 검토 기준을 다듬고 있습니다."
+    "Antigravity 에이전트가 제작 절차와 캐릭터 규칙을 읽고 컷별 연출·내레이션·사운드·프롬프트를 구성하도록 설계했습니다. 기획과 스토리보드는 다음 생성 전에 직접 검토합니다.",
+    "Magnific MCP로 이미지 생성을 연결하고, Flask로 만든 검토 화면에서 Z-Image·Nano Banana 등의 시안을 비교합니다. 컷마다 모델과 프롬프트를 바꾸고 승인하거나 재생성할 수 있습니다.",
+    "선택한 이미지를 바탕으로 MiniMax·Kling 영상 생성 단계로 이어지도록 구성했습니다. 컷별 영상을 재생해 움직임을 확인하고 다음 단계 진행 여부를 결정합니다.",
+    "Python으로 결과 파일을 내려받고 FFmpeg로 조립하는 흐름을 연결했습니다. 프로젝트 상태는 project.json으로 관리하며, 현재 첫 프로젝트의 7개 컷 영상 출력을 확인하고 제작 기준을 다듬고 있습니다."
   ],
   "gallery": [
     {
@@ -324,10 +355,37 @@ const works = [
   "previewType": "screen",
   "tools": [
     "Antigravity",
+    "Magnific MCP",
     "Flask",
-    "MCP",
-    "Python",
-    "FFmpeg"
+    "Z-Image · Nano Banana",
+    "MiniMax · Kling",
+    "Python · FFmpeg"
+  ],
+  "toolRoles": [
+    {
+      "tool": "Antigravity",
+      "use": "제작 규칙을 읽고 단계별 생성 작업을 호출하는 에이전트"
+    },
+    {
+      "tool": "Magnific MCP",
+      "use": "이미지·영상·음성·음악 생성 도구 연동"
+    },
+    {
+      "tool": "Flask",
+      "use": "스토리보드 확인 · 시안 승인·반려 · 프롬프트 수정 화면"
+    },
+    {
+      "tool": "Z-Image · Nano Banana",
+      "use": "컷별 이미지 시안 생성과 비교"
+    },
+    {
+      "tool": "MiniMax · Kling",
+      "use": "승인한 이미지에서 영상 생성"
+    },
+    {
+      "tool": "Python · FFmpeg",
+      "use": "결과 파일 다운로드 · 영상 조립"
+    }
   ]
 },
   {
@@ -386,10 +444,10 @@ const briefs = {
   'out-of-frame': { purpose: '태도와 시선으로 솔로 아이돌의 콘셉트 소개', process: '인물·공간 레퍼런스 설계 → 생성·선별 → 편집', result: '세 공간을 연결한 21.5초 트레일러' },
   'lg-youth': { purpose: '상반된 취향과 반전으로 인물의 개성 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'LG 유쓰 AI 쇼츠 페스티벌 우수상' },
   'pure-solution': { purpose: '다음 장을 넘기며 제품을 살펴보도록 기획', process: '인물·오브제가 이어지는 4장 파노라마 구성', result: '조회수 16,745 · 외부링크 클릭 422건' },
-  'expression-lab': { purpose: '비슷한 감정의 차이와 표정 강도 제어', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
-  'identity-lab': { purpose: '다른 장면에서도 같은 얼굴을 유지하는 조건 확인', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
-  'interview-workflow': { purpose: '발화 선택부터 편집 초안까지 반복 작업 연결', process: '전사·구성 → 타임라인·자막 → Premiere 검토', result: '14개 구간으로 구성한 약 8분 편집 초안' },
-  'production-board': { purpose: '컷별 생성과 사람이 검토하는 과정을 한곳에서 관리', process: '스토리보드 → 이미지 선택·재생성 → 영상 출력', result: '검토용 웹앱 · 첫 프로젝트 7개 컷 출력' }
+  'expression-lab': { purpose: '이후 제작에서 표정 일관성을 유지할 기준 마련', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
+  'identity-lab': { purpose: '여러 장면에서 같은 얼굴을 유지할 기준 마련', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
+  'interview-workflow': { purpose: '이야기 흐름을 빠르게 구성하고 편집 공수 절감', process: 'Whisper 전사 → 서사 구성 → Premiere MCP', result: '14개 구간으로 구성한 약 8분 편집 초안' },
+  'production-board': { purpose: '컷별 제작 공수를 줄이고 연출·결과 판단에 집중', process: 'Antigravity → MCP 생성 → 제작판 검토', result: '검토용 웹앱 · 첫 프로젝트 7개 컷 출력' }
 };
 const stepTitles = {
   'onetake': ['카메라 무빙 직접 지정', 'ComfyUI에서 뼈대·깊이 추출과 합성', '캐릭터 멀티 레퍼런스', '드래프트 검토와 최종 생성', '음원과 안무 싱크'],
@@ -398,7 +456,7 @@ const stepTitles = {
   'pure-solution': ['4장 파노라마 구성', '장을 넘기는 흐름 설계'],
   'expression-lab': ['감정명과 FACS 비교', '강도·복합 감정 실험', '표정 선별과 라이브러리 정리'],
   'identity-lab': ['기준 얼굴 계측', '조건별·모델별 이미지 생성', '계측·유사도·이미지 비교'],
-  'interview-workflow': ['음성 전사', '발화 선택과 편집 구성', '타임라인·자막·오디오 출력', 'Premiere에서 초안 검토'],
+  'interview-workflow': ['음성 전사', '발화 선택과 편집 구성', '타임라인·자막·오디오 출력', 'Premiere Pro MCP 연동과 검토'],
   'production-board': ['제작 규칙과 스토리보드', '이미지 비교·선택·재생성', '영상 생성과 진행 상태', '7개 컷 출력과 기준 보완']
 };
 
@@ -425,12 +483,26 @@ function briefMarkup(w) {
   return `<dl class="work-brief"><div><dt>목적</dt><dd>${esc(b.purpose)}</dd></div><div><dt>과정</dt><dd>${esc(b.process)}</dd></div><div><dt>결과</dt><dd>${esc(b.result)}</dd></div></dl>`;
 }
 function renderWorks() {
-  const ordered = ['onetake', 'out-of-frame', 'lg-youth', 'pure-solution'].map(id => works.find(w => w.id === id));
-  $('#ak-grid').innerHTML = ordered.map((w, i) => `<article class="work-choice">
-    <button type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
-      <div class="work-choice-media">${cardMedia(w)}<span aria-hidden="true">${String(i + 1).padStart(2, '0')} ↗</span></div>
-      <div class="work-choice-copy"><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h3>${esc(w.title)}</h3>${briefMarkup(w)}</div>
-    </button></article>`).join('');
+  const block = (w, i) => `
+    <article class="ak-card ak-card--${w.layout === 'pano' || w.layout === 'lead' ? w.layout : 'cell'}">
+      <button class="ak-card-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
+        <div class="ak-card-media${w.id === 'medihel' ? ' is-medihel' : ''}">${cardMedia(w)}</div>
+        <div class="ak-card-body">
+          <p class="ak-card-tags"><span class="ak-card-num">${String(i + 1).padStart(2, '0')}</span>${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p>
+          <h3 class="ak-card-title">${esc(w.title)}</h3>
+          <p class="ak-card-line">${esc(w.line)}</p>
+          ${cardResults(w)}
+          <span class="ak-card-cta">목적 · 과정 · 결과 보기 <span aria-hidden="true">↗</span></span>
+        </div>
+      </button>
+    </article>`;
+  const lead = works.filter(w => w.layout === 'lead');
+  const pano = works.filter(w => w.layout === 'pano' && !w.archiveOnly);
+  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead' && w.layout !== 'research' && w.layout !== 'workflow');
+  let n = 0;
+  const top = lead.map(w => block(w, n++)).join('');
+  const row = `<div class="ak-case-row${rest.length === 1 ? ' ak-case-row--single' : ''}">${rest.map(w => block(w, n++)).join('')}</div>`;
+  $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
   const support = w => `<article class="ak-support-card">
     <button class="ak-support-open" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
       <div class="ak-support-preview${w.previewType === 'screen' ? ' ak-support-preview--screen' : ''}">${w.previewImages.map(m => `<img src="${m.src}" alt="${esc(m.cap)}" loading="lazy">`).join('')}</div>
@@ -441,7 +513,7 @@ function renderWorks() {
 }
 function watchCardVideos() {
   if (reduceMotion) return;
-  document.querySelectorAll('.work-choice button').forEach(button => {
+  document.querySelectorAll('.ak-card-hit').forEach(button => {
     const v = button.querySelector('video');
     if (!v) return;
     button.addEventListener('pointerenter', () => { if (matchMedia('(hover: hover)').matches) v.play().catch(() => {}); });
@@ -457,9 +529,7 @@ let lastFocus = null;
 
 function sheetMedia(w) {
   if (w.gallery) {
-    const documents = w.galleryLayout === 'documents';
-    const labels = w.id === 'identity-lab' ? ['GPT Image 2', 'Seedream'] : ['타임라인', '구간·의도 대응표'];
-    return `${documents && w.gallery.length > 1 ? `<div class="document-selector" role="group" aria-label="비교 자료 선택">${w.gallery.map((m,i) => `<button type="button" data-document="${i}" aria-pressed="${i===0}">${labels[i] || `자료 ${i+1}`}</button>`).join('')}</div>` : ''}<div class="ak-identity-gallery${documents ? ' ak-identity-gallery--documents' : ''}">${w.gallery.map((m,i) => `<figure ${documents ? `data-document-page="${i}" ${i ? 'hidden' : ''}` : ''}><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
+    return `<div class="ak-identity-gallery${w.galleryLayout === 'documents' ? ' ak-identity-gallery--documents' : ''}">${w.gallery.map(m => `<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="${esc(m.cap)} 크게 보기"><img src="${m.src}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}</div><p class="ak-media-caption">${esc(w.galleryCaption)}</p>`;
   }
   if (w.driveId) {
     return `<div class="ak-sm ak-sm--wide"><iframe src="https://drive.google.com/file/d/${w.driveId}/preview" allow="autoplay; fullscreen" allowfullscreen title="${esc(w.title)} 영상"></iframe></div><a class="ak-ext" href="https://drive.google.com/file/d/${w.driveId}/preview" target="_blank" rel="noopener">영상 새 창에서 보기 ↗</a>`;
@@ -535,22 +605,22 @@ function openSheet(id) {
     </div>
     <div class="case-content">
       <section id="case-result" role="tabpanel" aria-labelledby="case-result-tab" tabindex="0">
-        <div class="case-result-layout"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div><div class="case-result-copy"><h3>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</h3><p>${esc(w.outcome)}</p>
+        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div><div class="case-result-copy"><h3>${w.layout === 'research' ? '연구 산출물' : '제작 결과'}</h3><p>${esc(w.outcome)}</p>
         ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
         ${w.findings ? `<h3>확인한 점</h3><p>${esc(w.findings)}</p><p class="case-note">${esc(w.limitation)}</p>` : ''}
         ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
-        <button type="button" class="case-next" data-case-goto="purpose">만든 목적과 역할 보기 →</button></div></div>
+        </div></div>
       </section>
       <section id="case-purpose" role="tabpanel" aria-labelledby="case-purpose-tab" tabindex="0" hidden>
-        <div class="case-purpose-grid"><div><h3>만든 목적</h3><p class="case-purpose-text">${esc(w.goal)}</p>${w.conceptBeats ? `<details class="case-step"><summary>기획 의도 · 세 공간의 흐름</summary><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></details>` : ''}</div><div><h3>담당 역할</h3><p>${esc(w.role)}</p>${w.tools.length ? `<h3>사용 도구</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p>` : ''}</div></div>
-        <button type="button" class="case-next" data-case-goto="process">${w.layout === 'research' ? '연구' : '제작'} 과정 보기 →</button>
+        <div class="case-purpose-grid"><div><h3>만든 목적</h3><p class="case-purpose-text">${esc(w.goal)}</p>${w.conceptBeats ? `<section class="case-concept"><h3>기획 의도 · 세 공간의 흐름</h3><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></section>` : ''}</div><div><h3>담당 역할</h3><p>${esc(w.role)}</p>${w.toolRoles ? `<h3>도구별 역할</h3><dl class="case-tools">${w.toolRoles.map(t => `<div><dt>${esc(t.tool)}</dt><dd>${esc(t.use)}</dd></div>`).join('')}</dl>` : w.tools.length ? `<h3>사용 도구</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p>` : ''}</div></div>
+
       </section>
       <section id="case-process" role="tabpanel" aria-labelledby="case-process-tab" tabindex="0" hidden>
-        <p class="case-process-intro">${esc(briefs[w.id].process)}<br><span>각 단계를 눌러 설명과 작업 자료를 확인하세요.</span></p>
-        ${w.comparison ? `<details class="case-step" name="case-evidence"><summary>가이드와 완성 영상 동시 비교</summary>${sheetComparison(w)}</details>` : ''}
-        ${w.process.map((p,i) => { const media=w.processStepMedia?.[i]; return `<details class="case-step" name="case-evidence"><summary><span>${String(i+1).padStart(2,'0')}</span>${esc(stepTitles[w.id]?.[i] || `단계 ${i+1}`)}</summary><div class="case-step-body"><p>${esc(p)}</p>${media ? `<figure><a href="${esc(media.src)}" target="_blank" rel="noopener"><img src="${esc(media.src)}" alt="${esc(media.cap)}" loading="lazy"></a><figcaption>${esc(media.cap)}</figcaption></figure>` : ''}</div></details>`; }).join('')}
-        ${w.processMedia.length ? `<details class="case-step" name="case-evidence"><summary>작업 화면 · 레퍼런스 ${w.processMedia.length}장</summary>${sheetProcessMedia(w)}</details>` : ''}
-        <button type="button" class="case-next" data-case-goto="result">작품과 결과 다시 보기 →</button>
+        ${(w.processScreens || []).map(m => `<figure class="case-work-screen"><a href="${esc(m.src)}" target="_blank" rel="noopener"><img src="${esc(m.src)}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}
+        ${sheetProcessMedia(w)}
+        ${sheetComparison(w)}
+        <p class="case-process-intro">${esc(briefs[w.id].process)}</p>
+        <div class="case-process-steps">${w.process.map((p,i) => `<section class="case-process-step"><h3><span>${String(i+1).padStart(2,'0')}</span>${esc(stepTitles[w.id]?.[i] || `단계 ${i+1}`)}</h3><p>${esc(p)}</p></section>`).join('')}</div>
       </section>
     </div>`;
   setupComparison();
@@ -588,13 +658,8 @@ function selectCaseTab(key, focus = false) {
   panel.querySelector('.case-content').scrollTop = 0;
 }
 panel.addEventListener('click', e => {
-  const tab = e.target.closest('[data-case-tab], [data-case-goto]');
-  if (tab) selectCaseTab(tab.dataset.caseTab || tab.dataset.caseGoto, true);
-  const doc = e.target.closest('[data-document]');
-  if (doc) {
-    panel.querySelectorAll('[data-document]').forEach(b => b.setAttribute('aria-pressed', String(b === doc)));
-    panel.querySelectorAll('[data-document-page]').forEach(p => p.hidden = p.dataset.documentPage !== doc.dataset.document);
-  }
+  const tab = e.target.closest('[data-case-tab]');
+  if (tab) selectCaseTab(tab.dataset.caseTab, true);
 });
 panel.addEventListener('keydown', e => {
   const tab = e.target.closest('[data-case-tab]');
@@ -605,9 +670,6 @@ panel.addEventListener('keydown', e => {
   const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length-1 : (index + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
   selectCaseTab(tabs[next].dataset.caseTab, true);
 });
-panel.addEventListener('toggle', e => {
-  if (e.target.matches('.case-step') && !e.target.open) e.target.querySelectorAll('video').forEach(v => v.pause());
-}, true);
 
 document.addEventListener('click', e => {
   const card = e.target.closest('[data-ak-work]');

@@ -310,7 +310,7 @@
           <h1><span>LEE</span><span>NAHYUN</span></h1>
           <p>현실을 담고,<br> 상상을 만듭니다.</p>
         </div>
-        <div class="character-role">AI Content<br>Creator<small>영상디자인 실무 약 9년<br>AI 아티스트 · 비주얼 연출 · 후반 작업</small></div>
+        <div class="character-role">AI Content<br>Creator<small>AI 아티스트 · 비주얼 연출 · 후반 작업</small></div>
         <p class="character-cue">쇼릴을 재생하거나<br> 작품을 골라보세요.<span aria-hidden="true">↗</span></p>
         <div class="character-project" aria-hidden="true" inert>
           <div><p>${isShowreel ? "Showreel" : "Selected work"}</p><h2>${esc(title)}</h2></div>

@@ -13,7 +13,7 @@
 .portfolio-kicker { font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
 .portfolio-intro h1 { font: 800 clamp(24px, 2.8vw, 36px)/1.25 var(--font-sans); letter-spacing: -.04em; }
 .portfolio-intro > a { font-size: 13px; font-weight: 650; border-bottom: 1px solid var(--line); padding: 8px 0; white-space: nowrap; }
-.browse-mode #ak-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 28px; }
+.browse-mode #ak-grid { display: flex; flex-direction: column; gap: 44px; }
 .work-choice { min-width: 0; border-top: 1px solid var(--line); }
 .work-choice > button { display: grid; grid-template-columns: minmax(120px, .85fr) minmax(0, 1.6fr); gap: 18px; width: 100%; text-align: left; padding-top: 16px; cursor: pointer; }
 .work-choice-media { position: relative; background: var(--paper-2); min-height: 180px; overflow: hidden; }
@@ -66,23 +66,26 @@
 .case-purpose-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 40px; }
 .case-purpose-grid > div > p { margin-bottom: 24px; }
 .case-content .case-purpose-text { font-size: 20px; line-height: 1.8; }
-.case-next { display: block; margin-top: 24px; min-height: 44px; font-size: 14px; font-weight: 650; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left; }
 .case-content .case-process-intro { margin-bottom: 20px; font-weight: 650; }
 .case-process-intro span { font-weight: 400; font-size: 13px; color: var(--ink-2); }
-.case-step { border-top: 1px solid var(--line); }
-.case-step:last-of-type { border-bottom: 1px solid var(--line); }
-.case-step summary { padding: 16px 28px 16px 0; cursor: pointer; font-size: 15px; line-height: 1.5; font-weight: 650; position: relative; list-style: none; }
-.case-step summary::-webkit-details-marker { display: none; }
-.case-step summary::after { content: '+'; position: absolute; right: 4px; top: 15px; }
-.case-step[open] > summary::after { content: '−'; }
-.case-step summary > span { margin-right: 14px; font: 600 12px var(--font-display); color: var(--ink-2); }
-.case-step-body, .case-step > .ak-steps, .case-step > .ak-pm-grid { padding: 0 0 20px; }
-.case-step-body figure { margin: 16px 0 0; }
-.case-step-body img { display: block; width: 100%; height: auto; }
-.case-step figcaption { font-size: 12px; margin-top: 6px; }
-.document-selector { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-.document-selector button { border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
-.document-selector button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+/* Evidence stays open and precedes the written process. */
+.case-result-layout--visual-first { grid-template-columns: 1fr; }
+.case-result-layout--visual-first .ak-identity-gallery--documents { gap: 28px; }
+.case-result-layout--visual-first .ak-identity-gallery--documents img { max-height: none; }
+.case-result-layout--visual-first .case-result-copy { max-width: 760px; }
+.case-work-screen { margin: 0 0 28px; }
+.case-work-screen img { display: block; width: 100%; height: auto; }
+.case-work-screen figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--ink-2); }
+#case-process > .ak-pm-grid { margin: 0 0 32px; gap: 16px; }
+#case-process > .ak-comparison { margin-bottom: 32px; }
+.case-process-steps { display: grid; gap: 24px; }
+.case-process-step { border-top: 1px solid var(--line); padding-top: 20px; }
+.case-content .case-process-step h3 { font-size: 16px; color: var(--ink); }
+.case-process-step h3 span { margin-right: 12px; color: var(--ink-2); font-size: 12px; }
+.case-process-step p { max-width: 780px; }
+.case-tools { display: grid; gap: 16px; }
+.case-tools dt { font-size: 14px; font-weight: 700; }
+.case-tools dd { margin: 4px 0 0; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
 @media (min-width: 761px) and (max-width: 1100px) {
   .work-choice > button { grid-template-columns: 110px minmax(0,1fr); gap: 12px; }
   .work-choice h3 { font-size: 17px; }
@@ -119,7 +122,6 @@
   .case-result-media .ak-sm--tall { max-height: 320px; }
   .case-result-media .ak-identity-gallery:not(.ak-identity-gallery--documents) { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .case-content .case-purpose-text { font-size: 18px; }
-  .case-step summary { font-size: 15px; padding-top: 15px; padding-bottom: 15px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .browse-mode .case-reader { animation: none; }
