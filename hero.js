@@ -30,7 +30,9 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
     raf=0;
     if (!visible || disabled || document.hidden || video.readyState<2) { last=0; return; }
     const dt=last ? Math.min(50,now-last) : 16; last=now;
-    position+=(target-position)*(1-Math.exp(-dt/100));
+    const delta=(target-position)*(1-Math.exp(-dt/240));
+    const maxStep=dt/1000*4;
+    position+=Math.max(-maxStep,Math.min(maxStep,delta));
     if(Math.abs(target-position)<.025) position=target;
     if(!video.seeking && Math.abs(video.currentTime-position)>.02) video.currentTime=Math.min(position,video.duration-.05);
     if(position!==target) schedule(); else last=0;
@@ -40,7 +42,7 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
     const r=video.getBoundingClientRect();
     const x=(e.clientX-r.left-r.width*.5)/(r.width*.5);
     const y=(e.clientY-r.top-r.height*.3)/(r.height*.5);
-    if(Math.hypot(x,y)<.17) target=0;
+    if(Math.hypot(x,y)<.25) target=0;
     else {
       const angle=(Math.atan2(-y,-x)*180/Math.PI+360)%360;
       for(let i=1;i<knots.length;i++) if(angle<=knots[i][0]) {
