@@ -1,6 +1,6 @@
 /* ============================================================
-   Blue Garage 지원용 섹션 — aekyung.js (애경 버전에서 복사)
-   대표 작업 · 전체 작업 탭을 그린다. 히어로·쇼릴은 script.js/hero.js 그대로.
+   Blue portfolio — project evidence and accessible case reader
+   3D → 자동화 → 캐릭터 연구 → 콘텐츠 순서로 작업을 소개한다.
    이전 전체 버전: git 태그 ver2, 폴더 ../nahyunportfolio_ver2
    ============================================================ */
 (() => {
@@ -467,51 +467,33 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function cardMedia(w) {
-  const src = w.video || w.preview;
-  if (src) {
-    return `<video class="ak-card-video" src="${src}" poster="${w.poster || w.thumb}" muted loop playsinline preload="none" aria-hidden="true"></video>`;
-  }
-  return `<img src="${esc(w.thumb)}" alt="" loading="lazy">`;
+  if (w.video) return `<video class="ak-card-video" src="${esc(w.video)}" poster="${esc(w.poster)}" muted loop playsinline preload="none" aria-hidden="true"></video>`;
+  const images = w.previewImages || [{ src: w.thumb, cap: w.title }];
+  return images.map(m => `<img src="${esc(m.src)}" alt="${esc(m.cap)}" loading="lazy">`).join('');
 }
-
-function cardResults(w) {
-  if (!w.results.length) return '';
-  return `<p class="ak-card-results">${w.results.slice(0, 3).map(r => `<span><b>${esc(r.n)}</b> ${esc(r.label)}</span>`).join('')}</p>`;
-}
-
 function briefMarkup(w) {
   const b = briefs[w.id];
   return `<dl class="work-brief"><div><dt>목적</dt><dd>${esc(b.purpose)}</dd></div><div><dt>과정</dt><dd>${esc(b.process)}</dd></div><div><dt>결과</dt><dd>${esc(b.result)}</dd></div></dl>`;
 }
 function renderWorks() {
-  const block = (w, i) => `
-    <article class="ak-card ak-card--${w.layout === 'pano' || w.layout === 'lead' ? w.layout : 'cell'}">
-      <button class="ak-card-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
-        <div class="ak-card-media${w.id === 'medihel' ? ' is-medihel' : ''}">${cardMedia(w)}</div>
-        <div class="ak-card-body">
-          <p class="ak-card-tags"><span class="ak-card-num">${String(i + 1).padStart(2, '0')}</span>${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</p>
-          <h3 class="ak-card-title">${esc(w.title)}</h3>
-          <p class="ak-card-line">${esc(w.line)}</p>
-          ${cardResults(w)}
-          <span class="ak-card-cta">작품 소개 보기 <span aria-hidden="true">↗</span></span>
-        </div>
-      </button>
-    </article>`;
-  const lead = works.filter(w => w.layout === 'lead');
-  const pano = works.filter(w => w.layout === 'pano' && !w.archiveOnly);
-  const rest = works.filter(w => w.layout !== 'pano' && w.layout !== 'lead' && w.layout !== 'research' && w.layout !== 'workflow');
-  let n = 0;
-  const top = lead.map(w => block(w, n++)).join('');
-  const row = `<div class="ak-case-row${rest.length === 1 ? ' ak-case-row--single' : ''}">${rest.map(w => block(w, n++)).join('')}</div>`;
-  $('#ak-grid').innerHTML = top + row + pano.map(w => block(w, n++)).join('');
-  const support = w => `<article class="ak-support-card">
-    <button class="ak-support-open" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
-      <div class="ak-support-preview${w.previewType === 'screen' ? ' ak-support-preview--screen' : ''}">${w.previewImages.map(m => `<img src="${m.src}" alt="${esc(m.cap)}" loading="lazy">`).join('')}</div>
-      <div class="ak-support-copy"><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h3 class="ak-card-title">${esc(w.title)}</h3>${briefMarkup(w)}<span class="ak-card-cta">상세 보기 ↗</span></div>
-    </button>${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel)}</a>` : ''}</article>`;
-  $('#ak-research').innerHTML = works.filter(w => w.layout === 'research').map(support).join('');
-  $('#ak-workflows').innerHTML = works.filter(w => w.layout === 'workflow').map(support).join('');
+  const labels = { onetake: '3D 프리비즈 · 움직임 제어', 'out-of-frame': '캐릭터 · 공간 연출', 'interview-workflow': '음성 전사 · 편집 자동화', 'production-board': '생성 · 승인 · 재생성', 'expression-lab': '표정 · 감정 표현', 'identity-lab': '얼굴 일관성 · 모델 비교', 'lg-youth': 'AI 숏폼 · 공모전', 'pure-solution': '브랜드 · SNS 캐러셀' };
+  const block = w => `<article class="project-card">
+    <button class="ak-card-hit project-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
+      <div class="project-media${w.previewImages?.length > 1 ? ' project-media--pair' : ''}">${cardMedia(w)}${w.id === 'lg-youth' ? '<span class="project-badge">🏅 LG 유쓰 AI 쇼츠 페스티벌 · 우수상</span>' : ''}<span class="project-open" aria-hidden="true">${w.video ? '▶' : '↗'}</span></div>
+      <div class="project-copy"><div><h3>${esc(w.title)}</h3><p class="project-category">${esc(labels[w.id])}</p></div><span class="project-link">자세히 ↗</span></div>
+    </button></article>`;
+  const render = (target, ids) => { $(target).innerHTML = ids.map(id => block(works.find(w => w.id === id))).join(''); };
+  render('#ak-grid', ['onetake', 'out-of-frame']);
+  render('#ak-vertical', ['lg-youth', 'pure-solution']);
+  const vertical = $('#ak-vertical');
+  [{id:308,title:'분갈이흙',file:'potting-soil'},{id:304,title:'버그올킬',file:'bug-all-kill'}].forEach(w=>{
+    vertical.insertAdjacentHTML('beforeend', `<article class="project-card"><button type="button" class="project-hit ak-card-hit" data-open="${w.id}" aria-label="${w.title} 자세히 보기"><div class="project-media"><video src="videos/${w.file}.mp4" poster="images/posters/${w.file}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="project-open" aria-hidden="true">▶</span></div><div class="project-copy"><div><h3>${w.title}</h3><p class="project-category">브랜드 · AI 숏폼</p></div><span class="project-link">자세히 ↗</span></div></button></article>`);
+  });
+  vertical.querySelectorAll('[data-open]').forEach(button=>button.addEventListener('click',()=>openModal(Number(button.dataset.open))));
+  render('#ak-workflows', ['interview-workflow', 'production-board']);
+  render('#ak-research', ['expression-lab', 'identity-lab']);
 }
+
 function watchCardVideos() {
   if (reduceMotion) return;
   document.querySelectorAll('.ak-card-hit').forEach(button => {
@@ -556,7 +538,7 @@ function sheetProcessMedia(w) {
 
 function sheetComparison(w) {
   if (!w.comparison) return '';
-  const layout = window.matchMedia('(max-width: 760px)').matches ? 'vertical' : 'horizontal';
+  const layout = 'horizontal';
   return `<figure class="ak-comparison" data-layout="${layout}">
     <figcaption>Depth·Pose 가이드와 완성 영상 비교</figcaption>
     <div class="ak-comparison-player">
@@ -568,27 +550,6 @@ function sheetComparison(w) {
   </figure>`;
 }
 
-let cleanupComparison = null;
-function setupComparison() {
-  const video = panel.querySelector('[data-comparison]');
-  if (!video) return;
-  const query = window.matchMedia('(max-width: 760px)');
-  const changeLayout = () => {
-    const time = video.currentTime;
-    const playing = !video.paused;
-    const layout = query.matches ? 'vertical' : 'horizontal';
-    video.closest('.ak-comparison').dataset.layout = layout;
-    video.poster = `images/posters/${video.dataset.comparison}-${layout}.jpg`;
-    video.src = `videos/${video.dataset.comparison}-${layout}.mp4`;
-    video.addEventListener('loadedmetadata', () => {
-      video.currentTime = Math.min(time, video.duration);
-      if (playing) video.play().catch(() => {});
-    }, { once: true });
-    video.load();
-  };
-  query.addEventListener('change', changeLayout);
-  cleanupComparison = () => query.removeEventListener('change', changeLayout);
-}
 
 function openSheet(id) {
   const w = works.find(x => x.id === id);
@@ -620,7 +581,6 @@ function openSheet(id) {
         ${w.toolRoles ? `<section class="case-tool-section"><h3>도구별 역할</h3><dl class="case-tools">${w.toolRoles.map(t => `<div><dt>${esc(t.tool)}</dt><dd>${esc(t.use)}</dd></div>`).join('')}</dl></section>` : w.tools.length ? `<section class="case-tool-section"><h3>사용 툴</h3><p class="ak-chips">${w.tools.map(t => `<span>${esc(t)}</span>`).join('')}</p></section>` : ''}
       </section>
     </div>`;
-  setupComparison();
   panel.querySelectorAll('video').forEach(video => video.addEventListener('play', () => {
     panel.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); });
   }));
@@ -634,7 +594,6 @@ function openSheet(id) {
 
 function closeSheet() {
   if (!sheet.classList.contains('is-open')) return;
-  if (cleanupComparison) { cleanupComparison(); cleanupComparison = null; }
   sheet.classList.remove('is-open');
   sheet.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('no-scroll');
@@ -721,30 +680,24 @@ if (hashTab) {
   archive.querySelector(`[data-ak-tab="${hashTab}"]`).click();
 }
 
-const routeAliases = { featured: 'selected', top: 'hero', work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'stack', cinematic: 'archive', artfilm: 'archive', commercial: 'archive', liveaction: 'archive', subtitle: 'archive', 'ai-image': 'archive', photography: 'archive', dashboard: 'archive' };
+const routeAliases = { featured: 'selected', top: 'hero', work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'about', stack: 'about', cinematic: 'archive', artfilm: 'archive', commercial: 'archive', liveaction: 'archive', subtitle: 'archive', 'ai-image': 'archive', photography: 'archive', dashboard: 'archive' };
 function scrollToPortfolioRoute(route) {
-  const target = route === 'hero' ? $('#hero') : route === 'stack' ? $('#stack') : $('#portfolio-nav');
-  const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar')) || 0;
-  window.scrollTo({ top: route === 'hero' ? 0 : Math.max(0, (route === 'stack' ? target.getBoundingClientRect().top : $('#hero').getBoundingClientRect().bottom + (parseFloat(getComputedStyle($('#hero')).marginBottom) || 0)) + window.scrollY - offset), behavior: 'instant' });
+  const target = document.getElementById(route);
+  if (!target) return;
+  const offset = document.querySelector('.site-header').offsetHeight + 24;
+  window.scrollTo({ top: route === 'hero' ? 0 : Math.max(0, target.getBoundingClientRect().top + window.scrollY - offset), behavior: reduceMotion ? 'instant' : 'smooth' });
 }
 window.akNavigate = (id, writeHistory = true, scroll = true) => {
   const route = routeAliases[id] || id || 'selected';
-  const active = ['selected','research','workflows','archive'].includes(route) ? route : (document.body.dataset.portfolioView || 'selected');
   closeSheet();
-  for (const [key, element] of Object.entries({ selected: 'featured', research: 'research', workflows: 'workflows', archive: 'archive' })) document.getElementById(element).hidden = key !== active;
-  document.querySelectorAll('[data-nav]').forEach(a => { a.classList.toggle('is-active', a.dataset.nav === active); if (a.dataset.nav === active) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  document.querySelectorAll('[data-nav]').forEach(a => { a.classList.toggle('is-active', a.dataset.nav === route); if (a.dataset.nav === route) a.setAttribute('aria-current','location'); else a.removeAttribute('aria-current'); });
   document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
-  if (active === 'archive') { setArchive(true); relayout(); }
-  document.body.dataset.portfolioView = active;
-  document.body.classList.remove('menu-open');
-  $('#menu-toggle')?.setAttribute('aria-expanded','false');
-  const hash = ['hero','stack'].includes(route) ? route : active;
-  if (writeHistory && location.hash !== `#${hash}`) history.pushState(null, '', `#${hash}`);
-  window.dispatchEvent(new Event('resize'));
+  if (route === 'archive') { setArchive(true); relayout(); }
+  if (writeHistory && location.hash !== `#${route}`) history.pushState(null, '', `#${route}`);
   if (scroll) scrollToPortfolioRoute(route);
 };
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[data-portfolio-route], a.skip-link, #hero a[href="#selected"]');
+  const a = e.target.closest('a[data-portfolio-route], a.skip-link');
   if (!a) return;
   e.preventDefault(); window.akNavigate(a.dataset.portfolioRoute || 'selected');
 });
@@ -755,4 +708,14 @@ window.addEventListener('hashchange', () => window.akNavigate(location.hash.slic
 
 renderWorks();
 watchCardVideos();
+const sectionObserver = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+  if (!visible) return;
+  document.querySelectorAll('[data-nav]').forEach(a => {
+    const active = a.dataset.nav === visible.target.id;
+    a.classList.toggle('is-active', active);
+    if (active) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+  });
+}, { rootMargin: '-15% 0px -65% 0px' });
+['about', 'selected', 'workflows', 'research', 'archive'].forEach(id => sectionObserver.observe(document.getElementById(id)));
 })();

@@ -768,15 +768,16 @@ const techStack = [
 
 /* ── Config ── */
 const SECTIONS = [
-  { id: 'selected', label: '대표 작업' },
+  { id: 'about', label: '소개' },
+  { id: 'selected', label: '대표 영상' },
   { id: 'workflows', label: '제작 자동화' },
-  { id: 'research', label: '표정·얼굴 연구' },
+  { id: 'research', label: '캐릭터 연구' },
   { id: 'archive', label: '전체 작업' }
 ];
 
 /* 구 URL 앵커 호환: 예전 섹션 id로 들어와도 새 섹션으로 보냄 */
 const ANCHOR_ALIAS = {
-  work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'stack',
+  work: 'archive', images: 'archive', motion: 'archive', tools: 'archive', about: 'about',
   cinematic: 'archive', artfilm: 'archive', commercial: 'archive', liveaction: 'archive',
   subtitle: 'archive', 'ai-image': 'archive', photography: 'archive', dashboard: 'archive'
 };
@@ -791,7 +792,7 @@ const AWARDS = { 301: 'LG 유쓰 AI 쇼츠 페스티벌 우수상', 207: '사내
 const previewOf = p => p.videoSrc || (PREVIEW[p.id] ? `videos/preview/${PREVIEW[p.id]}.mp4` : '');
 
 /* 대표 작업(aekyung.js)에 이미 나온 작품은 전체 작업 목록에서 뺀다 */
-const ARCHIVE_EXCLUDE = [7, 301, 309];
+const ARCHIVE_EXCLUDE = [7, 301, 309, 206];
 
 const FEATURED_IDS = [301, 207, 305];
 
@@ -802,7 +803,7 @@ const WORK_ORDER = [
   302,  // 그로잉버블
   303,  // 닥터조 뿌리는 식물영양제
   309, // 퓨어솔루션 파노라마 캐러셀
-  305, 306, 307, 308, // 신규 작품
+  308, 306, 307, 305, // 분갈이흙과 넌마늘난양파 자리 교환
   7,    // 메디힐 토너패드
   3,    // 크리스마스 시즌 캠페인
   4, 1, 2, 101, 6, 103, 207, 201, 202, 203, 204, 205, 206
@@ -1008,16 +1009,17 @@ function renderWork() {
 }
 
 function workCards() {
-  const list = orderedProjects().filter(p => !ARCHIVE_EXCLUDE.includes(p.id)).filter(p => workFilter === 'all' || WORK_KIND[p.id] === workFilter);
+  const ordered = orderedProjects().filter(p => !ARCHIVE_EXCLUDE.includes(p.id)).filter(p => workFilter === 'all' || WORK_KIND[p.id] === workFilter);
+  const list = [...ordered.filter(p => p.orientation === 'vertical'), ...ordered.filter(p => p.orientation !== 'vertical')];
   if (!list.length) return `<p class="empty">이 분류에는 아직 공개한 작업이 없습니다.</p>`;
-  return list.map((p, i) => `
+  const cards = list.map((p, i) => `
     <article class="card reveal${p.orientation === 'panorama' ? ' pure-film' : ''}${AWARDS[p.id] ? ' is-award' : ''}" ${p.id === 309 ? 'id="pure-solution"' : ''} style="--i:${i % 8}" data-open="${p.id}" tabindex="0" role="button" aria-label="${esc(p.title)} 자세히 보기">
       <div class="card-media ${p.orientation === 'vertical' ? 'is-vertical' : p.orientation === 'panorama' ? 'is-panorama' : 'is-horizontal'}">
         ${p.thumbnail
           ? `<img src="${p.thumbnail}" alt="${esc(p.title)}" loading="lazy">`
           : `<div class="card-blank"></div>`}
         ${previewOf(p) ? `<video src="${previewOf(p)}" muted loop playsinline preload="none" aria-hidden="true"></video>` : ''}
-        ${AWARDS[p.id] ? `<span class="ak-award"><span class="ak-award-mark" aria-hidden="true">★</span>${esc(AWARDS[p.id])}</span>` : ''}
+        ${AWARDS[p.id] ? `<span class="ak-award"><span class="ak-award-mark" aria-hidden="true">🏅</span>${esc(AWARDS[p.id])}</span>` : ''}
       </div>
       <div class="card-info">
         <h3>${esc(p.title)}</h3>
@@ -1028,7 +1030,14 @@ function workCards() {
         </div>
       </div>
     </article>
-  `).join('');
+  `);
+  let markup='', last=null;
+  list.forEach((p,i)=>{
+    const format=p.orientation==='vertical'?'vertical':'horizontal';
+    if(format!==last){if(last)markup+='</div>';markup+=`<div class="archive-format-row is-${format}">`;last=format;}
+    markup+=cards[i];
+  });
+  return markup+'</div>';
 }
 
 function pureGallery(p) {
@@ -1054,23 +1063,10 @@ function wirePureGallery(root) {
 }
 
 /* 항목 높이를 8px 행 단위 span으로 환산 (메이슨리) */
+// Uniform landscape grids are laid out by CSS, including archive images.
 function layoutMasonry(gridId, itemSel) {
   const grid = byId(gridId);
-  if (!grid) return;
-  if (gridId === 'work-grid') {
-    const panorama = grid.querySelector('.pure-film');
-    if (panorama) {
-      const columns = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
-      const cards = [...grid.children].filter(el => el !== panorama);
-      const anchor = cards[Math.min(cards.length, columns === 1 ? 4 : columns) - 1];
-      if (anchor && anchor.nextElementSibling !== panorama) anchor.after(panorama);
-    }
-  }
-  grid.querySelectorAll(itemSel).forEach(el => {
-    /* 아래 여백까지 span에 포함해야 아래 항목과 겹치지 않는다 */
-    const mb = parseFloat(getComputedStyle(el).marginBottom) || 0;
-    el.style.setProperty('--span', Math.ceil((el.getBoundingClientRect().height + mb) / 8));
-  });
+  if (grid) grid.querySelectorAll(itemSel).forEach(el => el.style.removeProperty('--span'));
 }
 
 function layoutAllGrids() {
@@ -1420,7 +1416,7 @@ function init() {
 
   /* 앵커로 들어온 경우 첫 페인트 전에 위치를 잡아 상단이 번쩍이지 않게 한다 */
   const hash = location.hash.replace('#', '');
-  if (window.akNavigate) window.akNavigate(hash || 'selected', false, false);
+  if (window.akNavigate) window.akNavigate(hash || 'hero', false, false);
   else if (hash) goTo(hash);
 }
 

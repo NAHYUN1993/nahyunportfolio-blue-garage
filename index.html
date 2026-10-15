@@ -3,52 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEE NAHYUN · AI Visual Creator</title>
-  <meta name="description" content="이나현 포트폴리오. AI 아티스트 비주얼, 퍼포먼스 영상, 생성형 AI 제작 방식 연구.">
-  <meta name="theme-color" content="#b4d879">
+  <title>LEE NAHYUN · 3D & AI Creator</title>
+  <meta name="description" content="3D로 장면을 설계하고 자동화로 제작 흐름을 만드는 AI 제작자, 이나현. Blender 프리비즈, ComfyUI, 편집·생성 자동화와 캐릭터 연구.">
+  <meta name="theme-color" content="#d1e1e8">
 
-  <meta property="og:title" content="LEE NAHYUN · AI Visual Creator">
-  <meta property="og:description" content="현실을 담고, 상상을 만듭니다.">
+  <meta property="og:title" content="LEE NAHYUN · 3D & AI Creator">
+  <meta property="og:description" content="3D로 장면을 설계하고, 자동화로 제작의 흐름을 만듭니다.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://nahyun1993.github.io/nahyunportfolio-blue-garage/assets/character/idle.jpg">
+  <meta property="og:image" content="https://nahyun1993.github.io/nahyunportfolio-blue-garage/images/posters/onetake.jpg">
 
-  <link rel="preload" href="./fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="./fonts/pretendard/pretendard.css">
-  <link rel="stylesheet" href="./styles.css?v=20261013-blue-garage19">
-  <link rel="stylesheet" href="./hero.css?v=20261013-blue-garage19">
-  <link rel="stylesheet" href="./aekyung.css?v=20261013-blue-garage19">
-  <link rel="stylesheet" href="./browse.css?v=20261013-blue-garage19">
-  <link rel="preload" as="image" href="./assets/character/gaze-neutral.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="./styles.css?v=20261015-fill-v19">
+  <link rel="stylesheet" href="./aekyung.css?v=20261015-fill-v19">
+  <link rel="stylesheet" href="./browse.css?v=20261015-fill-v19">
+  <link rel="stylesheet" href="./redesign.css?v=20261015-fill-v19">
+  <link rel="preload" as="image" href="./images/posters/onetake.jpg" fetchpriority="high">
 </head>
-<body class="browse-mode">
+<body class="browse-mode blue-portfolio">
 
   <a class="skip-link" href="#selected">본문으로 건너뛰기</a>
 
 
+  <header class="site-header"><nav id="portfolio-nav" aria-label="포트폴리오 목차"><div id="nav-links"></div></nav></header>
   <main id="top">
-    <section id="hero" aria-label="이나현의 인터랙티브 포트폴리오"></section>
-    <nav id="portfolio-nav" aria-label="작업 카테고리"><div id="nav-links"></div></nav>
+    <section id="hero" aria-label="이나현의 대표 작품"></section>
+    <section id="about" class="creator-about"><p class="section-kicker">AI CREATOR · 3D & AUTOMATION</p><div class="about-layout"><h2>이나현</h2><div><p class="about-detail">상상한 장면을 영상으로 만드는 AI 크리에이터 이나현입니다.<br>3D로 움직임을 설계하고, AI와 자동화를 활용해 기획부터 제작까지 이어갑니다.</p></div></div></section>
     <div id="portfolio-content">
-    <!-- 메뉴로 한 영역씩 탐색하고, 작품 상세에서 목적·과정·결과를 선택한다. -->
+    <!-- 작품 중심의 연속 갤러리. 상세 설명은 작품을 선택하면 보여준다. -->
     <section id="featured">
       <div id="selected" class="ak-work">
-      <header class="featured-head"><h2>대표 작업<span>.</span></h2><p class="ak-sec-sub">작품을 선택하면 작품의 기획 의도와 제작 과정을 볼 수 있습니다.</p></header>
+      <header class="featured-head"><div><h2>대표 영상</h2></div><button class="text-link" type="button" id="showreel-open">쇼릴 보기 <span aria-hidden="true">↗</span></button></header>
       <div class="ak-grid" id="ak-grid"></div>
+      <div id="shortform"><div id="ak-vertical"></div></div>
       </div>
     </section>
 
-    <section hidden id="workflows" class="sec ak-workflows">
-      <header class="sec-head"><h2>제작 도구와 워크플로우<span class="ak-dot">.</span></h2><p class="ak-sec-sub">편집 초안부터 컷별 생성·검토까지, 직접 구성한 자동화 작업</p></header>
+    <section id="workflows" class="sec ak-workflows">
+      <header class="sec-head"><div><h2>제작 자동화</h2><p class="ak-sec-sub">기획·생성·검토·편집을 연결하는 직접 만든 작업 흐름.</p></div><span class="section-note">WORKFLOW & TOOLS</span></header>
       <div id="ak-workflows" class="ak-support-grid"></div>
     </section>
 
-    <section hidden id="research" class="sec ak-research">
-      <header class="sec-head"><h2>표정·얼굴 연구<span class="ak-dot">.</span></h2><p class="ak-sec-sub">캐릭터의 감정 표현과 얼굴 일관성을 위한 개인 R&D</p></header>
+    <section id="research" class="sec ak-research">
+      <header class="sec-head"><div><h2>캐릭터 연구</h2><p class="ak-sec-sub">표정과 얼굴의 일관성을 위한 비교 실험.</p></div><span class="section-note">PERSONAL R&D</span></header>
       <div id="ak-research" class="ak-support-grid"></div>
     </section>
 
+
+
     <!-- 나머지 작업: 접어두고 필요할 때 카테고리 탭으로 본다. 내용은 script.js의 기존 렌더러 -->
-    <section hidden id="archive" class="sec ak-archive">
+    <section id="archive" class="sec ak-archive">
       <button class="ak-archive-toggle" type="button" aria-expanded="false" aria-controls="ak-archive-body">
         <span class="ak-archive-title">전체 작업 보기</span>
         <span class="ak-archive-sub">영상 · 이미지 · 자막디자인 · 웹앱</span>
@@ -72,16 +76,9 @@
 
     </div>
 
-    <section id="stack" class="sec">
-      <header class="sec-head"><h2>사용 툴</h2></header>
-      <div class="ak-tools"><div><h3>편집·디자인</h3><ul class="tool-list"><li>Premiere Pro</li><li>After Effects</li><li>Photoshop</li><li>Lightroom</li></ul></div><div><h3>AI 이미지·영상</h3><ul class="tool-list"><li>Nano Banana</li><li>Midjourney</li><li>Higgsfield</li><li>Seedance</li><li>Kling</li><li>Veo</li></ul></div><div><h3>3D·워크플로우</h3><ul class="tool-list"><li>Blender</li><li>ComfyUI</li><li>Antigravity</li></ul></div><div><h3>음성·음악</h3><ul class="tool-list"><li>Whisper</li><li>ElevenLabs</li><li>Suno</li></ul></div><div><h3>AI 어시스턴트</h3><ul class="tool-list"><li>ChatGPT</li><li>Claude</li><li>Codex</li></ul></div></div>
-    </section>
   </main>
 
-  <footer id="footer">
-    <p>LEE NAHYUN</p>
-    <a href="mailto:yk6838@gmail.com">yk6838@gmail.com</a>
-  </footer>
+  <footer id="footer"><div class="contact-heading"><p class="section-kicker">CONTACT</p><h2>함께 만들 다음 장면.</h2><a class="footer-email" href="mailto:yk6838@gmail.com">yk6838@gmail.com <span aria-hidden="true">↗</span></a></div><div class="footer-bottom"><a class="footer-wordmark" href="#hero" data-portfolio-route="hero">Lee Nahyun</a><span>AI CREATOR · 3D & AUTOMATION</span><a href="#hero" data-portfolio-route="hero">맨 위로 ↑</a></div></footer>
 
   <div id="modal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="작업 상세">
     <div class="modal-inner" id="modal-inner"></div>
@@ -96,9 +93,9 @@
     <div class="ak-sheet-panel" id="ak-sheet-panel"></div>
   </div>
 
-  <script src="./hero-config.js?v=20261013-blue-garage19"></script>
-  <script src="./hero.js?v=20261013-blue-garage19"></script>
-  <script src="./script.js?v=20261013-blue-garage19"></script>
-  <script src="./aekyung.js?v=20261013-blue-garage19"></script>
+  <script src="./hero-config.js?v=20261015-fill-v19"></script>
+  <script src="./hero.js?v=20261015-fill-v19"></script>
+  <script src="./script.js?v=20261015-fill-v19"></script>
+  <script src="./aekyung.js?v=20261015-fill-v19"></script>
 </body>
 </html>
