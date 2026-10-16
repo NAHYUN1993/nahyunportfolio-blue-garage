@@ -318,6 +318,16 @@ const works = [
       "src": "images/workflows/board-review.webp",
       "cap": "이미지 시안 비교 · 승인·모델 선택·재생성",
       "wide": true
+    },
+    {
+      "src": "images/workflows/board-video-generation.webp",
+      "cap": "영상 제작 · 컷별 모션 생성 결과 재생·검토 및 승인",
+      "wide": true
+    },
+    {
+      "src": "images/workflows/board-subtitle-generation.webp",
+      "cap": "자막 제작 · 회사의 카피·타이포 규칙을 적용한 컷별 자막 시안 생성·검토",
+      "wide": true
     }
   ],
   "galleryLayout": "documents",
@@ -340,19 +350,11 @@ const works = [
   ],
   "gallery": [
     {
-      "src": "images/workflows/board-video-generation.webp",
-      "cap": "영상 제작 · 컷별 모션 생성 결과 재생·검토 및 승인"
-    },
-    {
       "src": "images/workflows/board-output.webp",
       "cap": "7개 컷 영상 출력과 컷별 재생·검토 화면"
-    },
-    {
-      "src": "images/workflows/board-subtitle-generation.webp",
-      "cap": "자막 제작 · 회사의 카피·타이포 규칙을 적용한 컷별 자막 시안 생성·검토"
     }
   ],
-  "galleryCaption": "회사 전용 제작판 적용 화면 · 영상 생성·검토부터 자막 제작까지",
+  "galleryCaption": "첫 프로젝트 적용 화면 · 컷별 영상 출력과 검토",
   "previewImages": [
     {
       "src": "images/workflows/board-review.webp",
