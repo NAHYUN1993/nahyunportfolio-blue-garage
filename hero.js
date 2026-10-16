@@ -52,7 +52,11 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
     schedule();
   },{passive:true});
   stage.addEventListener('pointerleave',()=>{target=0;schedule();});
-  video.addEventListener('loadeddata',()=>{renderPose();schedule();});
+  // Seeking/network buffering can temporarily drop readyState below HAVE_CURRENT_DATA.
+  // Resume when frames are ready again, even when the pointer has stopped.
+  const resumeFromMedia = () => { renderPose(); schedule(); };
+  video.addEventListener('loadeddata',resumeFromMedia);
+  video.addEventListener('canplay',resumeFromMedia);
   video.addEventListener('seeked',()=>{renderPose();if(Math.abs(video.currentTime-target)>.025)schedule();});
   function updateMotion(){
     toggle.textContent=disabled?'움직임 켜기':'움직임 끄기'; toggle.setAttribute('aria-pressed',String(disabled));
@@ -64,4 +68,6 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
   document.addEventListener('visibilitychange',schedule);
   document.querySelector('#showreel-open')?.addEventListener('click',openShowreel);
   updateMotion();
+  // A cached video may already have fired loadeddata before handlers were attached.
+  if(video.readyState >= 2) resumeFromMedia();
 };
