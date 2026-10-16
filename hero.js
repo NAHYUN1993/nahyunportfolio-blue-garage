@@ -1,7 +1,7 @@
 /* The character follows the pointer by seeking real poses in the supplied take. */
 window.initPortfolioHero = ({ root, openShowreel }) => {
   root.className = 'gallery-hero gaze-hero';
-  root.innerHTML = `<div class="gaze-stage"><div class="hero-title"><h1>Lee Nahyun</h1></div><div class="gaze-frame"><video class="gaze-video" src="assets/character/gaze-new.mp4" poster="assets/character/gaze-new-poster.jpg" muted playsinline preload="auto" aria-label="마우스 방향을 바라보는 캐릭터"></video><canvas class="gaze-cutout" aria-hidden="true"></canvas></div><button class="gaze-toggle" type="button" aria-pressed="false">움직임 끄기</button></div>`;
+  root.innerHTML = `<div class="gaze-stage"><div class="hero-title"><h1>Lee Nahyun</h1></div><div class="gaze-frame"><video class="gaze-video" src="assets/character/gaze-new.mp4" poster="assets/character/gaze-new-poster.jpg" muted playsinline preload="auto" aria-label="마우스 방향을 바라보는 캐릭터"></video><canvas class="gaze-cutout" aria-hidden="true"></canvas></div></div>`;
   const stage = root.querySelector('.gaze-stage');
   const video = root.querySelector('video');
   const canvas = root.querySelector('canvas');
@@ -20,7 +20,6 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
     context.putImageData(frame,0,0);
     stage.classList.add('is-keyed');
   }
-  const toggle = root.querySelector('.gaze-toggle');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let disabled = reduced.matches, visible = true, target = 0, position = 0, raf = 0, last = 0;
   // Screen-left → up → right → down, measured from this seven-second take.
@@ -59,10 +58,8 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
   video.addEventListener('canplay',resumeFromMedia);
   video.addEventListener('seeked',()=>{renderPose();if(Math.abs(video.currentTime-target)>.025)schedule();});
   function updateMotion(){
-    toggle.textContent=disabled?'움직임 켜기':'움직임 끄기'; toggle.setAttribute('aria-pressed',String(disabled));
     if(disabled){cancelAnimationFrame(raf);raf=0;last=0;} else schedule();
   }
-  toggle.addEventListener('click',()=>{disabled=!disabled;updateMotion();});
   reduced.addEventListener('change',e=>{disabled=e.matches;updateMotion();});
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)schedule();}).observe(stage);
   document.addEventListener('visibilitychange',schedule);
