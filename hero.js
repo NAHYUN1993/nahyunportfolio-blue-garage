@@ -21,23 +21,24 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
     stage.classList.add('is-keyed');
   }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let disabled = reduced.matches, visible = true, target = 0, position = 0, raf = 0, last = 0;
+  let visible = true, target = 0, position = 0, raf = 0, last = 0;
   // Screen-left → up → right → down, measured from this seven-second take.
   const knots = [[0,1.8],[35,1.8],[90,3.7],[150,5.2],[210,5.2],[270,6.45],[315,1.8],[360,1.8]];
-  function schedule() { if (!raf && visible && !document.hidden && !disabled) raf=requestAnimationFrame(tick); }
+  function schedule() { if (!raf && visible && !document.hidden) raf=requestAnimationFrame(tick); }
   function tick(now) {
     raf=0;
-    if (!visible || disabled || document.hidden || video.readyState<2) { last=0; return; }
+    if (!visible || document.hidden || video.readyState<2) { last=0; return; }
     const dt=last ? Math.min(50,now-last) : 16; last=now;
     const delta=(target-position)*(1-Math.exp(-dt/240));
     const maxStep=dt/1000*4;
-    position+=Math.max(-maxStep,Math.min(maxStep,delta));
+    // Reduced motion removes the interpolated sweep, but keeps direct pointer feedback.
+    position=reduced.matches ? target : position+Math.max(-maxStep,Math.min(maxStep,delta));
     if(Math.abs(target-position)<.025) position=target;
     if(!video.seeking && Math.abs(video.currentTime-position)>.02) video.currentTime=Math.min(position,video.duration-.05);
     if(position!==target) schedule(); else last=0;
   }
   stage.addEventListener('pointermove',e=>{
-    if(disabled || e.pointerType==='touch') return;
+    if(e.pointerType==='touch') return;
     const r=video.getBoundingClientRect();
     const x=(e.clientX-r.left-r.width*.5)/(r.width*.5);
     const y=(e.clientY-r.top-r.height*.3)/(r.height*.5);
@@ -57,14 +58,11 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
   video.addEventListener('loadeddata',resumeFromMedia);
   video.addEventListener('canplay',resumeFromMedia);
   video.addEventListener('seeked',()=>{renderPose();if(Math.abs(video.currentTime-target)>.025)schedule();});
-  function updateMotion(){
-    if(disabled){cancelAnimationFrame(raf);raf=0;last=0;} else schedule();
-  }
-  reduced.addEventListener('change',e=>{disabled=e.matches;updateMotion();});
+  reduced.addEventListener('change',schedule);
   new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible)schedule();}).observe(stage);
   document.addEventListener('visibilitychange',schedule);
   document.querySelector('#showreel-open')?.addEventListener('click',openShowreel);
-  updateMotion();
+  schedule();
   // A cached video may already have fired loadeddata before handlers were attached.
   if(video.readyState >= 2) resumeFromMedia();
 };
