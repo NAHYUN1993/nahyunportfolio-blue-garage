@@ -196,33 +196,6 @@ const projects = [
     ]
   },
   {
-    id: 101,
-    type: 'video',
-    category: 'commercial',
-    categoryLabel: '브랜드 커머셜',
-    title: '나노바나나',
-    desc: "인공지능 이미지 생성 기술인 나노바나나의 스타일 베리에이션을 시각화한 테크 커머셜 필름.",
-    thumbnail: 'https://nahyun1993.github.io/portfolio3/images/Thumbnails/나노바나나.png',
-    badge: 'company',
-    badgeLabel: '커머스 프로젝트',
-    tools: ['Nano Banana', 'Premiere Pro'],
-    driveId: '1UionJ84Kyz9OjvfQot6yiUt0piYegRUt',
-    orientation: 'horizontal',
-    scenes: [
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/나노바나나/1.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/나노바나나/2.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/나노바나나/3.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/나노바나나/4.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/나노바나나/5.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/나노바나나/6.png'
-    ],
-    brief: "바나나를 핵심 오브제로 고정하고 이를 중심으로 인공지능이 구현할 수 있는 무한한 화풍의 변환 과정을 속도감 있게 보여주어 새로운 기술과 상업적 활용 가능성을 보여줌.",
-    process: [
-      { title: '핵심 오브제 기반 다중 화풍 실험 기획', desc: '바나나라는 하나의 확고한 피사체를 중심으로, 인공지능이 구현할 수 있는 다양한 시각적 스타일을 실험하기 위한 스토리보드 기획. 하이엔드 전자기기 광고의 세련된 연출 문법을 차용하여, 각기 다른 화풍의 결과물들이 이질감 없이 연결되도록 구성함.' },
-      { title: '초정밀 형태 고정 프롬프트 설계', desc: '나노바나나 기술의 스타일 해석 능력과 정밀한 제어력을 시각화하는 데 집중함. 원본 바나나의 형태와 위치는 완벽하게 고정한 상태에서, 극단적으로 다른 화풍으로만 변환시키는 고난이도 프롬프트 구조를 자체 설계하여 기술의 범용성을 증명함.' }
-    ]
-  },
-  {
     id: 7,
     type: 'video',
     category: 'artfilm',
@@ -491,8 +464,8 @@ const projects = [
     type: 'video',
     category: 'artfilm',
     categoryLabel: '공모전',
-    title: 'LG 유쓰 AI 쇼츠 페스티벌 우수상',
-    desc: "「AI로 표현하는 가장 나다운 순간」을 주제로 상반된 취향과 모순적인 자아를 시각화한 숏폼. LG 유쓰 AI 쇼츠 페스티벌 우수상 수상.",
+    title: 'LG유플러스 유쓰 AI 쇼츠 페스티벌 우수상',
+    desc: "「AI로 표현하는 가장 나다운 순간」을 주제로 상반된 취향과 모순적인 자아를 시각화한 숏폼. LG유플러스 유쓰 AI 쇼츠 페스티벌 우수상 수상.",
     videoSrc: './videos/lg-youth-festival.mp4',
     poster: './images/posters/lg-youth-festival.jpg',
     thumbnail: './images/posters/lg-youth-festival.jpg',
@@ -788,7 +761,7 @@ const PREVIEW = {
   201: 'p201', 202: 'p202', 204: 'p204', 205: 'p205', 206: 'p206'
 };
 /* 수상작은 썸네일 위에 수상 배지를 띄워 다른 카드와 구분한다 */
-const AWARDS = { 301: 'LG 유쓰 AI 쇼츠 페스티벌 우수상', 207: '사내 도전왕 1위' };
+const AWARDS = { 301: 'LG유플러스 유쓰 AI 쇼츠 페스티벌 우수상', 207: '사내 도전왕 1위' };
 const previewOf = p => p.videoSrc || (PREVIEW[p.id] ? `videos/preview/${PREVIEW[p.id]}.mp4` : '');
 
 /* 대표 작업(aekyung.js)에 이미 나온 작품은 전체 작업 목록에서 뺀다 */
@@ -798,7 +771,7 @@ const FEATURED_IDS = [301, 207, 305];
 
 /* 전체 보기 순서 */
 const WORK_ORDER = [
-  301,  // LG 유쓰 우수상
+  301,  // LG유플러스 유쓰 우수상
   304,  // 버그올킬
   302,  // 그로잉버블
   303,  // 닥터조 뿌리는 식물영양제
@@ -807,7 +780,7 @@ const WORK_ORDER = [
   207, 307,  // 가로 영상 첫 번째: 비료 회사 직원의 농사짓기
   7,    // 메디힐 토너패드
   3,    // 크리스마스 시즌 캠페인
-  4, 1, 2, 101, 6, 103, 201, 202, 203, 204, 205, 206
+  4, 1, 2, 6, 103, 201, 202, 203, 204, 205, 206
 ];
 
 function orderedProjects(order) {
@@ -820,17 +793,16 @@ function orderedProjects(order) {
 }
 
 const WORK_FILTERS = [
-  { key: 'all',      label: '전체' },
   { key: 'ad',       label: '제품 광고' },
   { key: 'guide',    label: '가이드·리뷰' },
-  { key: 'branded',  label: '브랜디드 콘텐츠' },
-  { key: 'contest',  label: '공모전·수상' },
+  { key: 'branded',  label: '실사 콘텐츠' },
+  { key: 'contest',  label: '공모전' },
   { key: 'film',     label: '단편 영화' }
 ];
 
 /* 전체 작업 영상 분류 (AI/실사 대신 콘텐츠 유형으로 나눈다) */
 const WORK_KIND = {
-  305: 'ad', 306: 'ad', 307: 'ad', 1: 'ad', 302: 'ad', 303: 'ad', 3: 'ad',
+  304: 'ad', 308: 'ad', 305: 'ad', 306: 'ad', 307: 'ad', 1: 'ad', 302: 'ad', 303: 'ad', 3: 'ad',
   2: 'guide', 202: 'guide', 203: 'guide', 206: 'guide',
   201: 'ad', 204: 'ad',
   207: 'branded', 205: 'branded',
@@ -850,7 +822,8 @@ const IMAGE_FILTERS = [
 const CDN = 'https://nahyun1993.github.io/portfolio3/images/';
 
 /* ── State ── */
-let workFilter = 'all';
+let workFilter = WORK_FILTERS[0].key;
+const videoPages = new Map();
 let imageFilter = 'all';
 let imageLimit = 24;
 let lastFocused = null;
@@ -982,38 +955,75 @@ function renderFeatured() {
 function renderWork() {
   const section = byId('work');
   section.innerHTML = `
-    <header class="sec-head">
-      <h2>전체 영상</h2>
-      <p>제작 방식별로 살펴보는 영상 포트폴리오.</p>
-    </header>
-    <div class="chips" id="work-chips" role="tablist">
+    <div class="chips" id="work-chips" role="tablist" aria-label="영상 세부 카테고리">
       ${WORK_FILTERS.map(f => `<button class="chip${workFilter === f.key ? ' is-on' : ''}" data-filter="${f.key}" role="tab" aria-selected="${workFilter === f.key}">${f.label}</button>`).join('')}
     </div>
-    <div class="work-grid" id="work-grid">${workCards()}</div>
-  `;
-  section.querySelectorAll('#work-chips .chip').forEach(b => {
-    b.addEventListener('click', () => {
-      workFilter = b.dataset.filter;
-      section.querySelectorAll('#work-chips .chip').forEach(x => {
-        const on = x.dataset.filter === workFilter;
-        x.classList.toggle('is-on', on);
-        x.setAttribute('aria-selected', on);
-      });
-      byId('work-grid').innerHTML = workCards();
-      wireCards(byId('work-grid'));
-      observeReveals(byId('work-grid'));
-      watchWorkGrid();
+    <div class="work-grid" id="work-grid">${workCards()}</div>`;
+  section.querySelectorAll('#work-chips .chip').forEach(button => {
+    button.addEventListener('click', () => {
+      workFilter = button.dataset.filter;
+      renderWork();
+      section.querySelector(`[data-filter="${workFilter}"]`).focus({ preventScroll: true });
+    });
+  });
+  section.querySelectorAll('[data-video-page]').forEach(button => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.videoGroup;
+      const top = section.getBoundingClientRect().top + window.scrollY;
+      videoPages.set(key, Number(button.dataset.videoPage));
+      renderWork();
+      const updated = [...section.querySelectorAll('.video-page-group')].find(el => el.dataset.videoGroup === key);
+      updated.querySelector('[aria-current="page"]')?.focus({ preventScroll: true });
+      const tabs = document.querySelector('.ak-tabs');
+      const header = document.querySelector('.site-header')?.offsetHeight || 0;
+      const offset = Math.max(header, parseFloat(getComputedStyle(tabs).top) || 0) + tabs.offsetHeight;
+      window.scrollTo({top: Math.max(0, top - offset - 24), behavior: 'instant'});
     });
   });
   wireCards(section);
+  observeReveals(section);
   watchWorkGrid();
 }
 
+function videoCategoryPages(items, mixed = false) {
+  const pages = [];
+  if (mixed) {
+    for (let start = 0; start < items.length; start += 4) {
+      pages.push({format: 'mixed', items: items.slice(start, start + 4)});
+    }
+    return pages;
+  }
+  for (const format of ['vertical', 'horizontal']) {
+    const list = items.filter(p => (p.orientation === 'vertical' ? 'vertical' : 'horizontal') === format);
+    const size = format === 'vertical' ? 8 : 4;
+    for (let start = 0; start < list.length; start += size) {
+      pages.push({format, items: list.slice(start, start + size)});
+    }
+  }
+  return pages;
+}
+
 function workCards() {
-  const ordered = orderedProjects().filter(p => !ARCHIVE_EXCLUDE.includes(p.id)).filter(p => workFilter === 'all' || WORK_KIND[p.id] === workFilter);
-  const list = [...ordered.filter(p => p.orientation === 'vertical'), ...ordered.filter(p => p.orientation !== 'vertical')];
-  if (!list.length) return `<p class="empty">이 분류에는 아직 공개한 작업이 없습니다.</p>`;
-  const cards = list.map((p, i) => `
+  const items = orderedProjects().filter(p => !ARCHIVE_EXCLUDE.includes(p.id) && WORK_KIND[p.id] === workFilter);
+  if (!items.length) return `<p class="empty">이 분류에는 아직 공개한 작업이 없습니다.</p>`;
+  const pages = videoCategoryPages(items, workFilter === 'branded');
+  const page = Math.min(videoPages.get(workFilter) || 1, pages.length);
+  videoPages.set(workFilter, page);
+  const current = pages[page - 1];
+  const label = WORK_FILTERS.find(filter => filter.key === workFilter).label;
+  const button = (target, text, accessible, disabled = false, active = false) => `<button type="button" data-video-group="${workFilter}" data-video-page="${target}" aria-label="${label} ${accessible}" ${disabled ? 'disabled' : ''} ${active ? 'aria-current="page"' : ''}>${text}</button>`;
+  return `<section class="video-page-group" data-video-group="${workFilter}" aria-label="${label}">
+    <div class="archive-format-row is-${current.format}"${current.format === 'mixed' ? ` style="--mixed-columns:${current.items.map(item => `minmax(0, ${item.orientation === 'vertical' ? 9 / 16 : 16 / 9}fr)`).join(' ')}"` : ''}>${videoCards(current.items)}</div>
+    <nav class="video-pagination" aria-label="${label} 페이지">
+      ${button(page - 1, '←', '이전 페이지', page === 1)}
+      ${pages.map((_, i) => button(i + 1, i + 1, `${i + 1}페이지`, false, page === i + 1)).join('')}
+      ${button(page + 1, '→', '다음 페이지', page === pages.length)}
+    </nav>
+  </section>`;
+}
+
+function videoCards(list) {
+  return list.map((p, i) => `
     <article class="card reveal${p.orientation === 'panorama' ? ' pure-film' : ''}${AWARDS[p.id] ? ' is-award' : ''}" ${p.id === 309 ? 'id="pure-solution"' : ''} style="--i:${i % 8}" data-open="${p.id}" tabindex="0" role="button" aria-label="${esc(p.title)} 자세히 보기">
       <div class="card-media ${p.orientation === 'vertical' ? 'is-vertical' : p.orientation === 'panorama' ? 'is-panorama' : 'is-horizontal'}">
         ${p.thumbnail
@@ -1031,16 +1041,8 @@ function workCards() {
         </div>
       </div>
     </article>
-  `);
-  let markup='', last=null;
-  list.forEach((p,i)=>{
-    const format=p.orientation==='vertical'?'vertical':'horizontal';
-    if(format!==last){if(last)markup+='</div>';markup+=`<div class="archive-format-row is-${format}">`;last=format;}
-    markup+=cards[i];
-  });
-  return markup+'</div>';
+  `).join('');
 }
-
 function pureGallery(p) {
   return `<section class="pure-gallery" aria-label="퓨어솔루션 실제 게시 캐러셀">
     <p class="pure-gallery-label">SNS CAROUSEL <span>실제 게시 이미지 · 4:5</span></p>
@@ -1278,10 +1280,10 @@ function mediaBlock(p) {
     return `<div class="${cls}"><video src="${p.videoSrc}" poster="${p.poster || ''}" controls autoplay muted playsinline preload="metadata"></video></div>`;
   }
   if (p.youtubeId) {
-    return `<div class="${cls}"><iframe src="https://www.youtube.com/embed/${p.youtubeId}" title="${esc(p.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>`;
+    return `<div class="${cls}"><iframe src="https://www.youtube.com/embed/${p.youtubeId}" title="${esc(p.title)}" allow="autoplay; fullscreen" allowfullscreen></iframe></div><p class="media-fallback"><a href="https://www.youtube.com/watch?v=${encodeURIComponent(p.youtubeId)}" target="_blank" rel="noopener">YouTube에서 영상 보기 ↗</a></p>`;
   }
   if (p.driveId) {
-    return `<div class="${cls}"><iframe src="https://drive.google.com/file/d/${p.driveId}/preview" title="${esc(p.title)}" allow="autoplay" allowfullscreen></iframe></div>`;
+    return `<div class="${cls}"><iframe src="https://drive.google.com/file/d/${p.driveId}/preview" title="${esc(p.title)}" allow="autoplay" allowfullscreen></iframe></div><p class="media-fallback"><a href="https://drive.google.com/file/d/${encodeURIComponent(p.driveId)}/view" target="_blank" rel="noopener">Google Drive에서 영상 보기 ↗</a><span>재생이 원활하지 않으면 새 창에서 확인해 주세요.</span></p>`;
   }
   return '';
 }

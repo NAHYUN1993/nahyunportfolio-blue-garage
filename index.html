@@ -20,10 +20,10 @@
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="./fonts/pretendard/pretendard.css">
-  <link rel="stylesheet" href="./styles.css?v=20261016-process-images-v27">
-  <link rel="stylesheet" href="./aekyung.css?v=20261016-process-images-v27">
-  <link rel="stylesheet" href="./browse.css?v=20261016-process-images-v27">
-  <link rel="stylesheet" href="./redesign.css?v=20261016-process-images-v27">
+  <link rel="stylesheet" href="./styles.css?v=20261017-intro-final-v57">
+  <link rel="stylesheet" href="./aekyung.css?v=20261017-intro-final-v57">
+  <link rel="stylesheet" href="./browse.css?v=20261017-intro-final-v57">
+  <link rel="stylesheet" href="./redesign.css?v=20261017-intro-final-v57">
   <link rel="preload" as="image" href="./assets/character/gaze-new-poster.jpg" fetchpriority="high">
 </head>
 <body class="browse-mode blue-portfolio">
@@ -34,24 +34,37 @@
   <header class="site-header"><nav id="portfolio-nav" aria-label="포트폴리오 목차"><div id="nav-links"></div></nav></header>
   <main id="top">
     <section id="hero" aria-label="이나현의 대표 작품"></section>
-    <section id="about" class="creator-about"><p class="section-kicker">AI CREATOR · 3D & AUTOMATION</p><div class="about-layout"><h2>이나현</h2><div><p class="about-detail">상상한 장면을 영상으로 만드는 AI 크리에이터 이나현입니다.<br>3D로 움직임을 설계하고, AI와 자동화를 활용해 기획부터 제작까지 이어갑니다.</p></div></div></section>
+    <section id="about" class="creator-about core-about" aria-labelledby="identity-title">
+      <p class="section-kicker">AI CREATOR · 3D & AUTOMATION</p>
+      <div class="about-layout">
+        <h2 id="identity-title">이나현</h2>
+        <div class="about-copy">
+          <p class="about-detail">AI 영상의 기획·제작부터 3D 움직임 설계, 제작 자동화 구축까지.<br> 영상의 완성도와 제작 효율을 함께 높이는 AI 크리에이터 이나현입니다.</p>
+          <ul class="core-skills" aria-label="코어 스킬">
+            <li><a href="#selected" data-portfolio-route="selected">영상 기획 및 제작</a></li>
+            <li><a href="#workflows" data-portfolio-route="workflows">AI 업무 자동화</a></li>
+            <li><button type="button" data-ak-work="onetake" aria-haspopup="dialog">3D 설계</button></li>
+          </ul>
+        </div>
+      </div>
+    </section>
     <div id="portfolio-content">
     <!-- 작품 중심의 연속 갤러리. 상세 설명은 작품을 선택하면 보여준다. -->
     <section id="featured">
       <div id="selected" class="ak-work">
-      <header class="featured-head"><div><h2>대표 영상</h2></div><button class="text-link" type="button" id="showreel-open">쇼릴 보기 <span aria-hidden="true">↗</span></button></header>
+      <header class="featured-head"><div><h2>대표 영상</h2><p class="ak-sec-sub">브랜드의 메시지와 캐릭터의 이야기를 AI 영상으로 전합니다.</p></div><button class="text-link" type="button" id="showreel-open">쇼릴 보기 <span aria-hidden="true">↗</span></button></header>
       <div class="ak-grid" id="ak-grid"></div>
       <div id="shortform"><div id="ak-vertical"></div></div>
       </div>
     </section>
 
     <section id="workflows" class="sec ak-workflows">
-      <header class="sec-head"><div><h2>제작 자동화</h2><p class="ak-sec-sub">기획·생성·검토·편집을 연결하는 직접 만든 작업 흐름.</p></div><span class="section-note">WORKFLOW & TOOLS</span></header>
+      <header class="sec-head"><div><h2>제작 자동화</h2><p class="ak-sec-sub">직접 만든 도구로 반복 작업을 자동화하고, 영상 제작 시간을 줄입니다.</p></div><span class="section-note">WORKFLOW & TOOLS</span></header>
       <div id="ak-workflows" class="ak-support-grid"></div>
     </section>
 
     <section id="research" class="sec ak-research">
-      <header class="sec-head"><div><h2>캐릭터 연구</h2><p class="ak-sec-sub">표정과 얼굴의 일관성을 위한 비교 실험.</p></div><span class="section-note">PERSONAL R&D</span></header>
+      <header class="sec-head"><div><h2>캐릭터 연구</h2><p class="ak-sec-sub">장면이 바뀌어도 같은 인물로 보이는지, 의도한 감정이 표정에 드러나는지 비교하며 AI 캐릭터의 일관성과 표현력을 연구합니다.</p></div><span class="section-note">PERSONAL R&D</span></header>
       <div id="ak-research" class="ak-support-grid"></div>
     </section>
 
@@ -59,12 +72,12 @@
 
     <!-- 나머지 작업: 접어두고 필요할 때 카테고리 탭으로 본다. 내용은 script.js의 기존 렌더러 -->
     <section id="archive" class="sec ak-archive">
-      <button class="ak-archive-toggle" type="button" aria-expanded="false" aria-controls="ak-archive-body">
-        <span class="ak-archive-title">전체 작업 보기</span>
+      <button class="ak-archive-toggle" type="button" aria-expanded="true" aria-controls="ak-archive-body">
+        <span class="ak-archive-title">전체 작업 접기</span>
         <span class="ak-archive-sub">영상 · 이미지 · 자막디자인 · 웹앱</span>
-        <span class="ak-archive-icon" aria-hidden="true">+</span>
+        <span class="ak-archive-icon" aria-hidden="true">−</span>
       </button>
-      <div class="ak-archive-body" id="ak-archive-body" hidden>
+      <div class="ak-archive-body" id="ak-archive-body">
         <div class="ak-tabs" role="tablist" aria-label="작업 카테고리">
           <button type="button" role="tab" data-ak-tab="work" aria-selected="true">영상</button>
           <button type="button" role="tab" data-ak-tab="images" aria-selected="false">이미지</button>
@@ -77,6 +90,14 @@
           <div id="motion" class="ak-panel" role="tabpanel" hidden></div>
           <div id="tools" class="ak-panel" role="tabpanel" hidden></div>
         </div>
+      </div>
+      <div class="career-context" aria-label="경력과 작업의 흐름">
+        <p class="career-intro">방송 자막 디자인에서 누보의 브랜드 영상 기획·촬영·편집으로, AI 콘텐츠 제작과 제작 자동화까지 작업 범위를 넓혀 왔습니다.</p>
+        <ol class="career-flow">
+          <li><p class="career-period">2015.01–2016.10 · 2017.07–2021.05</p><h3>방송 자막 디자인</h3><p>가족미디어 · 이엘와이드코퍼레이션<br>예능·교양·다큐의 자막을 디자인하며 장면의 리듬과 정보 전달을 고려했습니다.</p></li>
+          <li><p class="career-period">2022.12–현재</p><h3>누보 · 브랜드 영상 제작</h3><p>브랜드기획팀 매니저<br>유튜브·인스타그램 콘텐츠의 기획·촬영·편집과 채널 운영을 담당합니다.</p></li>
+          <li><p class="career-period">현재 확장하고 있는 작업</p><h3>AI 콘텐츠 제작·자동화</h3><p>브랜드 AI 영상과 개인 창작을 제작하고, 3D 프리비즈·캐릭터 연구·제작 도구로 구현 방법을 확장합니다.</p></li>
+        </ol>
       </div>
     </section>
 
@@ -102,9 +123,9 @@
     <div class="ak-sheet-panel" id="ak-sheet-panel"></div>
   </div>
 
-  <script src="./hero-config.js?v=20261016-process-images-v27"></script>
-  <script src="./hero.js?v=20261016-process-images-v27"></script>
-  <script src="./script.js?v=20261016-process-images-v27"></script>
-  <script src="./aekyung.js?v=20261016-process-images-v27"></script>
+  <script src="./hero-config.js?v=20261017-intro-final-v57"></script>
+  <script src="./hero.js?v=20261017-intro-final-v57"></script>
+  <script src="./script.js?v=20261017-intro-final-v57"></script>
+  <script src="./aekyung.js?v=20261017-intro-final-v57"></script>
 </body>
 </html>
