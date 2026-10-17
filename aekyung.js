@@ -340,8 +340,8 @@ const works = [
   "meta": "회사 전용 AI 콘텐츠 제작 도구 · 스토리보드 → 이미지·영상 생성 → 자막 제작",
   "line": "회사의 콘텐츠 구성·연출·카피·자막 규칙을 반영해, 기획부터 이미지·영상·자막 제작까지 연결한 전용 제작판",
   "role": "제작 절차·검토 단계 설계 · AI 도구를 활용한 웹앱 구현 · 컷별 결과 선별",
-  "goal": "회사 콘텐츠 제작에 맞춘 전용 도구를 만들었습니다. 회사가 사용하는 콘텐츠 구성 방식, 컷별 연출, 제품을 보여주는 방식과 카피·자막 규칙을 제작 기준으로 정리하고, 생성 과정에 반영했습니다. 이 기준에 따라 스토리보드와 이미지·영상·자막 시안을 만들고, 한 화면에서 비교·승인·수정·재생성할 수 있도록 구성했습니다.",
-  "outcome": "회사 제작 규칙을 적용한 스토리보드·이미지·영상·자막 생성 및 검토 화면 구축",
+  "goal": "AI 영상 제작에서는 프롬프트 입력과 참조 이미지 첨부를 반복해야 했습니다. 회사의 콘텐츠 구성과 연출, 제품 표현, 카피·자막 규칙을 정리해 제작 기준으로 반영했습니다. 이를 바탕으로 프롬프트 입력과 참조 이미지 첨부의 반복을 줄이고, 스토리보드부터 이미지·영상·자막 생성까지 연결하는 제작 자동화 시스템을 구축했습니다. 단계별 결과는 직접 검토하고 승인하도록 설계했습니다.",
+  "outcome": "프롬프트 입력과 참조 이미지 첨부의 반복을 줄인 제작 자동화 시스템 구축",
   "process": [
     "회사의 콘텐츠 구성·연출·제품 표현·카피·자막 규칙을 정리하고, Antigravity 에이전트가 이 제작 기준을 읽어 컷별 연출·내레이션·사운드·프롬프트를 구성하도록 설계했습니다. 기획과 스토리보드는 다음 생성 전에 직접 검토합니다.",
     "Magnific MCP로 이미지·자막 생성을 연결하고, Flask로 만든 검토 화면에서 Z-Image · Nano Banana · GPT 2.5 · Seedream의 시안을 비교합니다. 컷마다 모델과 프롬프트를 바꾸고 승인하거나 재생성할 수 있습니다.",
@@ -351,10 +351,10 @@ const works = [
   "gallery": [
     {
       "src": "images/workflows/board-output.webp",
-      "cap": "7개 컷 영상 출력과 컷별 재생·검토 화면"
+      "cap": "컷별 영상 생성 결과와 검토·승인 화면"
     }
   ],
-  "galleryCaption": "첫 프로젝트 적용 화면 · 컷별 영상 출력과 검토",
+  "galleryCaption": "제작 자동화 시스템 · 컷별 생성 결과 검토·승인",
   "previewImages": [
     {
       "src": "images/workflows/board-review.webp",
@@ -458,7 +458,7 @@ const briefs = {
   'expression-lab': { purpose: '이후 제작에서 표정 일관성을 유지할 기준 마련', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
   'identity-lab': { purpose: '여러 장면에서 같은 얼굴을 유지할 기준 마련', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
   'interview-workflow': { purpose: '이야기 흐름을 빠르게 구성하고 편집 공수 절감', process: 'Whisper 전사 → 서사 구성 → Premiere MCP', result: '14개 구간으로 구성한 약 8분 편집 초안' },
-  'production-board': { purpose: '컷별 제작 공수를 줄이고 연출·결과 판단에 집중', process: 'Antigravity → MCP 생성 → 제작판 검토', result: '검토용 웹앱 · 첫 프로젝트 7개 컷 출력' }
+  'production-board': { purpose: '프롬프트 입력과 참조 이미지 첨부의 반복 감소', process: '회사 제작 기준 반영 → 단계별 생성 → 직접 검토·승인', result: '스토리보드·이미지·영상·자막 생성 자동화' }
 };
 /* 확인 가능한 제작 기록을 기준으로 개선 전후와 연구의 쓰임을 설명한다. */
 const caseNotes = {
@@ -471,10 +471,11 @@ const caseNotes = {
     scope: '초안 구성과 편집 도구 연동을 구현했습니다. 발화의 의미와 연결, 컷의 순서와 길이는 직접 검토합니다.'
   },
   'production-board': {
-    before: '컷별 이미지·영상 생성, 시안 비교와 승인, 자막 제작을 도구별로 나눠 관리해야 하는 작업 흐름.',
-    after: '회사 제작 기준과 컷별 상태를 한 제작판에 모으고, 이미지·영상·자막의 검토·승인·재생성을 연결했습니다.',
-    proof: '첫 프로젝트에서 7개 컷 영상 출력·검토',
-    stats: [{ n: '7개 컷', label: '첫 프로젝트 영상 출력' }],
+    before: 'AI 영상을 제작할 때마다 프롬프트를 입력하고 참조 이미지를 첨부하는 작업을 반복했습니다.',
+    after: '회사의 콘텐츠 구성·연출·제품 표현·카피·자막 규칙을 제작 기준으로 반영해 반복 입력과 첨부를 줄이고, 스토리보드부터 이미지·영상·자막 생성까지 연결했습니다.',
+    proof: '프롬프트 입력과 참조 이미지 첨부의 반복 감소',
+    beforeLabel: '개선 전 · 반복 입력·첨부',
+    afterLabel: '구현 후 · 제작 기준을 반영한 자동화',
     scope: '생성된 결과를 자동으로 확정하지 않고, 컷별 연출과 브랜드 적합성을 직접 확인해 승인합니다.'
   },
   'expression-lab': {
@@ -490,7 +491,7 @@ const caseNotes = {
   }
 };
 function changeMarkup(note) {
-  return note?.before ? `<section class="case-change"><h3>개선 전후</h3><dl class="change-comparison"><div><dt>개선 전 · 나뉜 작업</dt><dd>${esc(note.before)}</dd></div><div><dt>구현 후 · 연결한 작업</dt><dd>${esc(note.after)}</dd></div></dl></section>` : '';
+  return note?.before ? `<section class="case-change"><h3>개선 전후</h3><dl class="change-comparison"><div><dt>${esc(note.beforeLabel || '개선 전 · 나뉜 작업')}</dt><dd>${esc(note.before)}</dd></div><div><dt>${esc(note.afterLabel || '구현 후 · 연결한 작업')}</dt><dd>${esc(note.after)}</dd></div></dl></section>` : '';
 }
 const stepTitles = {
   'onetake': ['카메라 무빙 직접 지정', 'ComfyUI에서 뼈대·깊이 추출과 합성', '캐릭터 멀티 레퍼런스', '드래프트 검토와 최종 생성', '음원과 안무 싱크'],
