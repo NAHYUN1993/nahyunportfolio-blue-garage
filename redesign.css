@@ -187,7 +187,7 @@ body.blue-portfolio { background:var(--paper); color:var(--ink); font-family:var
 .gaze-hero {padding-top:0;}
 .gaze-stage {height:clamp(400px,36vw,520px);margin-top:0;align-items:flex-end;isolation:isolate;}
 .gaze-stage .hero-title {position:absolute;top:46px;left:0;width:100%;z-index:0;}
-.gaze-stage .hero-title h1 {font-size:clamp(70px,12vw,180px);color:#004e7c;}
+.gaze-stage .hero-title h1 {font-size:clamp(48px,6.8vw,98px);color:#ffffff;}
 .gaze-stage .hero-title > p {color:#004e7c;}
 .gaze-frame {position:relative;width:38%;max-width:650px;z-index:1;aspect-ratio:16/9;}
 .gaze-video {mask-image:none;}
@@ -199,7 +199,7 @@ body.blue-portfolio { background:var(--paper); color:var(--ink); font-family:var
 @media(max-width:760px){
  .gaze-stage {height:270px;}
  .gaze-stage .hero-title {top:36px;}
- .gaze-stage .hero-title h1 {font-size:12vw;}
+ .gaze-stage .hero-title h1 {font-size:9vw;}
  .gaze-frame {width:80%;max-width:450px;}
  .gaze-stage::after {height:4.5vw;max-height:25px;}
  .gaze-toggle {bottom:32px;}
@@ -226,9 +226,10 @@ body.blue-portfolio, body.blue-portfolio * {font-family:'Pretendard Variable',sa
 /* Preserve the original display face only for the hero name. */
 @font-face {font-family:'Kalnia';src:url('./fonts/kalnia/Kalnia-Variable.ttf') format('truetype');font-weight:100 700;font-style:normal;font-display:swap;}
 body.blue-portfolio .gaze-stage .hero-title h1 {font-family:'Kalnia',Georgia,serif !important;font-weight:700;}
-.gaze-stage .hero-title {top:28px;}
-.gaze-stage {height:clamp(380px,34vw,490px);}
-@media(max-width:760px){.gaze-stage .hero-title{top:22px;}.gaze-stage{height:250px;}}
+.gaze-stage .hero-title {top:18px;}
+.gaze-stage {height:clamp(220px,18vw,270px);}
+.gaze-frame {width:24%;max-width:410px;}
+@media(max-width:760px){.gaze-stage .hero-title{top:16px;}.gaze-stage{height:170px;}.gaze-frame{width:60%;max-width:330px;}}
 
 .blue-portfolio #portfolio-nav a,.blue-portfolio #portfolio-nav a.is-active {font-weight:400;}
 .blue-portfolio .about-detail {font-size:clamp(16px,1.35vw,19px);line-height:1.75;}
