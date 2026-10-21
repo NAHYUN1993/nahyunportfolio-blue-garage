@@ -402,13 +402,13 @@ const works = [
     layout: 'tall',
     tags: ['공모전', 'AI 숏폼'],
     title: '가장 나다운 순간',
-    meta: 'LG유플러스 유쓰 AI 쇼츠 페스티벌 출품작 · 세로 숏폼',
+    meta: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌 출품작 · 세로 숏폼',
     line: '상반된 취향을 가진 인물의 성격을 셀피 시점과 짧은 반전으로 표현',
     role: '콘셉트 기획 · 인물 이미지 생성 · 셀피 시점 연출 · AI 영상 제작',
-    outcome: 'LG유플러스 유쓰 AI 쇼츠 페스티벌 우수상 수상',
+    outcome: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상 수상',
     video: 'videos/lg-youth-festival.mp4',
     poster: 'images/posters/lg-youth-festival.jpg',
-    goal: 'LG유플러스 유쓰 AI 쇼츠 페스티벌의 ‘나다움’ 주제에 맞춰 제출한 작품입니다. 상반된 취향과 서툰 순간들을 일상적인 셀피 시점으로 담고, ‘무너지면 주워 먹는 사람’이라는 태도로 나다움을 표현했습니다.',
+    goal: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌의 ‘나다움’ 주제에 맞춰 제출한 작품입니다. 상반된 취향과 서툰 순간들을 일상적인 셀피 시점으로 담고, ‘무너지면 주워 먹는 사람’이라는 태도로 나다움을 표현했습니다.',
     process: [
       '‘나다움’에는 정해진 답이 없어 제작보다 기획에 더 많은 시간을 썼습니다. 좋아하는 것과 실제 행동이 어긋나는 순간들을 돌아보고, 그 모순과 서툶을 대하는 태도를 이야기의 중심으로 잡았습니다.',
       '주최 브랜드인 LG유플러스 유쓰와 ‘심플리 유플러스’ 슬로건, 취향과 일상을 담으라는 부문 설명을 함께 살폈습니다. 기술을 과시하는 화려한 연출을 덜어내고, 일상적이고 정서적인 톤을 선택했습니다.',
@@ -416,8 +416,9 @@ const works = [
       '화면 밖 팔의 방향과 시선으로 셀피 시점을 구성하고, 인물의 외형과 스타일을 장면의 공통 기준으로 사용',
       'Kling과 Seedance 2.0으로 영상화하고 컷 전환과 카메라 무빙에 변화를 주어 짧은 이야기로 완성'
     ],
-    results: [{ n: '우수상', label: 'LG유플러스 유쓰 AI 쇼츠 페스티벌' }],
+    results: [{ n: '우수상', label: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌' }],
     resultLabel: '수상 결과',
+    certificate: { src: 'images/awards/youth-festival-certificate.png', caption: 'Google·LG U+ 공동 주최 · 유쓰 AI 쇼츠 페스티벌 우수상 · 2026.09.23' },
     processMedia: [],
     tools: ['ChatGPT', 'Higgsfield Soul', 'Kling', 'Seedance 2.0']
   },
@@ -453,7 +454,7 @@ const works = [
 const briefs = {
   'onetake': { purpose: '원하는 카메라 무빙과 안무를 함께 제어', process: '카메라 무빙 직접 지정 → Depth·Pose → AI 생성', result: '6초 원테이크 · 1080p 완성' },
   'out-of-frame': { purpose: '태도와 시선으로 솔로 아이돌의 콘셉트 소개', process: '인물·공간 레퍼런스 설계 → 생성·선별 → 편집', result: '세 공간을 연결한 21.5초 트레일러' },
-  'lg-youth': { purpose: 'LG유플러스 유쓰 공모전의 나다움 주제 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'LG유플러스 유쓰 AI 쇼츠 페스티벌 우수상' },
+  'lg-youth': { purpose: 'LG유플러스 유쓰 공모전의 나다움 주제 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상' },
   'pure-solution': { purpose: '식집사의 일상에서 제품의 쓰임을 자연스럽게 소개', process: '인물·오브제가 이어지는 4장 파노라마 구성', result: '조회수 16,745 · 외부링크 클릭 422건' },
   'expression-lab': { purpose: '이후 제작에서 표정 일관성을 유지할 기준 마련', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
   'identity-lab': { purpose: '여러 장면에서 같은 얼굴을 유지할 기준 마련', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
@@ -522,7 +523,7 @@ function renderWorks() {
   const labels = { onetake: 'Blender 3D 프리비즈 · 카메라·안무 제어', 'out-of-frame': '캐릭터의 태도와 분위기를 담은 AI 트레일러', 'interview-workflow': '음성 전사 · 편집 자동화', 'production-board': '생성 · 승인 · 재생성', 'expression-lab': '표정 · 감정 표현', 'identity-lab': '얼굴 일관성 · 모델 비교', 'lg-youth': '나다움을 셀피 시점으로 풀어낸 AI 숏폼', 'pure-solution': '식집사의 일상에 제품을 담은 AI 캐러셀' };
   const block = w => `<article class="project-card">
     <button class="ak-card-hit project-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
-      <div class="project-media${w.previewImages?.length > 1 ? ' project-media--pair' : ''}">${cardMedia(w)}${w.id === 'lg-youth' ? '<span class="project-badge">🏅 LG유플러스 유쓰 AI 쇼츠 페스티벌 · 우수상</span>' : ''}<span class="project-open" aria-hidden="true">${w.video ? '▶' : '↗'}</span></div>
+      <div class="project-media${w.previewImages?.length > 1 ? ' project-media--pair' : ''}">${cardMedia(w)}${w.id === 'lg-youth' ? '<span class="project-badge">🏅 Google·LG U+ 유쓰 AI 쇼츠 페스티벌 · 우수상</span>' : ''}<span class="project-open" aria-hidden="true">${w.video ? '▶' : '↗'}</span></div>
       <div class="project-copy"><div><h3>${esc(w.title)}</h3><p class="project-category">${esc(labels[w.id])}</p></div><span class="project-link">자세히 ↗</span></div>
     </button>${caseNotes[w.id] ? `<div class="project-context">${caseNotes[w.id].proof ? `<p class="project-proof">${esc(caseNotes[w.id].proof)}</p>` : ''}${caseNotes[w.id].before ? `<p class="project-change"><b>개선 전</b>${esc(caseNotes[w.id].before)}</p><p class="project-change"><b>구현 후</b>${esc(caseNotes[w.id].after)}</p>` : ''}</div>` : ''}</article>`;
   const render = (target, ids) => { $(target).innerHTML = ids.map(id => block(works.find(w => w.id === id))).join(''); };
@@ -619,6 +620,7 @@ function openSheet(id) {
         ${w.findings || note?.findings ? `<section class="case-findings"><h3>비교에서 확인한 점</h3><p>${esc(w.findings || note.findings)}</p></section>` : ''}
         ${note?.scope ? `<p class="case-scope">${esc(note.scope)}</p>` : ''}
         ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
+        ${w.certificate ? `<figure class="case-certificate"><a href="${esc(w.certificate.src)}" target="_blank" rel="noopener" aria-label="이나현 우수상 상장 크게 보기"><img src="${esc(w.certificate.src)}" alt="이나현 · Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상 상장" loading="lazy"></a><figcaption>${esc(w.certificate.caption)}<br>상장 크게 보기 ↗</figcaption></figure>` : ''}
         ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
         </div></div>
       </section>
