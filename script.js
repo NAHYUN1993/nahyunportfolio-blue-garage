@@ -20,14 +20,16 @@ const projects = [
   "category": "commercial",
   "categoryLabel": "커머셜 AI 영상",
   "title": "넌마늘난양파",
-  "desc": "넌마늘난양파·납작이 제품 특성과 작물 재배 장면을 연계한 세로형 제품 광고.",
-  "brief": "넌마늘난양파·납작이 제품 특성과 작물 재배 장면을 연계한 세로형 제품 광고.",
+  "desc": "시기별 제품 선택과 넌마늘난양파·납작이의 조합을 타이포그래피로 전달한 네이버 숏클립 홍보 영상.",
+  "brief": "네이버 숏클립에 게시할 제품 홍보 영상으로, ‘넌마늘난양파’와 ‘납작이’를 시기와 제품 특성에 맞춰 조합해 사용하는 방법을 소개하고자 했습니다. 두 제품을 단순히 나열하기보다, 언제 어떤 제품을 선택하면 좋은지 전달해 각 제품의 쓰임과 함께 활용하는 이점을 알리는 데 초점을 맞췄습니다.",
+  "processLabel": "연출 방향",
+  "process": [{"title": "타이포그래피를 통한 정보 전달", "desc": "짧은 시청 시간 안에 제품별 특징과 사용 시기를 파악할 수 있도록 타이포그래피에 힘을 실었습니다. 핵심 정보가 먼저 읽히도록 글자의 크기와 배치, 강조 순서를 설계해 제품 간 차이와 조합의 이점이 명확하게 전달되도록 구성했습니다."}],
   "orientation": "vertical",
   "videoSrc": "videos/garlic-flat.mp4",
   "poster": "images/posters/garlic-flat-v6.jpg",
   "thumbnail": "images/posters/garlic-flat-v6.jpg",
   "tools": [],
-  "badgeLabel": "NEW"
+  "badgeLabel": ""
 },
 {
   "id": 306,
@@ -35,14 +37,16 @@ const projects = [
   "category": "commercial",
   "categoryLabel": "커머셜 AI 영상",
   "title": "해충박살",
-  "desc": "온실을 배경으로 벌레 캐릭터의 인터뷰 형식을 적용한 제품 광고.",
-  "brief": "온실을 배경으로 벌레 캐릭터의 인터뷰 형식을 적용한 제품 광고.",
+  "desc": "야외 뉴스 인터뷰에 등장한 인형탈 벌레 캐릭터로 유쾌하게 풀어낸 제품 광고.",
+  "brief": "해충을 다루는 광고지만, 벌레의 징그러운 모습보다 캐릭터의 익살스러움이 먼저 느껴지도록 기획했습니다. 벌레를 인형탈을 쓴 사람으로 의인화해 친근하게 표현하고, 뉴스 인터뷰의 취재 대상으로 등장시켰습니다. 해충을 없애는 제품을 벌레의 입장에서 바라보는 반전으로, 제품에 대한 관심을 유쾌하게 이끌고자 했습니다.",
+  "processLabel": "연출 방향",
+  "process": [{"title": "뉴스 인터뷰 형식과 캐릭터의 대비", "desc": "야외를 배경으로 인형탈 캐릭터가 인터뷰에 응하는 장면을 구성했습니다. 실제 뉴스처럼 진지한 형식과 귀여운 벌레 캐릭터의 엉뚱한 모습이 대비되도록 해, 그 상황 자체에서 웃음이 생기도록 연출했습니다."}],
   "orientation": "vertical",
   "videoSrc": "videos/pest-buster.mp4",
   "poster": "images/posters/pest-buster.jpg",
   "thumbnail": "images/posters/pest-buster.jpg",
   "tools": [],
-  "badgeLabel": "NEW"
+  "badgeLabel": ""
 },
 {
   "id": 307,
@@ -50,14 +54,16 @@ const projects = [
   "category": "commercial",
   "categoryLabel": "커머셜 AI 영상",
   "title": "효소아미노",
-  "desc": "농사 현장의 대화형 서사와 노을 배경의 제품 컷을 결합한 커머셜 영상.",
-  "brief": "농사 현장의 대화형 서사와 노을 배경의 제품 컷을 결합한 커머셜 영상.",
+  "desc": "관행과 새로운 해법을 아빠와 딸로 표현하고, 영화의 한 장면처럼 풀어낸 제품 광고.",
+  "brief": "익숙한 농사 관행과 새로운 해법의 만남을 아빠와 딸이라는 인물로 표현했습니다. 아빠는 오랫동안 이어온 방식을, 딸은 새 영양제를 통한 변화를 상징합니다. 제품의 기능을 직접 설명하기보다, 익숙한 방식을 벗어나 새로운 선택을 받아들이는 이야기를 통해 효소아미노를 소개하고자 했습니다.",
+  "processLabel": "연출 방향",
+  "process": [{"title": "인물의 상징과 대화 중심의 영화적 연출", "desc": "관행과 새로운 해법을 아빠와 딸로 의인화하고, 두 인물의 대화를 영화의 한 장면처럼 구성했습니다. Nano Banana로 컷마다 얼굴의 일관성을 맞췄으며, 대화 장면의 설득력을 높이기 위해 당시 대사에 맞는 입 모양을 자연스럽게 구현했던 Kling을 선택해 영상화했습니다."}],
   "orientation": "horizontal",
   "videoSrc": "videos/enzyme-amino.mp4",
   "poster": "images/posters/enzyme-amino.jpg",
   "thumbnail": "images/posters/enzyme-amino.jpg",
-  "tools": [],
-  "badgeLabel": "NEW"
+  "tools": ["Nano Banana", "Kling"],
+  "badgeLabel": ""
 },
 {
   "id": 308,
@@ -66,13 +72,18 @@ const projects = [
   "categoryLabel": "커머셜 AI 영상",
   "title": "분갈이흙",
   "desc": "초록색 톤의 공간별 식물 연출과 모종삽·제품 컷을 연결한 숏폼 광고.",
-  "brief": "초록색 톤의 공간별 식물 연출과 모종삽·제품 컷을 연결한 숏폼 광고.",
+  "brief": "식물이 잘 자라는 데 필요한 것은 ‘그럴듯한 화분’일까, ‘좋은 흙’일까. 이 질문에서 출발해 화분을 과감히 없애고, 식물이 자라는 환경을 새롭게 구상했습니다. 익숙한 화분 속 식물만으로는 시선을 붙잡기 어려워, 사람들이 멈춰 보고 궁금해할 장면이 필요했습니다. 레몬 껍질, 구두, 세탁기처럼 식물과 전혀 어울릴 것 같지 않은 사물을 재배 공간으로 바꿔, ‘어디에 심었는가’보다 ‘무엇에 심었는가’에 시선이 향하도록 했습니다. 분갈이흙의 기능과 역할을 직접 설명하는 대신, 엉뚱한 장소에서도 자라는 식물의 모습으로 제품을 기억하게 만드는 광고를 기획했습니다.",
+  "processLabel": "연출 방향",
+  "process": [
+    { "title": "초록 공간의 연속", "desc": "서로 다른 사물과 장소를 초록색 중심의 공간으로 연결했습니다. 장면이 바뀌어도 색의 흐름이 이어지도록 구성해, 다양한 재배 공간을 하나의 시각적 콘셉트로 묶었습니다." },
+    { "title": "정적인 구도 안의 낯선 조합", "desc": "식물과 일상 사물의 충돌 자체가 눈에 들어오도록 정적인 구도를 사용했습니다. 빠른 움직임으로 놀라움을 만들기보다, 익숙한 사물 안에서 식물이 자라는 낯선 모습을 충분히 바라보게 해 의외성과 호기심을 이끌고자 했습니다." }
+  ],
   "orientation": "vertical",
   "videoSrc": "videos/potting-soil.mp4",
   "poster": "images/posters/potting-soil.jpg",
   "thumbnail": "images/posters/potting-soil.jpg",
   "tools": [],
-  "badgeLabel": "NEW"
+  "badgeLabel": ""
 },
   /* ─────────────────────────────────────────────────────────
      AI 영상 아트필름
@@ -767,6 +778,9 @@ const previewOf = p => p.videoSrc || (PREVIEW[p.id] ? `videos/preview/${PREVIEW[
 /* 대표 작업(aekyung.js)에 이미 나온 작품은 전체 작업 목록에서 뺀다 */
 const ARCHIVE_EXCLUDE = [7, 301, 309, 206];
 
+// 실사 작업은 데이터와 원본을 보존하고 화면 목록에서만 숨긴다.
+const isVisibleProject = p => p && p.category !== 'liveaction';
+
 const FEATURED_IDS = [301, 207, 305];
 
 /* 전체 보기 순서 */
@@ -789,13 +803,12 @@ function orderedProjects(order) {
     const i = list.indexOf(p.id);
     return i === -1 ? list.length + WORK_ORDER.indexOf(p.id) : i;
   };
-  return projects.slice().sort((a, b) => rank(a) - rank(b));
+  return projects.filter(isVisibleProject).sort((a, b) => rank(a) - rank(b));
 }
 
 const WORK_FILTERS = [
   { key: 'ad',       label: '제품 광고' },
   { key: 'guide',    label: '가이드·리뷰' },
-  { key: 'branded',  label: '실사 콘텐츠' },
   { key: 'contest',  label: '공모전' },
   { key: 'film',     label: '단편 영화' }
 ];
@@ -926,7 +939,7 @@ function renderHero() {
    FEATURED (asymmetric 1 + 2)
 ═══════════════════════════════════════════════ */
 function renderFeatured() {
-  const picks = FEATURED_IDS.map(findProject).filter(Boolean);
+  const picks = FEATURED_IDS.map(findProject).filter(isVisibleProject);
   if (!picks.length) return;
   byId('featured').innerHTML = `
     <header class="featured-head"><h2>Selected works<span>.</span></h2><p>실사 촬영부터 AI 영상 제작까지.</p></header>
@@ -1313,7 +1326,7 @@ function detailBlock(p) {
 
   const proc = (p.process && p.process.length) ? `
     <section class="modal-block">
-      <h4>제작 과정</h4>
+      <h4>${esc(p.processLabel || '제작 과정')}</h4>
       <ol class="process">
         ${p.process.map(s => `<li><strong>${esc(s.title)}</strong><span>${esc(s.desc)}</span></li>`).join('')}
       </ol>
