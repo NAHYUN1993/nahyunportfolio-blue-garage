@@ -364,3 +364,49 @@ body.blue-portfolio .gaze-stage .hero-title h1 {font-family:'Kalnia',Georgia,ser
 .case-certificate a {display:block;}
 .case-certificate img {display:block;width:100%;height:auto;}
 .case-certificate figcaption {margin-top:10px;font-size:12px;line-height:1.65;}
+
+/* One introduction: the character and creator identity share the opening scene. */
+.creator-intro {--intro-blue:#0a8fd2;--intro-ink:#001e32;background:var(--intro-blue);color:var(--intro-ink);}
+.blue-portfolio .creator-intro {margin:0;}
+.blue-portfolio .creator-intro + #portfolio-content > #featured {border-top:0;padding-top:56px;}
+.creator-intro-inner {max-width:1280px;margin-inline:auto;padding:28px var(--pad) 48px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(24px,4vw,64px);}
+.blue-portfolio .creator-intro #hero {padding:0;min-width:0;}
+.creator-intro .gaze-stage {height:320px;margin:0;background:transparent;align-items:center;}
+.creator-intro .gaze-stage::after {display:none;}
+.creator-intro .gaze-frame {width:100%;max-width:480px;}
+.intro-copy {min-width:0;padding-block:20px;}
+.intro-role {margin:0 0 10px;font-size:16px;font-weight:550;letter-spacing:.02em;}
+.intro-copy h1 {display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 20px;margin:0;color:#fff;font-size:clamp(44px,5.2vw,68px);font-weight:700;line-height:1.15;letter-spacing:-.045em;}
+body.blue-portfolio .intro-name-en {font-family:'Kalnia',Georgia,serif !important;font-size:clamp(22px,2.1vw,28px);font-weight:500;letter-spacing:-.025em;color:var(--intro-ink);}
+.intro-detail {margin-top:24px;font-size:clamp(16px,1.4vw,18px);line-height:1.8;word-break:keep-all;}
+.intro-detail > span {display:block;}
+.intro-detail > span + span {margin-top:5px;}
+.blue-portfolio .creator-intro .core-skills {margin-top:26px;gap:10px;}
+.blue-portfolio .creator-intro .core-skills :is(a,button) {min-height:44px;padding:9px 16px;border-color:var(--intro-ink);color:var(--intro-ink);font-size:14px;}
+.blue-portfolio .creator-intro .core-skills :is(a,button):hover {background:var(--intro-ink);color:#fff;}
+.blue-portfolio .creator-intro .core-skills :is(a,button):focus-visible {outline-color:#fff;}
+.blue-portfolio #portfolio-nav a,.blue-portfolio #portfolio-nav a.is-active {color:#001e32;}
+.blue-portfolio #portfolio-nav a.is-active {text-decoration-color:#001e32;}
+@media (max-width:1000px) and (min-width:761px) {
+ .creator-intro-inner {grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px;padding-block:24px 40px;}
+ .creator-intro .gaze-stage {height:280px;}
+ .intro-copy h1 {gap:8px 14px;}
+ .intro-detail {margin-top:20px;}
+ .blue-portfolio .creator-intro .core-skills {gap:8px;}
+ .blue-portfolio .creator-intro .core-skills :is(a,button) {padding-inline:12px;font-size:13px;}
+}
+@media (max-width:760px) {
+ .blue-portfolio .creator-intro + #portfolio-content > #featured {padding-top:40px;}
+ .creator-intro-inner {grid-template-columns:minmax(0,1fr);gap:6px;padding:8px var(--pad) 34px;}
+ .creator-intro .gaze-stage {height:154px;}
+ .creator-intro .gaze-frame {width:260px;max-width:100%;}
+ .intro-copy {padding:0;text-align:center;}
+ .intro-role {margin-bottom:8px;font-size:13px;}
+ .intro-copy h1 {justify-content:center;gap:14px;font-size:44px;}
+ body.blue-portfolio .intro-name-en {font-size:20px;}
+ .intro-detail {max-width:420px;margin:18px auto 0;font-size:15px;line-height:1.75;}
+ .intro-detail > span + span {margin-top:6px;}
+ .blue-portfolio .creator-intro .core-skills {justify-content:center;gap:8px;margin-top:22px;}
+ .blue-portfolio .creator-intro .core-skills :is(a,button) {padding-inline:12px;font-size:13px;}
+}
+

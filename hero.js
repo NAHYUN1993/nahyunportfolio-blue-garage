@@ -1,7 +1,7 @@
 /* The character follows the pointer by seeking real poses in the supplied take. */
 window.initPortfolioHero = ({ root, openShowreel }) => {
   root.className = 'gallery-hero gaze-hero';
-  root.innerHTML = `<div class="gaze-stage"><div class="hero-title"><h1>Lee Nahyun</h1></div><div class="gaze-frame"><video class="gaze-video" src="assets/character/gaze-new.mp4" poster="assets/character/gaze-new-poster.jpg" muted playsinline preload="auto" aria-label="마우스 방향을 바라보는 캐릭터"></video><canvas class="gaze-cutout" aria-hidden="true"></canvas></div></div>`;
+  root.innerHTML = `<div class="gaze-stage"><div class="gaze-frame"><video class="gaze-video" src="assets/character/gaze-new.mp4" poster="assets/character/gaze-new-poster.jpg" muted playsinline preload="auto" aria-label="마우스 방향을 바라보는 캐릭터"></video><canvas class="gaze-cutout" aria-hidden="true"></canvas></div></div>`;
   const stage = root.querySelector('.gaze-stage');
   const video = root.querySelector('video');
   const canvas = root.querySelector('canvas');
@@ -66,3 +66,4 @@ window.initPortfolioHero = ({ root, openShowreel }) => {
   // A cached video may already have fired loadeddata before handlers were attached.
   if(video.readyState >= 2) resumeFromMedia();
 };
+
