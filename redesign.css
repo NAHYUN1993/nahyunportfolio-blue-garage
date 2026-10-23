@@ -365,48 +365,38 @@ body.blue-portfolio .gaze-stage .hero-title h1 {font-family:'Kalnia',Georgia,ser
 .case-certificate img {display:block;width:100%;height:auto;}
 .case-certificate figcaption {margin-top:10px;font-size:12px;line-height:1.65;}
 
-/* One introduction: the character and creator identity share the opening scene. */
-.creator-intro {--intro-blue:#0a8fd2;--intro-ink:#001e32;background:var(--intro-blue);color:var(--intro-ink);}
-.blue-portfolio .creator-intro {margin:0;}
-.blue-portfolio .creator-intro + #portfolio-content > #featured {border-top:0;padding-top:56px;}
-.creator-intro-inner {max-width:1280px;margin-inline:auto;padding:28px var(--pad) 48px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(24px,4vw,64px);}
-.blue-portfolio .creator-intro #hero {padding:0;min-width:0;}
-.creator-intro .gaze-stage {height:320px;margin:0;background:transparent;align-items:center;}
-.creator-intro .gaze-stage::after {display:none;}
-.creator-intro .gaze-frame {width:100%;max-width:480px;}
-.intro-copy {min-width:0;padding-block:20px;}
-.intro-role {margin:0 0 10px;font-size:16px;font-weight:550;letter-spacing:.02em;}
-.intro-copy h1 {display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 20px;margin:0;color:#fff;font-size:clamp(44px,5.2vw,68px);font-weight:700;line-height:1.15;letter-spacing:-.045em;}
-body.blue-portfolio .intro-name-en {font-family:'Kalnia',Georgia,serif !important;font-size:clamp(22px,2.1vw,28px);font-weight:500;letter-spacing:-.025em;color:var(--intro-ink);}
-.intro-detail {margin-top:24px;font-size:clamp(16px,1.4vw,18px);line-height:1.8;word-break:keep-all;}
-.intro-detail > span {display:block;}
-.intro-detail > span + span {margin-top:5px;}
-.blue-portfolio .creator-intro .core-skills {margin-top:26px;gap:10px;}
-.blue-portfolio .creator-intro .core-skills :is(a,button) {min-height:44px;padding:9px 16px;border-color:var(--intro-ink);color:var(--intro-ink);font-size:14px;}
-.blue-portfolio .creator-intro .core-skills :is(a,button):hover {background:var(--intro-ink);color:#fff;}
-.blue-portfolio .creator-intro .core-skills :is(a,button):focus-visible {outline-color:#fff;}
-.blue-portfolio #portfolio-nav a,.blue-portfolio #portfolio-nav a.is-active {color:#001e32;}
+/* Full-width showreel with the identity on its lower blue fade. */
+.blue-portfolio .site-header {position:sticky;inset:0 0 auto;justify-content:flex-start;min-height:64px;background:#0a8fd2;}
+.blue-portfolio #portfolio-nav #nav-links {justify-content:flex-start;}
+.blue-portfolio #portfolio-nav a,.blue-portfolio #portfolio-nav a.is-active {min-height:64px;color:#001e32;font-size:14px;text-shadow:none;}
 .blue-portfolio #portfolio-nav a.is-active {text-decoration-color:#001e32;}
-@media (max-width:1000px) and (min-width:761px) {
- .creator-intro-inner {grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px;padding-block:24px 40px;}
- .creator-intro .gaze-stage {height:280px;}
- .intro-copy h1 {gap:8px 14px;}
- .intro-detail {margin-top:20px;}
- .blue-portfolio .creator-intro .core-skills {gap:8px;}
- .blue-portfolio .creator-intro .core-skills :is(a,button) {padding-inline:12px;font-size:13px;}
-}
+.blue-portfolio #portfolio-nav a[data-nav="hero"] {font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap;}
+.blue-portfolio #portfolio-nav a:focus-visible {outline:2px solid #001e32;outline-offset:4px;}
+.blue-portfolio #hero.showreel-banner {position:relative;margin:0;padding:0 var(--pad);height:auto;overflow:hidden;background:#0a8fd2;}
+.showreel-background {display:block;width:100%;max-width:1472px;height:auto;max-height:calc(100svh - 64px);aspect-ratio:16/9;margin-inline:auto;object-fit:contain;object-position:center;pointer-events:none;}
+.blue-portfolio .creator-intro {position:absolute;inset:auto 0 0;margin:0;padding-top:100px;background:linear-gradient(180deg,rgba(10,143,210,0),rgba(10,143,210,.78) 40%,#0a8fd2 100%);color:#E1F2D5;}
+.creator-intro-inner {display:flex;align-items:flex-end;justify-content:space-between;gap:32px;max-width:1600px;margin-inline:auto;padding:18px var(--pad) 36px;}
+.intro-copy {min-width:0;padding:0;text-align:left;}
+.intro-copy h1 {display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin:0;color:inherit;font-size:44px;font-weight:650;line-height:1.1;letter-spacing:-.04em;}
+body.blue-portfolio .intro-name-en {font-family:'Kalnia',Georgia,serif !important;font-size:24px;font-weight:500;line-height:1.25;letter-spacing:-.035em;color:inherit;}
+.intro-role {margin:6px 0 0;font-size:14px;font-weight:500;letter-spacing:.02em;color:inherit;}
+.intro-detail {margin-top:12px;color:inherit;font-size:15px;line-height:1.7;word-break:keep-all;}
+.intro-detail > span {display:block;}
+.intro-mobile-break {display:none;}
+.reel-open {display:inline-flex;align-items:center;justify-content:center;gap:16px;flex-shrink:0;min-height:46px;padding:12px 22px;border:0;border-radius:999px;background:#001e32;color:#EAF6AD;font-size:14px;font-weight:600;cursor:pointer;}
+.reel-open:focus-visible {outline:2px solid #EAF6AD;outline-offset:4px;}
+.blue-portfolio #hero + #portfolio-content > #featured {border-top:0;padding-top:28px;}
+.blue-portfolio #hero + #portfolio-content #featured .featured-head {margin-bottom:24px;}
 @media (max-width:760px) {
- .blue-portfolio .creator-intro + #portfolio-content > #featured {padding-top:40px;}
- .creator-intro-inner {grid-template-columns:minmax(0,1fr);gap:6px;padding:8px var(--pad) 34px;}
- .creator-intro .gaze-stage {height:154px;}
- .creator-intro .gaze-frame {width:260px;max-width:100%;}
- .intro-copy {padding:0;text-align:center;}
- .intro-role {margin-bottom:8px;font-size:13px;}
- .intro-copy h1 {justify-content:center;gap:14px;font-size:44px;}
- body.blue-portfolio .intro-name-en {font-size:20px;}
- .intro-detail {max-width:420px;margin:18px auto 0;font-size:15px;line-height:1.75;}
- .intro-detail > span + span {margin-top:6px;}
- .blue-portfolio .creator-intro .core-skills {justify-content:center;gap:8px;margin-top:22px;}
- .blue-portfolio .creator-intro .core-skills :is(a,button) {padding-inline:12px;font-size:13px;}
+ .blue-portfolio .site-header {min-height:54px;}
+ .blue-portfolio #portfolio-nav a,.blue-portfolio #portfolio-nav a.is-active {min-height:54px;font-size:12px;}
+ .blue-portfolio #hero.showreel-banner {padding:0;}
+ .showreel-background {max-height:none;}
+ .blue-portfolio .creator-intro {position:relative;inset:auto;margin-top:-48px;padding-top:48px;}
+ .creator-intro-inner {display:block;padding:12px var(--pad) 24px;}
+ .intro-copy h1 {font-size:34px;gap:8px 12px;}
+ .intro-role {font-size:13px;}
+ .intro-detail {margin-top:12px;font-size:14px;line-height:1.7;}
+ .intro-mobile-break {display:block;}
+ .reel-open {margin-top:16px;min-height:42px;font-size:13px;}
 }
-

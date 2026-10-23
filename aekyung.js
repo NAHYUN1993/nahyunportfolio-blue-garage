@@ -771,5 +771,6 @@ const sectionObserver = new IntersectionObserver(entries => {
     if (active) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
   });
 }, { rootMargin: '-15% 0px -65% 0px' });
-['about', 'selected', 'workflows', 'research', 'archive'].forEach(id => sectionObserver.observe(document.getElementById(id)));
+['hero', 'selected', 'workflows', 'research', 'archive'].forEach(id => sectionObserver.observe(document.getElementById(id)));
 })();
+

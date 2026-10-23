@@ -18,13 +18,13 @@
   <meta name="twitter:image" content="https://nahyun1993.github.io/nahyunportfolio-blue-garage/assets/character/gaze-new-poster.jpg">
   <meta name="twitter:image:alt" content="실버 헤드셋을 쓴 이나현의 캐릭터">
 
+  <link rel="preload" as="image" href="./images/posters/showreel.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="./fonts/pretendard/pretendard.css">
   <link rel="stylesheet" href="./styles.css?v=20261017-board-workflow-context-v59">
   <link rel="stylesheet" href="./aekyung.css?v=20261017-board-workflow-context-v59">
   <link rel="stylesheet" href="./browse.css?v=20261017-board-workflow-context-v59">
-  <link rel="stylesheet" href="./redesign.css?v=20261022-unified-intro-v70">
-  <link rel="preload" as="image" href="./assets/character/gaze-new-poster.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="./redesign.css?v=20261023-green-ivory-v92">
 </head>
 <body class="browse-mode blue-portfolio">
 
@@ -33,26 +33,22 @@
 
   <header class="site-header"><nav id="portfolio-nav" aria-label="포트폴리오 목차"><div id="nav-links"></div></nav></header>
   <main id="top">
+    <section id="hero" aria-label="AI 영상 쇼릴"></section>
     <section id="about" class="creator-intro" aria-labelledby="identity-title">
       <div class="creator-intro-inner">
-        <div id="hero" aria-label="이나현의 캐릭터"></div>
         <div class="intro-copy">
-          <p class="intro-role">AI 크리에이터</p>
           <h1 id="identity-title">이나현 <span class="intro-name-en" lang="en">Lee Nahyun</span></h1>
-          <p class="intro-detail"><span>AI 영상의 기획·제작부터<br class="intro-break"> 3D 움직임 설계, 제작 자동화 구축까지.</span><span>영상의 완성도와 제작 효율을 함께 높입니다.</span></p>
-          <ul class="core-skills" aria-label="코어 스킬">
-            <li><a href="#selected" data-portfolio-route="selected">영상 기획·제작</a></li>
-            <li><a href="#workflows" data-portfolio-route="workflows">제작 자동화</a></li>
-            <li><button type="button" data-ak-work="onetake" aria-haspopup="dialog">3D 설계</button></li>
-          </ul>
+          <p class="intro-role">AI 크리에이터</p>
+          <p class="intro-detail"><span>AI 영상의 기획·제작부터 <br class="intro-mobile-break">3D 움직임 설계, 제작 자동화 구축까지.</span><span>영상의 완성도와 제작 효율을 함께 높입니다.</span></p>
         </div>
+        <button class="reel-open" type="button" aria-haspopup="dialog">쇼릴 전체 보기 <span aria-hidden="true">↗</span></button>
       </div>
     </section>
     <div id="portfolio-content">
     <!-- 작품 중심의 연속 갤러리. 상세 설명은 작품을 선택하면 보여준다. -->
     <section id="featured">
       <div id="selected" class="ak-work">
-      <header class="featured-head"><div><h2>대표 영상</h2><p class="ak-sec-sub">브랜드의 메시지와 캐릭터의 이야기를 AI 영상으로 전합니다.</p></div><button class="text-link" type="button" id="showreel-open">쇼릴 보기 <span aria-hidden="true">↗</span></button></header>
+      <header class="featured-head"><div><h2>대표 영상</h2><p class="ak-sec-sub">브랜드의 메시지와 캐릭터의 이야기를 AI 영상으로 전합니다.</p></div></header>
       <div class="ak-grid" id="ak-grid"></div>
       <div id="shortform"><div id="ak-vertical"></div></div>
       </div>
@@ -124,9 +120,9 @@
   </div>
 
   <script src="./hero-config.js?v=20261017-board-workflow-context-v59"></script>
-  <script src="./hero.js?v=20261022-unified-intro-v70"></script>
-  <script src="./script.js?v=20261021-hide-liveaction-v69"></script>
-  <script src="./aekyung.js?v=20261021-award-certificate-v66"></script>
+  <script src="./hero.js?v=20261022-uninterrupted-reel-v86"></script>
+  <script src="./script.js?v=20261022-name-nav-v88"></script>
+  <script src="./aekyung.js?v=20261022-name-nav-v88"></script>
 </body>
 </html>
 

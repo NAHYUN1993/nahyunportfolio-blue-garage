@@ -752,7 +752,7 @@ const techStack = [
 
 /* ── Config ── */
 const SECTIONS = [
-  { id: 'about', label: '소개' },
+  { id: 'hero', label: 'LEE NA HYUN' },
   { id: 'selected', label: '대표 영상' },
   { id: 'workflows', label: '제작 자동화' },
   { id: 'research', label: '캐릭터 연구' },
@@ -1437,3 +1437,4 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
