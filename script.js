@@ -867,7 +867,7 @@ const AWARDS = { 301: 'LG유플러스 유쓰 AI 쇼츠 페스티벌 우수상', 
 const previewOf = p => p.videoSrc || (PREVIEW[p.id] ? `videos/preview/${PREVIEW[p.id]}.mp4` : '');
 
 /* 대표 작업(aekyung.js)에 이미 나온 작품은 전체 작업 목록에서 뺀다 */
-const ARCHIVE_EXCLUDE = [7, 301, 309, 206];
+const ARCHIVE_EXCLUDE = [301, 309, 206];
 
 // 실사 작업은 데이터와 원본을 보존하고 화면 목록에서만 숨긴다.
 const isVisibleProject = p => p && p.category !== 'liveaction';
