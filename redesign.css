@@ -400,3 +400,7 @@ body.blue-portfolio .intro-name-en {font-family:'Kalnia',Georgia,serif !importan
  .intro-mobile-break {display:block;}
  .reel-open {margin-top:16px;min-height:42px;font-size:13px;}
 }
+/* Consistent introduction / process navigation for archive project details. */
+#modal .modal-head { padding-right: 62px; }
+#modal .case-tabs { padding: 0; margin-bottom: 24px; }
+#modal .modal-tab-panel[hidden] { display: none; }

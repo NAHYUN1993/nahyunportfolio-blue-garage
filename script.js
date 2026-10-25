@@ -1339,13 +1339,23 @@ function detailBlock(p) {
         ${p.badgeLabel ? `<span class="tag tag-strong">${esc(p.badgeLabel)}</span>` : ''}
       </div>
       <h3>${esc(p.title)}</h3>
-      ${p.tools && p.tools.length ? `<div class="modal-tools">${p.tools.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
     </header>
-    ${p.brief ? `<section class="modal-block"><h4>기획 의도</h4>${briefParagraphs(p.brief)}</section>` : ''}
-    ${proc}
-    ${scenes}
-    ${shots}
-    ${p.carousel ? pureGallery(p) : ''}
+    <div class="case-tabs" role="tablist" aria-label="작품 상세 내용">
+      <button type="button" role="tab" id="modal-result-tab" aria-controls="modal-result" aria-selected="true" data-modal-tab="result">작품 소개</button>
+      <button type="button" role="tab" id="modal-process-tab" aria-controls="modal-process" aria-selected="false" tabindex="-1" data-modal-tab="process">제작 과정</button>
+    </div>
+    <section id="modal-result" class="modal-tab-panel" role="tabpanel" aria-labelledby="modal-result-tab" tabindex="0">
+      ${mediaBlock(p)}
+      ${p.brief ? `<section class="modal-block"><h4>기획 의도</h4>${briefParagraphs(p.brief)}</section>` : ''}
+      ${scenes}
+      ${shots}
+      ${p.carousel ? pureGallery(p) : ''}
+    </section>
+    <section id="modal-process" class="modal-tab-panel" role="tabpanel" aria-labelledby="modal-process-tab" tabindex="0" hidden>
+      ${proc}
+      ${p.tools?.length ? `<section class="modal-block"><h4>사용 도구</h4><div class="modal-tools">${p.tools.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></section>` : ''}
+      ${!p.process?.length && !p.tools?.length ? '<p>등록된 제작 과정 자료가 없습니다.</p>' : ''}
+    </section>
   `;
 }
 
@@ -1357,13 +1367,46 @@ function openModal(id) {
   const inner = byId('modal-inner');
   inner.innerHTML = `
     <button id="modal-close" class="modal-close" aria-label="닫기">닫기</button>
-    ${mediaBlock(p)}
     <div class="modal-body">${detailBlock(p)}</div>
   `;
   const modal = byId('modal');
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.classList.add('no-scroll');
+  const tabs = [...inner.querySelectorAll('[data-modal-tab]')];
+  const selectTab = tab => {
+    tabs.forEach(item => {
+      const active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    inner.querySelectorAll('[role="tabpanel"]').forEach(panel => {
+      panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+    });
+    inner.querySelectorAll('video').forEach(video => video.pause());
+    // Unload embedded players when leaving the result tab to stop playback.
+    inner.querySelectorAll('iframe').forEach(frame => {
+      if (tab.dataset.modalTab === 'process') {
+        frame.dataset.playerSrc = frame.getAttribute('src');
+        frame.removeAttribute('src');
+      } else if (frame.dataset.playerSrc) {
+        frame.src = frame.dataset.playerSrc;
+        delete frame.dataset.playerSrc;
+      }
+    });
+    tab.focus();
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      if (tab.getAttribute('aria-selected') !== 'true') selectTab(tab);
+    });
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      if (tabs[next] !== tab) selectTab(tabs[next]);
+    });
+  });
   wirePureGallery(inner);
   byId('modal-close').focus();
   byId('modal-close').addEventListener('click', closeModal);

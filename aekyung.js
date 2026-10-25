@@ -607,7 +607,7 @@ function openSheet(id) {
     <header class="case-heading"><div><p class="work-choice-kind">${esc(w.tags.join(' · '))}</p><h2 id="ak-sheet-title">${esc(w.title)}</h2><p>${esc(w.meta)}</p></div><button class="case-close" type="button" data-ak-close aria-label="닫고 목록으로 돌아가기">✕ <span>목록으로</span></button></header>
     <div class="case-tabs" role="tablist" aria-label="작품 상세 내용">
       <button type="button" role="tab" id="case-result-tab" aria-controls="case-result" aria-selected="true" data-case-tab="result">작품 소개</button>
-      <button type="button" role="tab" id="case-process-tab" aria-controls="case-process" aria-selected="false" tabindex="-1" data-case-tab="process">${w.layout === 'research' ? '연구 과정' : '제작 과정'}</button>
+      <button type="button" role="tab" id="case-process-tab" aria-controls="case-process" aria-selected="false" tabindex="-1" data-case-tab="process">제작 과정</button>
     </div>
     <div class="case-content">
       <section id="case-result" role="tabpanel" aria-labelledby="case-result-tab" tabindex="0">
