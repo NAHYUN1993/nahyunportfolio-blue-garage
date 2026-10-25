@@ -188,44 +188,6 @@ const projects = [
     ]
   },
   {
-    id: 2,
-    type: 'video',
-    category: 'commercial',
-    categoryLabel: '커머셜 AI 영상',
-    title: '5초 분갈이 챌린지 · 올인원 원예 제품 사용 가이드',
-    desc: "분갈이 공정에 5초 미션 형식의 게이미피케이션을 적용한 숏폼 영상. 초보자의 심리적 진입 장벽 완화 및 올인원 제품의 사용 편의성 전달.",
-    thumbnail: 'https://nahyun1993.github.io/portfolio3/images/Thumbnails/분갈이흙2.png',
-    badge: 'company',
-    badgeLabel: '커머스 프로젝트',
-    tools: ['Nano Banana', 'Photoshop', 'Kling', 'Premiere Pro'],
-    driveId: '1kzPULkIVpHz7PnBzJW3cBCNiU-EnxxV8',
-    orientation: 'vertical',
-    scenes: [
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/5초분갈이챌린지/5초분갈이챌린지 주요장면_01.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/5초분갈이챌린지/5초분갈이챌린지 주요장면_02.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/5초분갈이챌린지/5초분갈이챌린지 주요장면_03.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/5초분갈이챌린지/5초분갈이챌린지 주요장면_04.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/5초분갈이챌린지/5초분갈이챌린지 주요장면_05.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/5초분갈이챌린지/5초분갈이챌린지 주요장면_06.png'
-    ],
-    brief: "가드닝 입문자들은 분갈이를 취미가 아닌 복잡하고 실패하기 쉬운 노동으로 인식하는 경향이 있어 이를 해소할 인식 전환을 위한 기획적 접근 필요. 제품의 USP인 간편함을 텍스트가 아닌 영상 언어로 증명하기 위해 시간 제한 챌린지 형식을 차용함.",
-
-  process: [
-    {
-        "title": "미션 도입과 캐릭터 반응 구성",
-        "desc": "캐릭터 시트를 바탕으로 분갈이를 시도하는 토끼와 작업대 이미지를 제작했습니다. 시작에는 ‘5초 내에 완료하세요’라는 미션을 제시하고, 여러 재료를 다루는 장면과 캐릭터의 표정을 배치해 분갈이의 번거로움을 짧게 보여줬습니다."
-    },
-    {
-        "title": "제품 패키지 보정과 해결 장면 제작",
-        "desc": "AI 이미지에서 왜곡된 로고와 텍스트를 Photoshop으로 보정하고 실제 제품 이미지를 합성했습니다. 제품 봉투가 단독으로 등장하는 컷에서 토끼가 봉투의 흙을 화분에 붓는 컷으로 이어지게 해, 제품이 복잡한 준비를 줄이는 해결책으로 보이도록 구성했습니다."
-    },
-    {
-        "title": "미션에서 완성된 화분까지 편집",
-        "desc": "보정한 이미지를 Kling으로 영상화하고 Premiere Pro에서 컷을 연결했습니다. 작업을 시작하는 토끼, 제품 등장, 흙을 붓는 손동작, 완성된 화분을 보여주는 표정 순으로 구성해 간편함을 결과가 있는 짧은 이야기로 전달했습니다."
-    }
-]
-  },
-  {
     id: 3,
     type: 'video',
     category: 'commercial',
@@ -897,7 +859,7 @@ const ANCHOR_ALIAS = {
 
 /* 드라이브·유튜브로만 연결된 작품의 카드 미리보기(6초, 무음). 상세 재생은 원래 링크 그대로 */
 const PREVIEW = {
-  1: 'p1', 2: 'p2', 3: 'p3', 4: 'p4', 6: 'p6', 103: 'p103',
+  1: 'p1', 3: 'p3', 4: 'p4', 6: 'p6', 103: 'p103',
   201: 'p201', 202: 'p202', 204: 'p204', 205: 'p205', 206: 'p206'
 };
 /* 수상작은 썸네일 위에 수상 배지를 띄워 다른 카드와 구분한다 */
@@ -923,7 +885,7 @@ const WORK_ORDER = [
   308, 306, 305, // 분갈이흙과 넌마늘난양파 자리 교환
   207, 307,  // 가로 영상 첫 번째: 비료 회사 직원의 농사짓기
   7,    // 메디힐 토너패드
-  4, 1, 2, 6, 103, 201, 202, 203, 204, 205, 206
+  4, 1, 6, 103, 201, 202, 203, 204, 205, 206
 ];
 
 function orderedProjects(order) {
@@ -945,7 +907,7 @@ const WORK_FILTERS = [
 /* 전체 작업 영상 분류 (AI/실사 대신 콘텐츠 유형으로 나눈다) */
 const WORK_KIND = {
   304: 'ad', 308: 'ad', 305: 'ad', 306: 'ad', 307: 'ad', 1: 'ad', 302: 'ad', 303: 'ad', 3: 'ad',
-  2: 'guide', 202: 'guide', 203: 'guide', 206: 'guide',
+  202: 'guide', 203: 'guide', 206: 'guide',
   201: 'ad', 204: 'ad',
   207: 'branded', 205: 'branded',
   4: 'contest', 301: 'contest',
