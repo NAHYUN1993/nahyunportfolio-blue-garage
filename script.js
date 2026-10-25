@@ -529,14 +529,16 @@ const projects = [
     thumbnail: './images/posters/drjoe-spray.jpg',
     badge: 'company',
     badgeLabel: '제품 광고',
-    tools: ['Nano Banana', 'Kling'],
+    tools: ['ChatGPT', 'Nano Banana', 'Kling', 'Seedance'],
     orientation: 'vertical',
     scenes: [],
     brief: "레몬코어 트렌드를 제품 세계관에 적용. 성분·사용법 설명보다 사용 편의성과 효능에 대한 직관적 인상 전달을 목표로 설정.",
     process: [
       { title: '레몬코어 무드 차용', desc: "세계관 전반에 레몬 톤의 색감과 질감을 적용하여 시각적 주목도 확보." },
       { title: '변화 폭의 시각화', desc: '어두운 숲에서 빛나는 열매를 거쳐 만개한 레몬 정원으로 이어지는 시퀀스로, 뿌린 뒤의 변화를 한 흐름 안에서 보여 줌.' },
-      { title: '제작', desc: '나노바나나로 이미지를 생성하고 클링으로 영상화함.' }
+      { title: '기존 회사 캐릭터를 활용한 이미지 생성', desc: '기존에 제작된 회사 캐릭터를 활용해 GPT로 장면별 이미지를 생성했습니다.' },
+      { title: '이미지 수정', desc: '생성한 이미지를 GPT와 Nano Banana로 수정했습니다.' },
+      { title: 'Kling·Seedance로 영상화', desc: '수정한 이미지를 Kling과 Seedance로 영상화했습니다.' }
     ]
   },
   {
