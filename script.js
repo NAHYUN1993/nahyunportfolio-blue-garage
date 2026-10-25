@@ -910,7 +910,7 @@ const WORK_KIND = {
   202: 'guide', 203: 'guide', 206: 'guide',
   201: 'ad', 204: 'ad',
   207: 'branded', 205: 'branded',
-  4: 'contest', 301: 'contest',
+  4: 'contest', 7: 'contest', 301: 'contest',
   6: 'film', 103: 'film'
 };
 
