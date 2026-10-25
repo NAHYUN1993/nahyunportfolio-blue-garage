@@ -160,34 +160,6 @@ const projects = [
      AI 영상 커머셜
   ───────────────────────────────────────────────────────── */
   {
-    id: 1,
-    type: 'video',
-    category: 'commercial',
-    categoryLabel: '커머셜 AI 영상',
-    title: '작물 영양제 기능 홍보 · 네이버 숏클립 커머셜',
-    desc: "작물 영양제의 핵심 성분과 효능을 시각화한 네이버 숏클립 커머셜. 프롬프트 설계를 통한 한글 텍스트 왜곡 방지 및 후반 리터칭 없는 상업용 숏폼 에셋 제작.",
-    thumbnail: 'https://nahyun1993.github.io/portfolio3/images/Thumbnails/작물영양제 기능 홍보.png',
-    badge: 'company',
-    badgeLabel: '커머스 프로젝트',
-    tools: ['Antigravity', 'Nano Banana', 'Premiere Pro', 'Kling', 'Obsidian'],
-    driveId: '1EClMUBheaXkb-DgJTsscnEIPpK80AA0S',
-    orientation: 'horizontal',
-    scenes: [
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/작물영양제기능홍보/작물영양제 주요장면_01.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/작물영양제기능홍보/작물영양제 주요장면_02.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/작물영양제기능홍보/작물영양제 주요장면_03.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/작물영양제기능홍보/작물영양제 주요장면_04.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/작물영양제기능홍보/작물영양제 주요장면_05.png',
-      'https://nahyun1993.github.io/portfolio3/images/주요장면/작물영양제기능홍보/작물영양제 주요장면_06.png'
-    ],
-    brief: "제품의 성분과 기능을 모바일 세로형(9:16) 네이버 숏클립 환경에 맞춰 가장 빠르고 직관적으로 전달할 수 있도록 정보 밀도를 높여 기획함. 상업용 커머스 영상에서 가장 중요한 제품 패키지와 한글 로고의 정확성을 AI 생성 단계에서부터 완벽하게 구현하는 데 우선순위를 둠.",
-    process: [
-      { title: '핵심 기능 및 셀링 포인트 기획', desc: '작물 영양제의 특정 영양분과 그것이 작물에 미치는 긍정적 효과를, 네이버 숏클립 시청자의 구매 전환으로 직관적으로 유도할 수 있도록 스토리보드를 구성함.' },
-      { title: '한글 왜곡 방어 및 최적화 프롬프트 설계', desc: 'AI 생성 시 필연적으로 발생하는 한글 텍스트 왜곡 및 패키지 형태 일그러짐 현상을 방어하기 위해 안티그래비티 환경에서 심층 리서치를 진행함. 제품 패키지의 비율과 한글 타이포그래피를 고정할 수 있는 최적의 프롬프트 구문과 네거티브 프롬프트를 자체 설계함.' },
-      { title: '후반 작업 없는 고품질 에셋 생성', desc: "자체 설계한 프롬프트를 나노바나나2 모델에 적용함. 한글 텍스트 및 패키지 왜곡이 전혀 없는 상업용 수준의 고품질 제품 이미지를 한 번에 추출함. 별도의 포토샵 리터칭 없이 상업용 숏폼 에셋으로 즉시 활용 가능하게 하여 제작 효율 개선." }
-    ]
-  },
-  {
     id: 3,
     type: 'video',
     category: 'commercial',
@@ -877,7 +849,7 @@ const ANCHOR_ALIAS = {
 
 /* 드라이브·유튜브로만 연결된 작품의 카드 미리보기(6초, 무음). 상세 재생은 원래 링크 그대로 */
 const PREVIEW = {
-  1: 'p1', 3: 'p3', 4: 'p4', 6: 'p6', 103: 'p103',
+  3: 'p3', 4: 'p4', 6: 'p6', 103: 'p103',
   201: 'p201', 202: 'p202', 204: 'p204', 205: 'p205', 206: 'p206'
 };
 /* 수상작은 썸네일 위에 수상 배지를 띄워 다른 카드와 구분한다 */
@@ -903,7 +875,7 @@ const WORK_ORDER = [
   308, 306, 305, // 분갈이흙과 넌마늘난양파 자리 교환
   207, 307,  // 가로 영상 첫 번째: 비료 회사 직원의 농사짓기
   7,    // 메디힐 토너패드
-  4, 1, 6, 103, 201, 202, 203, 204, 205, 206
+  4, 6, 103, 201, 202, 203, 204, 205, 206
 ];
 
 function orderedProjects(order) {
@@ -924,7 +896,7 @@ const WORK_FILTERS = [
 
 /* 전체 작업 영상 분류 (AI/실사 대신 콘텐츠 유형으로 나눈다) */
 const WORK_KIND = {
-  304: 'ad', 308: 'ad', 305: 'ad', 306: 'ad', 307: 'ad', 1: 'ad', 302: 'ad', 303: 'ad', 3: 'ad',
+  304: 'ad', 308: 'ad', 305: 'ad', 306: 'ad', 307: 'ad', 302: 'ad', 303: 'ad', 3: 'ad',
   202: 'guide', 203: 'guide', 206: 'guide',
   201: 'ad', 204: 'ad',
   207: 'branded', 205: 'branded',
