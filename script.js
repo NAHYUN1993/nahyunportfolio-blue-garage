@@ -161,6 +161,13 @@ const projects = [
     tools: ['Nano Banana', 'ComfyUI', 'Kling', 'Premiere Pro'],
     driveId: '1qtkc4js6sA5ZEvdF8BUB8N1gLcI8tB6B',
     orientation: 'vertical',
+    processMedia: [
+      { src: 'images/process/christmas/product-composite.png', caption: 'Qwen Image Edit · 캐릭터와 실제 제품 이미지를 입력한 합성 워크플로' },
+      { src: 'images/process/christmas/angles-setup-01.png', caption: 'Multiple Angles LoRA · 카메라 각도별 프롬프트 설정' },
+      { src: 'images/process/christmas/angles-result-01.png', caption: '다각도 생성 결과 · 클로즈업·하이앵글·측면' },
+      { src: 'images/process/christmas/angles-setup-02.png', caption: '두 번째 캐릭터 이미지에 적용한 다각도 워크플로' },
+      { src: 'images/process/christmas/angles-result-02.png', caption: '두 번째 이미지의 다각도 생성 결과' },
+    ],
     scenes: [
       'https://nahyun1993.github.io/portfolio3/images/주요장면/크리스마스/크리스마스 주요장면_01.png',
       'https://nahyun1993.github.io/portfolio3/images/주요장면/크리스마스/크리스마스 주요장면_02.png',
@@ -173,7 +180,7 @@ const projects = [
     process: [
       { title: '캐릭터 시트 및 페르소나 구축', desc: '나노바나나를 활용해 기본 캐릭터 시트를 생성. 다양한 카메라 앵글과 표정 변화에 대응할 시각 에셋을 확보함.' },
       { title: '시즌 베리에이션 및 코스튬 적용', desc: '산타 코스튬 모티프를 적용하여 버전 변형. 캐릭터 고유의 아이덴티티를 완벽하게 유지함.' },
-      { title: 'AI 한계 극복 및 제품 합성', desc: "ComfyUI의 qwen_image_edit 노드를 활용해 캐릭터 영역에 실제 식물 영양제 제품 이미지를 자연스럽게 합성함." },
+      { title: 'AI 한계 극복 및 제품 합성', desc: "ComfyUI에서 Qwen Image Edit 2509 모델을 활용해 캐릭터 이미지와 실제 식물 영양제 제품 이미지를 함께 입력하고, 프롬프트로 제품이 등장하는 장면을 합성했습니다." },
       { title: '다각도 장면 일괄 생성 (Multiple Angle LoRA)', desc: "qwen_Multiple_angle LoRA 모델을 적용하는 워크플로를 설계해 캐릭터의 서로 다른 앵글과 장면을 한 번에 자동 생성함." },
       { title: '모션 부여 및 편집 마무리', desc: '프리픽 Kling 모델로 영상화 및 프리미어 프로에서 편집 마무리.' }
     ]
@@ -791,6 +798,7 @@ const FEATURED_IDS = [301, 207, 305];
 /* 전체 보기 순서 */
 const WORK_ORDER = [
   301,  // LG유플러스 유쓰 우수상
+  3,    // ComfyUI 제품 합성·다각도 생성
   304,  // 버그올킬
   302,  // 그로잉버블
   303,  // 닥터조 뿌리는 식물영양제
@@ -798,7 +806,6 @@ const WORK_ORDER = [
   308, 306, 305, // 분갈이흙과 넌마늘난양파 자리 교환
   207, 307,  // 가로 영상 첫 번째: 비료 회사 직원의 농사짓기
   7,    // 메디힐 토너패드
-  3,    // 크리스마스 시즌 캠페인
   4, 1, 2, 6, 103, 201, 202, 203, 204, 205, 206
 ];
 
@@ -1357,6 +1364,7 @@ function detailBlock(p) {
       ${p.carousel ? pureGallery(p) : ''}
     </section>
     <section id="modal-process" class="modal-tab-panel" role="tabpanel" aria-labelledby="modal-process-tab" tabindex="0" hidden>
+      ${p.processMedia?.length ? `<section class="modal-block"><h4>ComfyUI 작업 화면</h4><p>실제 제품 이미지 합성과 캐릭터 다각도 생성에 활용한 워크플로입니다.</p><div class="modal-process-gallery">${p.processMedia.map(m => `<figure><a href="${esc(m.src)}" target="_blank" rel="noopener"><img src="${esc(m.src)}" alt="${esc(m.caption)}" loading="lazy"></a><figcaption>${esc(m.caption)} · 클릭하여 확대 ↗</figcaption></figure>`).join('')}</div></section>` : ''}
       ${proc}
       ${p.tools?.length ? `<section class="modal-block"><h4>사용 도구</h4><div class="modal-tools">${p.tools.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></section>` : ''}
       ${!p.process?.length && !p.tools?.length ? '<p>등록된 제작 과정 자료가 없습니다.</p>' : ''}

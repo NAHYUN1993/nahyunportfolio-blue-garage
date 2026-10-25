@@ -530,6 +530,8 @@ function renderWorks() {
   render('#ak-grid', ['onetake', 'out-of-frame']);
   render('#ak-vertical', ['lg-youth', 'pure-solution']);
   const vertical = $('#ak-vertical');
+  vertical.insertAdjacentHTML('afterbegin', `<article class="project-card"><button type="button" class="project-hit ak-card-hit" data-open="3" aria-label="크리스마스 시즌 캠페인 자세히 보기"><div class="project-media"><img src="images/process/christmas/angles-result-02.png" alt="ComfyUI 캐릭터 다각도 생성 워크플로" loading="lazy"><span class="project-open" aria-hidden="true">↗</span></div><div class="project-copy"><div><h3>크리스마스 시즌 캠페인</h3><p class="project-category">ComfyUI · 실제 제품 합성 · 캐릭터 다각도 생성</p></div><span class="project-link">자세히 ↗</span></div></button></article>`);
+
   [{id:308,title:'분갈이흙',file:'potting-soil',caption:'공간별 식물 연출로 제품을 소개하는 AI 숏폼'},{id:304,title:'버그올킬',file:'bug-all-kill',caption:'젤리 캐릭터로 제품의 효과를 보여주는 AI 광고'}].forEach(w=>{
     vertical.insertAdjacentHTML('beforeend', `<article class="project-card"><button type="button" class="project-hit ak-card-hit" data-open="${w.id}" aria-label="${w.title} 자세히 보기"><div class="project-media"><video src="videos/${w.file}.mp4" poster="images/posters/${w.file}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="project-open" aria-hidden="true">▶</span></div><div class="project-copy"><div><h3>${w.title}</h3><p class="project-category">${esc(w.caption)}</p></div><span class="project-link">자세히 ↗</span></div></button></article>`);
   });

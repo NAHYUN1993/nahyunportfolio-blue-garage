@@ -404,3 +404,7 @@ body.blue-portfolio .intro-name-en {font-family:'Kalnia',Georgia,serif !importan
 #modal .modal-head { padding-right: 62px; }
 #modal .case-tabs { padding: 0; margin-bottom: 24px; }
 #modal .modal-tab-panel[hidden] { display: none; }
+
+.modal-process-gallery {display:grid;gap:24px;margin-top:20px;}
+.modal-process-gallery img {display:block;width:100%;height:auto;}
+.modal-process-gallery figcaption {margin-top:8px;font-size:13px;line-height:1.6;}
