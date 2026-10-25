@@ -22,13 +22,13 @@ const projects = [
   "title": "넌마늘난양파",
   "desc": "시기별 제품 선택과 넌마늘난양파·납작이의 조합을 타이포그래피로 전달한 네이버 숏클립 홍보 영상.",
   "brief": "네이버 숏클립에 게시할 제품 홍보 영상으로, ‘넌마늘난양파’와 ‘납작이’를 시기와 제품 특성에 맞춰 조합해 사용하는 방법을 소개하고자 했습니다. 두 제품을 단순히 나열하기보다, 언제 어떤 제품을 선택하면 좋은지 전달해 각 제품의 쓰임과 함께 활용하는 이점을 알리는 데 초점을 맞췄습니다.",
-  "processLabel": "연출 방향",
-  "process": [{"title": "타이포그래피를 통한 정보 전달", "desc": "짧은 시청 시간 안에 제품별 특징과 사용 시기를 파악할 수 있도록 타이포그래피에 힘을 실었습니다. 핵심 정보가 먼저 읽히도록 글자의 크기와 배치, 강조 순서를 설계해 제품 간 차이와 조합의 이점이 명확하게 전달되도록 구성했습니다."}],
+  "processLabel": "제작 과정",
+  "process": [{"title": "GPT로 이미지 생성", "desc": "제품 홍보 영상에 사용할 장면별 이미지를 GPT로 생성했습니다."}, {"title": "Kling으로 영상화", "desc": "생성한 이미지를 Kling으로 영상화했습니다."}, {"title": "타이포그래피를 통한 정보 전달", "desc": "짧은 시청 시간 안에 제품별 특징과 사용 시기를 파악할 수 있도록 타이포그래피에 힘을 실었습니다. 핵심 정보가 먼저 읽히도록 글자의 크기와 배치, 강조 순서를 설계해 제품 간 차이와 조합의 이점이 명확하게 전달되도록 구성했습니다."}],
   "orientation": "vertical",
   "videoSrc": "videos/garlic-flat.mp4",
   "poster": "images/posters/garlic-flat-v6.jpg",
   "thumbnail": "images/posters/garlic-flat-v6.jpg",
-  "tools": [],
+  "tools": ["ChatGPT", "Kling"],
   "badgeLabel": ""
 },
 {
@@ -1364,7 +1364,7 @@ function detailBlock(p) {
       ${p.carousel ? pureGallery(p) : ''}
     </section>
     <section id="modal-process" class="modal-tab-panel" role="tabpanel" aria-labelledby="modal-process-tab" tabindex="0" hidden>
-      ${p.processMedia?.length ? `<section class="modal-block"><h4>ComfyUI 작업 화면</h4><p>실제 제품 이미지 합성과 캐릭터 다각도 생성에 활용한 워크플로입니다.</p><div class="modal-process-gallery">${p.processMedia.map(m => `<figure><a href="${esc(m.src)}" target="_blank" rel="noopener"><img src="${esc(m.src)}" alt="${esc(m.caption)}" loading="lazy"></a><figcaption>${esc(m.caption)} · 클릭하여 확대 ↗</figcaption></figure>`).join('')}</div></section>` : ''}
+      ${p.processMedia?.length ? `<section class="modal-block"><h4>ComfyUI 작업 화면</h4><div class="modal-process-gallery">${p.processMedia.map(m => `<figure><a href="${esc(m.src)}" target="_blank" rel="noopener"><img src="${esc(m.src)}" alt="${esc(m.caption)}" loading="lazy"></a><figcaption>${esc(m.caption)} · 클릭하여 확대 ↗</figcaption></figure>`).join('')}</div></section>` : ''}
       ${proc}
       ${p.tools?.length ? `<section class="modal-block"><h4>사용 도구</h4><div class="modal-tools">${p.tools.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></section>` : ''}
       ${!p.process?.length && !p.tools?.length ? '<p>등록된 제작 과정 자료가 없습니다.</p>' : ''}
