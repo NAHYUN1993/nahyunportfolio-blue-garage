@@ -1214,6 +1214,7 @@ function imageItems() {
     ...productImageFiles.map(f => ({ src: CDN + 'AI Image/Product Image/' + f, cat: 'product-image', label: '제품 이미지' })),
     ...characterFiles.map(f => ({ src: CDN + 'AI Image/character/' + f, cat: 'character', label: '캐릭터' })),
     ...conceptArtFiles.map(f => ({ src: CDN + 'AI Image/Concept Art/' + f, cat: 'concept-art', label: '컨셉 아트' })),
+    { src: 'images/portraits/k-pop-beauty-editorial.png', cat: 'portrait', label: '뷰티 에디토리얼 인물 이미지' },
     ...portraitFiles.map(f => ({ src: CDN + 'AI Image/Portrait/' + f, cat: 'portrait', label: '인물 이미지' })),
     ...photographyFiles.map(f => ({ src: CDN + 'AI Image/Photography/' + f, cat: 'photography', label: '실사 사진' }))
   ];
