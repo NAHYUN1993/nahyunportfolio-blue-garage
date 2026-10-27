@@ -933,7 +933,7 @@ const allProjects = () => projects.concat(dashboardProjects);
 function findProject(id) {
   if (String(id) === '900') return {
     id: 900, title: 'LEE NAHYUN · SHOWREEL', categoryLabel: 'AI 영상 쇼릴',
-    orientation: 'horizontal', videoSrc: 'videos/showreel-play.mp4?v=6', poster: 'images/posters/showreel.jpg'
+    orientation: 'horizontal', videoSrc: 'videos/showreel-v2.mp4?v=2', poster: 'images/posters/showreel-v2.jpg'
   };
   return allProjects().find(p => String(p.id) === String(id));
 }
