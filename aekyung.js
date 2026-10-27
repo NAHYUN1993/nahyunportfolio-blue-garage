@@ -27,7 +27,7 @@ const works = [
   "outcome": "수영장·붉은 코트·작업실을 잇는 21.5초 콘셉트 트레일러 완성",
   "video": "videos/out-of-frame.mp4",
   "poster": "images/out-of-frame/poster.jpg",
-  "goal": "정해진 틀 밖에서 자신의 다음 장면을 선택하는 솔로 아이돌을 소개합니다. 앨범 공개 전의 콘셉트 트레일러를 상정해, 설명적인 서사보다 낯선 상황을 대하는 태도와 시선으로 캐릭터를 드러내고자 했습니다.",
+  "goal": "앨범 공개 전, 아티스트를 ‘낯선 상황에서도 자기 기준으로 행동하는 인물’로 기억하게 만드는 콘셉트 트레일러입니다. 공간마다 다른 행동과 시선을 배치해 캐릭터의 태도를 드러내고, 마지막 질문으로 다음 이야기에 대한 궁금증을 남기고자 했습니다.",
   "conceptBeats": [
     "수영장 — 정장 차림의 인물이 분홍색 회전식 전화기를 너무 당연하게 다룹니다. 장소·복장·행동의 불일치로 낯선 일상과 캐릭터의 태연함을 보여줍니다.",
     "붉은 코트 — 이미 선이 그어진 공간에 직접 원을 그립니다. 바깥의 규칙뿐 아니라 자신이 만드는 경계도 있다는 양면성을 담고, 손을 털며 다음 장면으로 넘어갑니다.",
@@ -81,7 +81,7 @@ const works = [
     comparison: 'onetake-compare',
     processScreens: [{ src: 'images/process/comfyui-depthpose-workflow.webp', cap: 'ComfyUI 작업 화면 · 안무 영상에서 Depth Anything V2와 DWPose로 깊이·뼈대를 추출하고 합성' }],
     poster: 'images/posters/onetake.jpg',
-    goal: '원하는 카메라 경로와 안무가 함께 반영되는 AI 퍼포먼스 영상을 만들고자 했습니다. Blender에서 카메라 무빙을 직접 지정하고, depth·pose 가이드와 멀티 레퍼런스로 움직임과 캐릭터 일관성을 제어했습니다.',
+    goal: 'AI 아티스트의 퍼포먼스 영상에서 연출자가 정한 카메라 무빙과 안무가 그대로 반영되도록 제어하는 방법을 만든 작업입니다. 보는 사람에게는 카메라가 아티스트를 따라 다가가고 물러나는 원테이크 퍼포먼스의 몰입감을 남기고자 했습니다.',
     process: [
       'Blender에서 16mm 광각 카메라의 접근·후퇴 경로와 타이밍을 직접 지정하고, 세트와 함께 프리비즈로 제작',
       'ComfyUI에서 DWPose로 뼈대, Depth Anything V2로 깊이를 추출한 뒤, 프리비즈 카메라의 깊이 패스 안에 원근을 맞춰 합성 · 카메라 무빙과 안무를 하나의 레퍼런스 영상으로 제어',
@@ -408,7 +408,7 @@ const works = [
     outcome: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상 수상',
     video: 'videos/lg-youth-festival.mp4',
     poster: 'images/posters/lg-youth-festival.jpg',
-    goal: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌의 ‘나다움’ 주제에 맞춰 제출한 작품입니다. 상반된 취향과 서툰 순간들을 일상적인 셀피 시점으로 담고, ‘무너지면 주워 먹는 사람’이라는 태도로 나다움을 표현했습니다.',
+    goal: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상 수상작입니다. 브랜드와 ‘나다움’이라는 주제에 맞춰, 일상의 모순과 서투름을 보여주는 셀피 연출을 선택했습니다. 상반된 취향과 서툰 순간들을 ‘무너지면 주워 먹는 사람’이라는 태도로 풀어, 모순된 모습까지 나로 인정하는 것이 나다움이라는 생각을 전하고, 보는 사람도 자신의 모순된 모습을 사랑하게 만들고자 했습니다.',
     process: [
       '‘나다움’에는 정해진 답이 없어 제작보다 기획에 더 많은 시간을 썼습니다. 좋아하는 것과 실제 행동이 어긋나는 순간들을 돌아보고, 그 모순과 서툶을 대하는 태도를 이야기의 중심으로 잡았습니다.',
       '주최 브랜드인 LG유플러스 유쓰와 ‘심플리 유플러스’ 슬로건, 취향과 일상을 담으라는 부문 설명을 함께 살폈습니다. 기술을 과시하는 화려한 연출을 덜어내고, 일상적이고 정서적인 톤을 선택했습니다.',
@@ -428,7 +428,7 @@ const works = [
     tags: ['인스타그램 캐러셀', 'AI 제작'],
     title: '퓨어솔루션 캐러셀',
     meta: '닥터조 인스타그램 · 4장 파노라마 캐러셀',
-    role: '캐러셀 기획 · 파노라마 구성 · 인물·오브제 배치',
+    role: '캐러셀 기획 · 이미지 생성 · 파노라마 구성 · 인물·오브제 배치 · 광고 집행',
     outcome: '4장의 연결된 비주얼로 제품을 소개하고 외부링크 클릭 422건 기록',
     line: '식집사의 하루를 따라 넘기며 제품 사용 장면을 만나는 파노라마 캐러셀',
     video: 'videos/pure-solution.mp4',
@@ -448,13 +448,138 @@ const works = [
     ],
     processMedia: [],
     tools: []
+  },
+  {
+    id: 'potting-soil',
+    layout: 'tall',
+    tags: ['인스타그램 광고', 'AI 숏폼'],
+    title: '분갈이흙',
+    meta: '인스타그램 유료 광고 · 세로 숏폼',
+    line: '낯선 사물에서 자라는 식물로 시선을 끌고, 관심을 흙으로 옮기는 숏폼 광고',
+    role: '광고 기획 · 이미지 생성 · 영상화 · 편집 · 인스타그램 광고 집행',
+    outcome: '유료 광고로 20일간(2026.09.21~10.10) 4개 캠페인에 총 ₩199,607을 집행해 노출 22,451회, 조회 20,250회, 스토어 유입(링크 클릭) 1,332회를 기록했습니다. 링크 클릭률(CTR)은 가중평균 5.93%, 링크 클릭 1회당 비용은 약 ₩150입니다.',
+    video: 'videos/potting-soil.mp4',
+    poster: 'images/posters/potting-soil.jpg',
+    goal: '식물이 잘 자라는 데 필요한 것은 화분이 아니라 좋은 흙이라는 점을 기억하게 하는 숏폼 광고입니다. 낯선 사물에서 자라는 식물로 시선을 붙잡고, 관심을 흙으로 옮기고자 했습니다.',
+    process: [
+      '프롬프트에 원하는 색의 색상 코드를 명시하고 공간과 소품을 지정해 GPT Image 2로 이미지를 생성했습니다. 구두, 서랍, 은색 용기와 유리잔처럼 서로 다른 사물을 식물이 자라는 공간으로 바꾸되, 초록색 계열의 색감이 이어지도록 했습니다.',
+      '식물이 자라는 장면 뒤에 분갈이흙 패키지와 모종삽을 함께 보여주도록 구성했습니다. 제품이 등장하는 컷은 패키지 글자가 깨지지 않도록 생성하고, 깨진 부분은 Photoshop으로 직접 수정해 제품명을 확인할 수 있게 했습니다.',
+      '완성한 이미지를 Kling으로 영상화했습니다. 앞부분은 다양한 사물에서 자라는 식물로 시선을 끌고, 뒷부분은 흙을 담은 삽과 열린 제품 봉투를 가까이 보여줍니다. ‘어디에 심든’에서 ‘흙이 좋으면’으로 이어지는 카피와 함께 관심의 대상을 재배 용기에서 흙으로 옮겼습니다.'
+    ],
+    results: [
+      { n: '20,250', label: '조회수' },
+      { n: '1,332', label: '스토어 유입' },
+      { n: '5.93%', label: '링크 클릭률' }
+    ],
+    resultLabel: '광고 성과',
+    metricNote: '인스타그램 유료 광고 · 같은 영상으로 집행한 4개 캠페인 합계 · CTR = 링크 클릭 ÷ 노출',
+    fix: {
+      problem: 'AI 생성 이미지에서 패키지의 제품명이 깨져 브랜드를 정확히 알아보기 어려웠습니다.',
+      fix: 'Photoshop으로 패키지 글자를 보정했습니다.',
+      result: '제품명이 읽히는 이미지를 최종 영상에 사용했습니다.'
+    },
+    processMedia: [],
+    tools: ['GPT Image 2', 'Photoshop', 'Kling']
+  },
+  {
+    id: 'bug-all-kill',
+    layout: 'tall',
+    tags: ['제품 광고', 'AI 숏폼'],
+    title: '버그올킬',
+    meta: '살충제 제품 광고 · 세로 숏폼',
+    line: '젤리 질감의 벌레 캐릭터 세계관과 스프레이 사용 장면을 연결한 살충제 광고',
+    role: '광고 기획 · 캐릭터 이미지 생성 · 영상화 · 편집 · 광고 집행',
+    outcome: '젤리 캐릭터 세계관 안에서 제품의 작용과 패키지를 보여주는 세로 숏폼 광고 완성',
+    video: 'videos/bug-all-kill.mp4',
+    poster: 'images/posters/bug-all-kill.jpg',
+    goal: '살충제 광고에서 거부감을 주는 벌레를 반투명 젤리 캐릭터로 바꿔, 벌레에 대한 거부감을 줄이고 시청을 이어가도록 유도하고자 했습니다.',
+    process: [
+      'Nano Banana로 반투명한 젤리 질감의 벌레와 버섯·꽃이 있는 배경을 제작했습니다. 작은 눈과 둥근 형태, 밝은 색을 활용해 해충의 외형을 귀여운 캐릭터로 바꾸고, 캐릭터와 주변 식물이 같은 재질의 세계에 속한 것처럼 구성했습니다.',
+      'Kling과 Seedance 2.0으로 이미지를 영상화했습니다. 분사구에서 나오는 액체와 벌레 위로 떨어지는 물방울을 가까이 보여준 뒤, 색색의 입자가 퍼지는 장면으로 연결했습니다. 제품의 작용을 사실적인 해충 묘사 대신 젤리 세계 안에서 벌어지는 사건으로 표현했습니다.',
+      '캐릭터와 입자가 움직이는 구간 뒤에는 제품 패키지를 화면 중심에 두고 천천히 접근하는 컷을 배치했습니다. 화려한 배경은 유지하면서 시선을 제품명과 패키지로 모아, 앞에서 본 분사 장면을 실제 제품과 연결하도록 했습니다.'
+    ],
+    results: [],
+    processMedia: [],
+    tools: ['Nano Banana', 'Kling', 'Seedance 2.0']
   }
 ];
+
+/* 작품 소개 탭의 '핵심 연출 판단' — 제작 과정에 있던 판단을 앞으로 꺼낸다. */
+const decisions = {
+  'out-of-frame': [
+    '수영장 · 정장 차림으로 물가에서 분홍색 전화기를 태연하게 다룹니다. 낯선 상황에서도 당황하지 않는 인물로 보이게 했습니다.',
+    '붉은 코트 · 이미 그어진 선 위에 자기만의 원을 그립니다. 주어진 규칙 대신 자기 기준을 세우는 인물로 그렸습니다.',
+    '작업실 · 반투명 천 사이로 시선을 드러내고 “그다음은?”이라고 묻습니다. 다음 장면을 스스로 고르는 인물이자, 다음 이야기를 기다리게 하는 질문입니다.',
+    '편집 · 소매 정리·분필 줍기 같은 설명적인 동작을 덜어내 21.5초로 압축했습니다.'
+  ],
+  'onetake': [
+    '카메라 · Blender에서 16mm 광각 카메라의 접근·후퇴 경로와 타이밍을 직접 지정했습니다.',
+    '동작 · 안무 영상의 뼈대와 깊이를 프리비즈 카메라의 깊이 패스에 합성해, 카메라 무빙과 안무를 하나의 레퍼런스로 제어했습니다.',
+    '검증 순서 · 480p 드래프트로 카메라와 동작을 먼저 확인한 뒤 1080p로 완성했습니다.'
+  ],
+  'lg-youth': [
+    '주제 해석 · 좋아하는 것과 실제 행동이 어긋나는 순간, 그 모순과 서투름을 대하는 태도를 나다움으로 해석했습니다.',
+    '톤 · 기술을 과시하는 화려한 연출을 덜어내고, 주최 브랜드의 슬로건과 부문 설명에 맞춰 일상적이고 정서적인 톤을 선택했습니다.',
+    '시점 · 화면 밖 팔의 방향과 시선으로 셀피 시점을 구성하고, 상반된 취향을 짧은 반전으로 보여줬습니다.'
+  ],
+  'potting-soil': [
+    '재배 공간 · 화분을 없애고 레몬 껍질, 구두, 세탁기처럼 식물과 어울리지 않는 사물을 재배 공간으로 바꿨습니다.',
+    '색감 · 프롬프트에 색상 코드를 지정해, 서로 다른 사물이 초록 계열로 이어지게 했습니다.',
+    '카피 · “어디에 심든 → 흙이 좋으면 → 잘 자라니까”로 관심을 재배 용기에서 흙으로 옮겼습니다.'
+  ],
+  'bug-all-kill': [
+    '캐릭터 · 작은 눈, 둥근 형태, 밝은 색으로 해충을 귀여운 젤리 캐릭터로 재해석했습니다.',
+    '제품 작용 · 분사와 입자가 퍼지는 장면을, 사실적인 해충 묘사 대신 젤리 세계 안의 사건으로 표현했습니다.',
+    '마무리 · 화려한 배경은 유지하면서 마지막에 패키지를 화면 중심에 두어 제품명으로 시선을 모았습니다.'
+  ],
+  'pure-solution': [
+    '형식 · 한 장의 제품 광고보다 식물과 보내는 하루를 순서대로 보여주기 위해 캐러셀을 선택했습니다.',
+    '제품 노출 · 제품 설명을 따로 떼어내지 않고, 물주기와 식물을 돌보는 행동 다음 순서에 제품을 희석해 사용하는 장면을 배치했습니다.',
+    '연결 · 인물·식물·오브제를 하나의 파노라마로 이어 4장으로 나눠, 장의 경계를 넘는 요소가 다음 장을 궁금하게 만들도록 했습니다.'
+  ]
+};
+/* 작품 소개 탭의 '결과와 근거' 보충 — 결과를 어떻게 확인했는지. */
+const evidence = {
+  'out-of-frame': {
+    checks: ['드래프트 단계에서 얼굴과 의상, 공간의 거리감, 행동의 의미를 검토해 채택본을 골랐습니다. 작업실은 수정안과 원본을 비교한 뒤 원본을 선택했습니다.'],
+    research: [
+      { label: '연구에서 확인한 점', text: '얼굴 계측 연구에서 얼굴 스펙 문장의 효과는 모델마다 달랐고, 같은 인물을 유지하는 데는 이미지 레퍼런스가 핵심이었습니다.' },
+      { label: '선택한 제작 조건', text: '얼굴 수치나 스펙 문장 대신, 연구에 사용한 캐릭터 B를 출발점으로 한 이미지 레퍼런스로 캐릭터 시트를 만들었습니다. 인물 시트와 공간 이미지는 별도 레퍼런스로 제공했습니다.' },
+      { label: '적용한 장면', text: '수영장·붉은 코트·작업실, 서로 다른 세 공간에 같은 인물이 등장합니다.' }
+    ]
+  }
+};
+/* 작품 소개 탭의 '남은 한계' — 확인된 내용만 채운다. 비어 있으면 표시하지 않는다. */
+const limits = {
+  'onetake': '인물이 빠르게 움직이거나 카메라 무빙이 빠른 구간에서는 얼굴과 디테일이 뭉개지는 한계가 있습니다.'
+};
+/* 비교 영상 아래 판정 — 의도대로 유지된 것 · 남은 오차 · 다음 수정 조건 */
+const compareReview = {
+  'onetake': [
+    { title: '의도대로 유지된 것', items: [
+      '원거리 → 근접 → 로우 앵글 → 다시 원거리로 이어지는 카메라 경로와 타이밍이 6초 내내 가이드와 일치합니다.',
+      '팔 올리기, 얼굴 앞 손동작, 앉았다 일어나기 같은 주요 포즈가 가이드와 같은 시점에 나옵니다.',
+      '기둥 세트의 배치와 원근이 카메라 이동에 맞게 유지됩니다.'
+    ] },
+    { title: '남은 오차', items: [
+      '약 1.3초 지점에서 가이드는 양팔을 옆으로 뻗지만, 완성본은 팔을 굽혀 가슴 앞으로 모읍니다.',
+      '인물이 빠르게 움직이거나 카메라가 빠르게 다가가는 구간에서 얼굴과 디테일이 뭉개집니다.'
+    ] },
+    { title: '다음 제작에서 수정할 조건', items: [
+      '팔을 크게 뻗는 동작은 가이드 영상에서 뼈대가 더 뚜렷하게 보이도록 조정합니다.',
+      '빠르게 다가가는 근접 구간은 드래프트 단계에서 따로 잘라 다시 생성합니다.',
+      '빠른 구간의 뭉개짐을 줄이도록 해상도와 생성 길이 조건을 조정합니다.'
+    ] }
+  ]
+};
+const FEATURED = ['lead', 'wide', 'tall', 'pano'];
 
 const briefs = {
   'onetake': { purpose: '원하는 카메라 무빙과 안무를 함께 제어', process: '카메라 무빙 직접 지정 → Depth·Pose → AI 생성', result: '6초 원테이크 · 1080p 완성' },
   'out-of-frame': { purpose: '태도와 시선으로 솔로 아이돌의 콘셉트 소개', process: '인물·공간 레퍼런스 설계 → 생성·선별 → 편집', result: '세 공간을 연결한 21.5초 트레일러' },
   'lg-youth': { purpose: 'LG유플러스 유쓰 공모전의 나다움 주제 표현', process: '셀피 시점 연출 → 인물 생성 → 숏폼 구성', result: 'Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상' },
+  'potting-soil': { purpose: '화분보다 흙이 식물을 키운다는 점을 기억하게', process: '낯선 재배 공간 이미지 → 글자 보정 → 영상화·카피', result: '조회 20,250회 · 스토어 유입 1,332회 · 지출 ₩199,607' },
+  'bug-all-kill': { purpose: '벌레에 대한 거부감을 줄이고 시청을 이어가도록', process: '젤리 캐릭터 재해석 → 분사 장면 영상화 → 제품 컷', result: '젤리 세계관의 살충제 숏폼 광고' },
   'pure-solution': { purpose: '식집사의 일상에서 제품의 쓰임을 자연스럽게 소개', process: '인물·오브제가 이어지는 4장 파노라마 구성', result: '조회수 16,745 · 외부링크 클릭 422건' },
   'expression-lab': { purpose: '이후 제작에서 표정 일관성을 유지할 기준 마련', process: '감정명·FACS 비교 → 강도·복합 감정 실험', result: '표정 이미지 82장과 선별 이유 정리' },
   'identity-lab': { purpose: '여러 장면에서 같은 얼굴을 유지할 기준 마련', process: '얼굴 계측 → 스펙·레퍼런스 조합 → 모델 비교', result: '6개 모델 · 비교 이미지 69장' },
@@ -466,8 +591,8 @@ const caseNotes = {
   'interview-workflow': {
     before: '원본을 재생하며 발화를 찾고, 구간 선택·순서 구성·타임라인 배치를 각각 진행해야 하는 편집 초안 단계.',
     after: '타임코드가 연결된 전사문에서 발화를 선택하고, 편집 구성·자막·오디오를 Premiere에서 수정 가능한 초안으로 연결했습니다.',
-    proof: '편집 초안 구성 시간 약 60~70% 단축 · 약 4~5시간 → 약 1시간 30분',
-    performance: { title: '인터뷰 편집 초안 구성 시간 약 60~70% 단축', description: '발화 선택·이야기 구성·타임라인 연결을 자동화해, 기존 약 4~5시간 걸리던 작업을 약 1시간 30분으로 줄였습니다.' },
+    proof: '편집 초안 구성 약 1시간 30분 · 기존 경험상 약 4~5시간 (1건 적용)',
+    performance: { title: '인터뷰 편집 초안 구성 약 1시간 30분', description: '발화 선택·이야기 구성·타임라인 연결을 자동화해, 결과 검토까지 포함한 편집 초안 구성을 약 1시간 30분에 마쳤습니다. 같은 단계를 직접 할 때 경험상 약 4~5시간 걸리던 것과 비교하면 약 60~70% 줄어든 셈입니다.', basis: '비교 기준 · 인터뷰 1건에 적용 · 기존 4~5시간은 경험에 따른 추정 · 분량과 난이도가 같은 작업끼리 비교한 것은 아님 · 결과 검토 시간 포함, 수정 시간 제외' },
     stats: [{ n: '282개', label: '원본 발화 구간' }, { n: '14개', label: '선택·재배열 구간' }, { n: '약 8분', label: '편집 초안 길이' }],
     scope: '초안 구성과 편집 도구 연동을 구현했습니다. 발화의 의미와 연결, 컷의 순서와 길이는 직접 검토합니다.'
   },
@@ -488,7 +613,16 @@ const caseNotes = {
     proof: '6개 모델 · 비교 이미지 69장 · 얼굴 유사도와 계측 기록',
     application: '컷과 장소가 달라져도 같은 인물로 보이는 것이 캐릭터 영상의 연속성을 좌우합니다. 얼굴 스펙을 무조건 더하기보다, 모델별 비교 결과에 맞춰 이미지 레퍼런스와 스펙 조합을 고르는 기준을 마련했습니다.',
     findings: '이번 이미지 실험에서 GPT Image 2의 평균 얼굴 유사도는 레퍼런스만 사용했을 때 0.72, 스펙을 함께 사용했을 때 0.78이었습니다. Qwen은 0.80에서 0.74로 낮아져, 스펙 추가 효과가 모델마다 다름을 확인했습니다.',
-    scope: '기준 얼굴 1명의 정지 이미지 비교 결과입니다. 영상 전 구간에서 얼굴이 유지되는지는 별도 검증이 필요합니다.'
+    scope: '기준 얼굴 1명의 정지 이미지 비교 결과입니다. 영상 전 구간에서 얼굴이 유지되는지는 별도 검증이 필요합니다.',
+    applied: {
+      work: 'out-of-frame',
+      label: 'OUT OF FRAME 트레일러의 캐릭터',
+      steps: [
+        { label: '연구에서 확인한 점', text: '얼굴 스펙 문장의 효과는 모델마다 달랐고(GPT Image 2는 0.72 → 0.78, Qwen은 0.80 → 0.74), 같은 인물을 유지하는 데는 이미지 레퍼런스가 핵심이었습니다.' },
+        { label: '선택한 제작 조건', text: '얼굴 수치나 스펙 문장 대신, 연구에 사용한 캐릭터 B를 출발점으로 한 이미지 레퍼런스로 캐릭터 시트를 만들었습니다. 인물 시트와 공간 이미지는 별도 레퍼런스로 제공했습니다.' },
+        { label: '완성 영상에 적용한 장면', text: 'OUT OF FRAME의 수영장·붉은 코트·작업실, 서로 다른 세 공간에 같은 인물이 등장합니다.' }
+      ]
+    }
   }
 };
 function changeMarkup(note) {
@@ -498,6 +632,8 @@ const stepTitles = {
   'onetake': ['카메라 무빙 직접 지정', 'ComfyUI에서 뼈대·깊이 추출과 합성', '캐릭터 멀티 레퍼런스', '드래프트 검토와 최종 생성', '음원과 안무 싱크'],
   'out-of-frame': ['공간과 소품 기획', '캐릭터 레퍼런스', '장면별 행동·카메라 연출', '드래프트 검토와 최종 출력', '행동의 시작과 끝을 고르는 편집'],
   'lg-youth': ['나다움의 해석', '주제·브랜드에 맞춘 톤 결정', '인물 이미지 생성', '셀피 시점 연출', '영상 생성과 컷 구성'],
+  'potting-soil': ['색상 코드로 통일한 낯선 재배 공간', '제품 패키지의 글자 확인과 보정', '낯선 장면에서 흙과 제품으로 시선 전환'],
+  'bug-all-kill': ['젤리 질감으로 해충 이미지 재해석', '분사와 입자 반응을 연결한 연출', '제품이 읽히는 마지막 장면 구성'],
   'pure-solution': ['식집사의 하루로 시작', '관리 루틴 안에서 제품 노출', '캐러셀을 선택한 이유와 연결 방식'],
   'expression-lab': ['감정명과 FACS 비교', '강도·복합 감정 실험', '표정 선별과 라이브러리 정리'],
   'identity-lab': ['기준 얼굴 계측', '조건별·모델별 이미지 생성', '계측·유사도·이미지 비교'],
@@ -520,21 +656,15 @@ function briefMarkup(w) {
   return `<dl class="work-brief"><div><dt>목적</dt><dd>${esc(b.purpose)}</dd></div><div><dt>과정</dt><dd>${esc(b.process)}</dd></div><div><dt>결과</dt><dd>${esc(b.result)}</dd></div></dl>`;
 }
 function renderWorks() {
-  const labels = { onetake: 'Blender 3D 프리비즈 · 카메라·안무 제어', 'out-of-frame': '캐릭터의 태도와 분위기를 담은 AI 트레일러', 'interview-workflow': '음성 전사 · 편집 자동화', 'production-board': '생성 · 승인 · 재생성', 'expression-lab': '표정 · 감정 표현', 'identity-lab': '얼굴 일관성 · 모델 비교', 'lg-youth': '나다움을 셀피 시점으로 풀어낸 AI 숏폼', 'pure-solution': '식집사의 일상에 제품을 담은 AI 캐러셀' };
+  const labels = { onetake: 'Blender 3D 프리비즈 · 카메라·안무 제어', 'out-of-frame': '캐릭터의 태도와 분위기를 담은 AI 트레일러', 'interview-workflow': '음성 전사 · 편집 자동화', 'production-board': '생성 · 승인 · 재생성', 'expression-lab': '표정 · 감정 표현', 'identity-lab': '얼굴 일관성 · 모델 비교', 'lg-youth': '나다움을 셀피 시점으로 풀어낸 AI 숏폼', 'pure-solution': '식집사의 일상에 제품을 담은 AI 캐러셀', 'potting-soil': '공간별 식물 연출로 제품을 소개하는 AI 숏폼', 'bug-all-kill': '젤리 캐릭터로 제품의 효과를 보여주는 AI 광고' };
   const block = w => `<article class="project-card">
     <button class="ak-card-hit project-hit" type="button" data-ak-work="${w.id}" aria-label="${esc(w.title)} 자세히 보기">
       <div class="project-media${w.previewImages?.length > 1 ? ' project-media--pair' : ''}">${cardMedia(w)}${w.id === 'lg-youth' ? '<span class="project-badge">🏅 Google·LG U+ 유쓰 AI 쇼츠 페스티벌 · 우수상</span>' : ''}<span class="project-open" aria-hidden="true">${w.video ? '▶' : '↗'}</span></div>
       <div class="project-copy"><div><h3>${esc(w.title)}</h3><p class="project-category">${esc(labels[w.id])}</p></div><span class="project-link">자세히 ↗</span></div>
-    </button>${caseNotes[w.id] ? `<div class="project-context">${caseNotes[w.id].proof ? `<p class="project-proof">${esc(caseNotes[w.id].proof)}</p>` : ''}${caseNotes[w.id].before ? `<p class="project-change"><b>개선 전</b>${esc(caseNotes[w.id].before)}</p><p class="project-change"><b>구현 후</b>${esc(caseNotes[w.id].after)}</p>` : ''}</div>` : ''}</article>`;
+    </button>${caseNotes[w.id] ? `<div class="project-context">${caseNotes[w.id].proof ? `<p class="project-proof">${esc(caseNotes[w.id].proof)}</p>` : ''}${caseNotes[w.id].applied ? `<p class="project-change"><b>적용</b>${esc(caseNotes[w.id].applied.label)}</p>` : ''}${caseNotes[w.id].before ? `<p class="project-change"><b>개선 전</b>${esc(caseNotes[w.id].before)}</p><p class="project-change"><b>구현 후</b>${esc(caseNotes[w.id].after)}</p>` : ''}</div>` : ''}</article>`;
   const render = (target, ids) => { $(target).innerHTML = ids.map(id => block(works.find(w => w.id === id))).join(''); };
   render('#ak-grid', ['onetake', 'out-of-frame']);
-  render('#ak-vertical', ['lg-youth', 'pure-solution']);
-  const vertical = $('#ak-vertical');
-
-  [{id:308,title:'분갈이흙',file:'potting-soil',caption:'공간별 식물 연출로 제품을 소개하는 AI 숏폼'},{id:304,title:'버그올킬',file:'bug-all-kill',caption:'젤리 캐릭터로 제품의 효과를 보여주는 AI 광고'}].forEach(w=>{
-    vertical.insertAdjacentHTML('beforeend', `<article class="project-card"><button type="button" class="project-hit ak-card-hit" data-open="${w.id}" aria-label="${w.title} 자세히 보기"><div class="project-media"><video src="videos/${w.file}.mp4" poster="images/posters/${w.file}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="project-open" aria-hidden="true">▶</span></div><div class="project-copy"><div><h3>${w.title}</h3><p class="project-category">${esc(w.caption)}</p></div><span class="project-link">자세히 ↗</span></div></button></article>`);
-  });
-  vertical.querySelectorAll('[data-open]').forEach(button=>button.addEventListener('click',()=>openModal(Number(button.dataset.open))));
+  render('#ak-vertical', ['lg-youth', 'pure-solution', 'potting-soil', 'bug-all-kill']);
   render('#ak-workflows', ['interview-workflow', 'production-board']);
   render('#ak-research', ['expression-lab', 'identity-lab']);
 }
@@ -592,9 +722,21 @@ function sheetComparison(w) {
       <span class="ak-comparison-label ak-comparison-label--final" aria-hidden="true">AI 완성 영상</span>
     </div>
     <p class="ak-comparison-note">같은 시점에서 재생 · 속도 변경 없음 · 5.7초 가이드의 끝 장면을 약 0.3초 유지</p>
+    ${(compareReview[w.id] || []).map(g => `<section class="ak-compare-review"><h4>${esc(g.title)}</h4><ul>${g.items.map(t => `<li>${esc(t)}</li>`).join('')}</ul></section>`).join('')}
   </figure>`;
 }
 
+function featuredSummary(w) {
+  const d = decisions[w.id] || [];
+  const ev = evidence[w.id] || {};
+  const stats = w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : '';
+  const cert = w.certificate ? `<figure class="case-certificate"><a href="${esc(w.certificate.src)}" target="_blank" rel="noopener" aria-label="이나현 우수상 상장 크게 보기"><img src="${esc(w.certificate.src)}" alt="이나현 · Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상 상장" loading="lazy"></a><figcaption>${esc(w.certificate.caption)}<br>상장 크게 보기 ↗</figcaption></figure>` : '';
+  return `<h3>제작 목적</h3><p>${esc(w.goal)}</p>
+    ${d.length ? `<section class="case-decisions"><h3>핵심 연출 판단</h3><ul>${d.map(t => { const [k, ...v] = t.split(' · '); return `<li><b>${esc(k)}</b>${esc(v.join(' · '))}</li>`; }).join('')}</ul></section>` : ''}
+    <h3>담당 역할</h3><p>${esc(w.role)}</p>
+    <section class="case-evidence"><h3>결과와 근거</h3><p>${esc(w.outcome)}</p>${(ev.checks || []).map(t => `<p>${esc(t)}</p>`).join('')}${stats}${w.metricNote ? `<p class="case-metric-note">${esc(w.metricNote)}</p>` : ''}${cert}${w.fix ? `<div class="case-research-link"><p class="case-research-title">AI 결과 수정</p><ol><li><b>문제</b>${esc(w.fix.problem)}</li><li><b>수정</b>${esc(w.fix.fix)}</li><li><b>결과</b>${esc(w.fix.result)}</li></ol></div>` : ''}${ev.research ? `<div class="case-research-link"><p class="case-research-title">캐릭터 연구 적용</p><ol>${ev.research.map(r => `<li><b>${esc(r.label)}</b>${esc(r.text)}</li>`).join('')}</ol></div>` : ''}</section>
+    ${limits[w.id] ? `<section class="case-limits"><h3>남은 한계</h3><p>${esc(limits[w.id])}</p></section>` : ''}`;
+}
 
 function openSheet(id) {
   const w = works.find(x => x.id === id);
@@ -612,23 +754,23 @@ function openSheet(id) {
     </div>
     <div class="case-content">
       <section id="case-result" role="tabpanel" aria-labelledby="case-result-tab" tabindex="0">
-        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first case-result-layout--summary-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}</div><div class="case-result-copy"><h3>제작 목적</h3><p>${esc(w.goal)}</p><h3>담당 역할</h3><p>${esc(w.role)}</p>
-        ${note?.performance ? `<section class="case-outcome"><h3>${esc(note.performance.title)}</h3><p>${esc(note.performance.description)}</p></section>` : ''}
+        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first case-result-layout--summary-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}${sheetComparison(w)}</div><div class="case-result-copy">${FEATURED.includes(w.layout) ? featuredSummary(w) : `<h3>제작 목적</h3><p>${esc(w.goal)}</p><h3>담당 역할</h3><p>${esc(w.role)}</p>
+        ${note?.performance ? `<section class="case-outcome"><h3>${esc(note.performance.title)}</h3><p>${esc(note.performance.description)}</p>${note.performance.basis ? `<p class="case-metric-note">${esc(note.performance.basis)}</p>` : ''}</section>` : ''}
         ${changeMarkup(note)}
         ${w.outcome ? `<section class="case-outcome"><h3>${w.layout === 'research' ? '연구 산출물' : w.layout === 'workflow' ? '구현 결과' : '작업 결과'}</h3><p>${esc(w.outcome)}</p></section>` : ''}
         ${note?.stats ? `<ul class="ak-res" aria-label="구현 산출물">${note.stats.map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
         ${note?.application ? `<section class="case-application"><h3>영상 품질과의 연결</h3><p>${esc(note.application)}</p></section>` : ''}
         ${w.findings || note?.findings ? `<section class="case-findings"><h3>비교에서 확인한 점</h3><p>${esc(w.findings || note.findings)}</p></section>` : ''}
+        ${note?.applied ? `<section class="case-evidence"><h3>완성 영상에 적용</h3><div class="case-research-link case-research-link--flush"><ol>${note.applied.steps.map(r => `<li><b>${esc(r.label)}</b>${esc(r.text)}</li>`).join('')}</ol></div><button class="case-applied-link" type="button" data-ak-work="${esc(note.applied.work)}">${esc(note.applied.label)} 보기 →</button></section>` : ''}
         ${note?.scope ? `<p class="case-scope">${esc(note.scope)}</p>` : ''}
         ${w.results.length ? `<ul class="ak-res" aria-label="${esc(w.resultLabel || '게시 성과')}">${w.results.slice(0, 3).map(r => `<li><b>${esc(r.n)}</b><span>${esc(r.label)}</span></li>`).join('')}</ul>` : ''}
         ${w.certificate ? `<figure class="case-certificate"><a href="${esc(w.certificate.src)}" target="_blank" rel="noopener" aria-label="이나현 우수상 상장 크게 보기"><img src="${esc(w.certificate.src)}" alt="이나현 · Google·LG U+ 유쓰 AI 쇼츠 페스티벌 우수상 상장" loading="lazy"></a><figcaption>${esc(w.certificate.caption)}<br>상장 크게 보기 ↗</figcaption></figure>` : ''}
-        ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}
+        ${w.link ? `<a class="ak-ext" href="${w.link}" target="_blank" rel="noopener">${esc(w.linkLabel || '원본 게시물 보기 ↗')}</a>` : ''}`}
         </div></div>
       </section>
       <section id="case-process" role="tabpanel" aria-labelledby="case-process-tab" tabindex="0" hidden>
         ${(w.processScreens || []).map(m => `<figure class="case-work-screen"><a href="${esc(m.src)}" target="_blank" rel="noopener"><img src="${esc(m.src)}" alt="${esc(m.cap)}" loading="lazy"></a><figcaption>${esc(m.cap)}</figcaption></figure>`).join('')}
         ${sheetProcessMedia(w)}
-        ${sheetComparison(w)}
         <p class="case-process-intro">${esc(briefs[w.id].process)}</p>
         ${w.conceptBeats ? `<section class="case-concept"><h3>기획 의도 · 세 공간의 흐름</h3><ol class="ak-steps">${w.conceptBeats.map(p => `<li>${esc(p)}</li>`).join('')}</ol></section>` : ''}
         <div class="case-process-steps">${w.process.map((p,i) => `<section class="case-process-step"><h3><span>${String(i+1).padStart(2,'0')}</span>${esc(stepTitles[w.id]?.[i] || `단계 ${i+1}`)}</h3><p>${esc(p)}</p></section>`).join('')}</div>
