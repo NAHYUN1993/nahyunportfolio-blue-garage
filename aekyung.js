@@ -339,14 +339,19 @@ const works = [
   ],
   "meta": "회사 전용 AI 콘텐츠 제작 도구 · 스토리보드 → 이미지·영상 생성 → 자막 제작",
   "line": "회사의 콘텐츠 구성·연출·카피·자막 규칙을 반영해, 기획부터 이미지·영상·자막 제작까지 연결한 전용 제작판",
-  "role": "제작 절차·검토 단계 설계 · AI 도구를 활용한 웹앱 구현 · 컷별 결과 선별",
-  "goal": "AI 영상 제작에서는 프롬프트 입력과 참조 이미지 첨부를 반복해야 했습니다. 이미지·영상 생성, 시안 비교와 승인, 자막 제작도 여러 도구에서 따로 관리했습니다. 회사의 콘텐츠 구성과 연출, 제품 표현, 카피·자막 규칙을 정리해 제작 기준으로 반영했습니다. 이를 바탕으로 프롬프트 입력과 참조 이미지 첨부의 반복을 줄이고, 스토리보드부터 이미지·영상·자막 생성까지 연결하는 제작 자동화 시스템을 구축했습니다. 단계별 결과는 직접 검토하고 승인하도록 설계했습니다.",
-  "outcome": "프롬프트 입력과 참조 이미지 첨부의 반복을 줄인 제작 자동화 시스템 구축",
+  "role": "숏폼 카피 문법·브랜드 자막 가이드 수립 · 제작 파이프라인 설계 · AI 도구를 활용한 웹앱 구현 · 컷별 검토·선별",
+  "roleItems": [
+    "숏폼 전용 카피 문법 수립: 질문형 오프닝을 배제하고, 2~4어절의 단정형 선언과 작물·제품별 생리 특성에 맞는 표현을 제작 규칙으로 정리했습니다.",
+    "브랜드 자막 디자인 가이드 설계: 누보와 닥터조의 서체 질감을 구분하고, 2줄 자막의 상하 너비 균형·행간·강조색·섀도우 규격을 정의했습니다.",
+    "파이프라인 및 웹앱 구현: Magnific MCP 등 AI 도구를 연결하는 Flask 검토 화면을 만들고, 컷별 시안 비교·선별과 승인 결과의 후속 편집 연결을 구성했습니다."
+  ],
+  "goal": "기존 AI 영상 제작에서는 컷마다 프롬프트와 참조 이미지를 반복 입력하고, 여러 생성 도구에서 결과를 따로 관리해야 했습니다. AI가 작성한 카피도 늘어지거나 상투적인 경우가 있어 직접 수정했습니다. 이를 개선하기 위해 직접 정립한 ‘숏폼 광고 카피 문법’과 ‘브랜드 자막 디자인 가이드’를 제작 기준으로 체계화했습니다. 규칙을 적용한 기획부터 이미지·영상·자막 생성과 사운드 작업까지 연결하고, 각 단계에서 시안을 비교한 뒤 직접 검토·승인해 후속 편집으로 넘기는 파이프라인을 구성했습니다.",
+  "outcome": "카피·자막 규칙을 적용한 기획과 생성 결과를 한 제작 흐름에서 비교·검토하고, 승인한 결과를 후속 편집에 연결하는 제작판을 구축했습니다.",
   "process": [
-    "회사의 콘텐츠 구성·연출·제품 표현·카피·자막 규칙을 정리하고, Antigravity 에이전트가 이 제작 기준을 읽어 컷별 연출·내레이션·사운드·프롬프트를 구성하도록 설계했습니다. 기획과 스토리보드는 다음 생성 전에 직접 검토합니다.",
-    "Magnific MCP로 이미지·자막 생성을 연결하고, Flask로 만든 검토 화면에서 Z-Image · Nano Banana · GPT 2.5 · Seedream의 시안을 비교합니다. 컷마다 모델과 프롬프트를 바꾸고 승인하거나 재생성할 수 있습니다.",
-    "선택한 이미지를 바탕으로 MiniMax · Kling · Seedance 영상 생성 단계로 이어지도록 구성했습니다. 컷별 영상을 재생해 움직임을 확인하고 승인·재생성을 결정합니다.",
-    "영상 검토 후 회사의 카피·타이포 규칙에 맞춘 컷별 자막 시안을 생성하고 검토합니다. Python으로 결과 파일을 내려받고 FFmpeg로 조립하는 흐름을 연결했으며, 프로젝트 상태는 project.json으로 관리합니다."
+    "질문형 훅과 홈쇼핑식 과장을 피하고, 2~4어절의 짧은 단정형 문장을 쓰도록 카피 규칙을 정했습니다. 수목은 수세 회복·완효성, 과수는 열과 방지·착색처럼 작물과 제품의 실제 특성에 맞춰 표현을 선택합니다. Antigravity 에이전트가 이 기준을 읽어 컷별 연출·내레이션·프롬프트를 구성하고, 다음 생성 전에 직접 검토합니다.",
+    "Magnific MCP에 연결된 여러 이미지 모델로 키프레임 시안을 만들고, Flask 기반 검토 화면에서 나란히 비교합니다. Seedream 등 모델별 결과를 살피며, 역광을 피한 조명과 지면 밀착 초로우앵글 등 지정한 비주얼 룩, 제품의 형태·질감이 맞는지 직접 확인합니다. 컷별로 시안을 승인하거나 프롬프트를 수정해 재생성합니다.",
+    "승인한 이미지를 바탕으로 Kling 등 영상 모델의 모션 생성 단계로 연결합니다. 프롬프트는 원하는 피사체 동작과 카메라 움직임을 중심으로 정리하고 불필요한 부정 표현을 덜어냅니다. 생성된 영상을 재생하며 피사체의 형태, 카메라 무빙, 입자의 움직임이 자연스러운지 직접 검토하고 승인·재생성을 결정합니다.",
+    "누보의 농업·수목 비료는 거친 드라이브러시 캘리그라피, 닥터조의 가정원예 제품은 정갈한 고딕 계열로 자막 시안을 제작합니다. 2줄 자막의 상하 가로폭 균형과 타이트한 행간, 라임 #8CE600·옐로우 강조, 글자 외곽에 가깝게 붙는 컴팩트 블랙 섀도우를 제작 기준으로 지정합니다. 투명 PNG 결과의 문구·줄바꿈·색상·섀도우를 직접 검토하고 승인합니다. 승인된 영상·자막과 내레이션·BGM을 정리해 프리미어 프로의 후속 편집에 연결합니다."
   ],
   "gallery": [
     {
@@ -366,7 +371,7 @@ const works = [
     "Antigravity",
     "Magnific MCP",
     "Flask",
-    "Z-Image · Nano Banana · GPT 2.5 · Seedream",
+    "Z-Image · Nano Banana · Seedream",
     "MiniMax · Kling · Seedance",
     "Python · FFmpeg"
   ],
@@ -384,8 +389,8 @@ const works = [
       "use": "스토리보드 확인 · 시안 승인·반려 · 프롬프트 수정 화면"
     },
     {
-      "tool": "Z-Image · Nano Banana · GPT 2.5 · Seedream",
-      "use": "컷별 이미지·자막 시안 생성과 비교"
+      "tool": "이미지·자막 생성 모델",
+      "use": "Z-Image · Nano Banana · Seedream 등 시안 비교. 자막 모델의 ‘GPT 2.5’는 제작판 설정에 저장된 표기입니다."
     },
     {
       "tool": "MiniMax · Kling · Seedance",
@@ -602,7 +607,14 @@ const caseNotes = {
     proof: '프롬프트 입력과 참조 이미지 첨부의 반복 감소',
     beforeLabel: '개선 전 · 반복 입력·분산 관리',
     afterLabel: '구현 후 · 제작 기준을 반영한 자동화',
-    scope: '생성된 결과를 자동으로 확정하지 않고, 컷별 연출과 브랜드 적합성을 직접 확인해 승인합니다.'
+    scope: '생성된 결과를 자동으로 확정하지 않고, 컷별 연출과 브랜드 적합성을 직접 확인해 승인합니다.',
+    detail: {
+      before: '컷마다 프롬프트와 참조 이미지를 반복 업로드하고, 여러 도구에 흩어진 생성 결과를 관리했습니다. 늘어지거나 상투적인 카피와 브랜드 기준에 맞지 않는 자막은 수동으로 수정했습니다.',
+      after: '직접 정립한 카피 문법과 자막 가이드를 제작 규칙으로 적용했습니다. 규칙 적용 → 시안 비교 → 직접 검토·승인 → 후속 편집 연결의 흐름으로 반복 입력과 결과 정리 단계를 줄이고, 브랜드 적합성을 판단하는 기준을 마련했습니다.',
+      beforeLabel: '개선 전 · 반복 입력과 수동 수정',
+      afterLabel: '구현 후 · 규칙 적용과 단계별 검토',
+      scope: '규칙을 지정한 뒤에도 생성 결과는 직접 확인하며, 컷별로 승인하거나 재생성을 결정합니다.'
+    }
   },
   'expression-lab': {
     proof: '표정 이미지 82장 · 프롬프트와 선택 이유 기록',
@@ -638,7 +650,7 @@ const stepTitles = {
   'expression-lab': ['감정명과 FACS 비교', '강도·복합 감정 실험', '표정 선별과 라이브러리 정리'],
   'identity-lab': ['기준 얼굴 계측', '조건별·모델별 이미지 생성', '계측·유사도·이미지 비교'],
   'interview-workflow': ['음성 전사', '발화 선택과 편집 구성', '타임라인·자막·오디오 출력', 'Premiere Pro MCP 연동과 검토'],
-  'production-board': ['회사 콘텐츠 규칙과 스토리보드', '이미지·자막 생성과 시안 비교', '영상 생성과 검토', '자막 제작과 결과 조립']
+  'production-board': ['직접 정의한 카피 문법 기반 스토리보드 기획', '멀티 모델 키프레임 생성과 시안 비교', '비디오 모션 생성과 물리적 자연스러움 검토', '브랜드 자막 제작과 후속 편집 연결']
 };
 
 /* ── RENDER ── */
@@ -741,7 +753,7 @@ function featuredSummary(w) {
 function openSheet(id) {
   const w = works.find(x => x.id === id);
   if (!w) return;
-  const note = caseNotes[w.id];
+  const note = caseNotes[w.id]?.detail || caseNotes[w.id];
   lastFocus = document.activeElement;
   document.querySelectorAll('.ak-card-video').forEach(v => v.pause());
 
@@ -754,7 +766,7 @@ function openSheet(id) {
     </div>
     <div class="case-content">
       <section id="case-result" role="tabpanel" aria-labelledby="case-result-tab" tabindex="0">
-        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first case-result-layout--summary-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}${sheetComparison(w)}</div><div class="case-result-copy">${FEATURED.includes(w.layout) ? featuredSummary(w) : `<h3>제작 목적</h3><p>${esc(w.goal)}</p><h3>담당 역할</h3><p>${esc(w.role)}</p>
+        <div class="case-result-layout${w.gallery ? ' case-result-layout--visual-first case-result-layout--summary-first' : ''}"><div class="case-result-media">${sheetMedia(w)}${w.musicCredit ? `<p class="ak-sheet-meta">${esc(w.musicCredit)}</p>` : ''}${sheetComparison(w)}</div><div class="case-result-copy">${FEATURED.includes(w.layout) ? featuredSummary(w) : `<h3>제작 목적</h3><p>${esc(w.goal)}</p><h3>담당 역할</h3>${w.roleItems ? `<section class="case-decisions"><ul>${w.roleItems.map(item => { const [label, ...text] = item.split(': '); return `<li><b>${esc(label)}</b>${esc(text.join(': '))}</li>`; }).join('')}</ul></section>` : `<p>${esc(w.role)}</p>`}
         ${note?.performance ? `<section class="case-outcome"><h3>${esc(note.performance.title)}</h3><p>${esc(note.performance.description)}</p>${note.performance.basis ? `<p class="case-metric-note">${esc(note.performance.basis)}</p>` : ''}</section>` : ''}
         ${changeMarkup(note)}
         ${w.outcome ? `<section class="case-outcome"><h3>${w.layout === 'research' ? '연구 산출물' : w.layout === 'workflow' ? '구현 결과' : '작업 결과'}</h3><p>${esc(w.outcome)}</p></section>` : ''}
