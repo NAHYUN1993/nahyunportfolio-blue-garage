@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEE NAHYUN · 3D & AI Creator</title>
+  <meta name="description" content="AI 콘텐츠 크리에이터 이나현 · Blender 3D 프리비즈 · ComfyUI · 편집·생성 자동화 · 캐릭터 연구">
+  <meta name="theme-color" content="#d1e1e8">
+
+  <meta property="og:title" content="LEE NAHYUN · 3D & AI Creator">
+  <meta property="og:description" content="3D 기반 장면 설계 · AI 콘텐츠 제작 · 제작 흐름 자동화">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://nahyun1993.github.io/nahyunportfolio-blue-garage/assets/character/gaze-new-poster.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="실버 헤드셋을 쓴 이나현의 캐릭터">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nahyun1993.github.io/nahyunportfolio-blue-garage/assets/character/gaze-new-poster.jpg">
+  <meta name="twitter:image:alt" content="실버 헤드셋을 쓴 이나현의 캐릭터">
+
+  <link rel="preload" as="image" href="./images/posters/showreel-v2.jpg" fetchpriority="high">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="./fonts/pretendard/pretendard.css">
+  <link rel="stylesheet" href="./styles.css?v=20261017-board-workflow-context-v59">
+  <link rel="stylesheet" href="./aekyung.css?v=20261017-board-workflow-context-v59">
+  <link rel="stylesheet" href="./browse.css?v=20261017-board-workflow-context-v59">
+  <link rel="stylesheet" href="./redesign.css?v=20261103-bullet-copy-v120">
+</head>
+<body class="browse-mode blue-portfolio">
+
+  <a class="skip-link" href="#selected">본문으로 건너뛰기</a>
+
+
+  <header class="site-header"><nav id="portfolio-nav" aria-label="포트폴리오 목차"><div id="nav-links"></div></nav></header>
+  <main id="top">
+    <section id="hero" aria-label="AI 영상 쇼릴"></section>
+    <section id="about" class="creator-intro" aria-labelledby="identity-title">
+      <div class="creator-intro-inner">
+        <div class="intro-copy">
+          <h1 id="identity-title">이나현 <span class="intro-name-en" lang="en">Lee Nahyun</span></h1>
+          <p class="intro-role">AI 콘텐츠 크리에이터</p>
+          <ul class="intro-detail copy-list"><li>캐릭터의 정체성과 연출 의도를 영상으로 구현</li><li>브랜드 영상 제작 경험 기반의 3D 프리비즈·캐릭터 일관성 연구·제작 자동화 연결</li></ul>
+        </div>
+        <button class="reel-open" type="button" aria-haspopup="dialog">쇼릴 전체 보기 <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+    <div id="portfolio-content">
+    <!-- 작품 중심의 연속 갤러리. 상세 설명은 작품을 선택하면 보여준다. -->
+    <section id="featured">
+      <div id="selected" class="ak-work">
+      <header class="featured-head"><div><h2>대표 영상</h2><p class="ak-sec-sub">브랜드 메시지와 캐릭터의 이야기를 담은 AI 영상</p></div></header>
+      <div class="ak-grid" id="ak-grid"></div>
+      <div id="shortform"><div id="ak-vertical"></div></div>
+      </div>
+    </section>
+
+    <section id="workflows" class="sec ak-workflows">
+      <header class="sec-head"><div><h2>제작 자동화</h2><p class="ak-sec-sub">직접 만든 도구를 통한 반복 작업 자동화·영상 제작 시간 단축</p></div><span class="section-note">WORKFLOW & TOOLS</span></header>
+      <div id="ak-workflows" class="ak-support-grid"></div>
+    </section>
+
+    <section id="research" class="sec ak-research">
+      <header class="sec-head"><div><h2>캐릭터 연구</h2><p class="ak-sec-sub">장면별 인물 일관성·의도한 감정의 표정 표현 비교를 통한 AI 캐릭터 연구</p></div><span class="section-note">PERSONAL R&D</span></header>
+      <div id="ak-research" class="ak-support-grid"></div>
+    </section>
+
+
+
+    <!-- 나머지 작업: 접어두고 필요할 때 카테고리 탭으로 본다. 내용은 script.js의 기존 렌더러 -->
+    <section id="archive" class="sec ak-archive">
+      <button class="ak-archive-toggle" type="button" aria-expanded="true" aria-controls="ak-archive-body">
+        <span class="ak-archive-title">전체 작업 접기</span>
+        <span class="ak-archive-sub">영상 · 이미지 · 자막디자인 · 웹앱</span>
+        <span class="ak-archive-icon" aria-hidden="true">−</span>
+      </button>
+      <div class="ak-archive-body" id="ak-archive-body">
+        <div class="ak-tabs" role="tablist" aria-label="작업 카테고리">
+          <button type="button" role="tab" data-ak-tab="work" aria-selected="true">영상</button>
+          <button type="button" role="tab" data-ak-tab="images" aria-selected="false">이미지</button>
+          <button type="button" role="tab" data-ak-tab="motion" aria-selected="false">자막디자인</button>
+          <button type="button" role="tab" data-ak-tab="tools" aria-selected="false">웹앱</button>
+        </div>
+        <div class="ak-panels">
+          <div id="work" class="ak-panel" role="tabpanel"></div>
+          <div id="images" class="ak-panel" role="tabpanel" hidden></div>
+          <div id="motion" class="ak-panel" role="tabpanel" hidden></div>
+          <div id="tools" class="ak-panel" role="tabpanel" hidden></div>
+        </div>
+      </div>
+      <div class="career-context" aria-label="경력과 작업의 흐름">
+        <p class="career-intro">방송 자막 디자인 → 누보 브랜드 영상 기획·촬영·편집 → AI 콘텐츠 제작·자동화</p>
+        <ol class="career-flow">
+          <li><p class="career-period">2015.01–2016.10 · 2017.07–2021.05</p><h3>방송 자막 디자인</h3><ul class="copy-list"><li>가족미디어 · 이엘와이드코퍼레이션</li><li>장면의 리듬과 정보 전달을 고려한 예능·교양·다큐 자막 디자인</li></ul></li>
+          <li><p class="career-period">2022.12–현재</p><h3>누보 · 브랜드 영상 제작</h3><ul class="copy-list"><li>브랜드기획팀 매니저</li><li>유튜브·인스타그램 콘텐츠 기획·촬영·편집 및 채널 운영</li></ul></li>
+          <li><p class="career-period">현재 확장 중인 작업</p><h3>AI 콘텐츠 제작·자동화</h3><ul class="copy-list"><li>브랜드 AI 영상·개인 창작 제작</li><li>3D 프리비즈·캐릭터 연구·제작 도구를 통한 구현 방법 확장</li></ul></li>
+        </ol>
+      </div>
+    </section>
+
+    </div>
+
+  </main>
+
+    <section id="stack" class="sec">
+      <header class="sec-head"><h2>활용 가능 툴</h2></header>
+      <div class="ak-tools"><div><h3>편집·디자인</h3><ul class="tool-list"><li>Premiere Pro</li><li>After Effects</li><li>Photoshop</li><li>Lightroom</li></ul></div><div><h3>AI 이미지·영상</h3><ul class="tool-list"><li>Nano Banana</li><li>Midjourney</li><li>Higgsfield</li><li>Seedance</li><li>Kling</li><li>Veo</li><li>ComfyUI</li></ul></div><div><h3>3D</h3><ul class="tool-list"><li>Blender</li></ul></div><div><h3>음성·음악</h3><ul class="tool-list"><li>ElevenLabs</li><li>Suno</li></ul></div><div><h3>AI 어시스턴트</h3><ul class="tool-list"><li>ChatGPT</li><li>Claude</li><li>Codex</li><li>Antigravity</li></ul></div></div>
+    </section>
+
+  <div id="modal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="작업 상세">
+    <div class="modal-inner" id="modal-inner"></div>
+  </div>
+
+  <div id="lightbox" class="overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="이미지 크게 보기">
+
+  </div>
+
+  <div class="ak-sheet" id="ak-sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ak-sheet-title">
+    <div class="ak-sheet-backdrop" data-ak-close></div>
+    <div class="ak-sheet-panel" id="ak-sheet-panel"></div>
+  </div>
+
+  <script src="./hero-config.js?v=20261017-board-workflow-context-v59"></script>
+  <script src="./hero.js?v=20261025-visible-reel-v110"></script>
+  <script src="./script.js?v=20261103-bullet-copy-v120"></script>
+  <script src="./aekyung.js?v=20261103-bullet-copy-v120"></script>
+</body>
+</html>
+
+
